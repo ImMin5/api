@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package spaceone.api.identity.v1;
 
+option go_package = "dist/go";
+
 import "google/api/annotations.proto";
 import "spaceone/api/core/v1/handler.proto";
 

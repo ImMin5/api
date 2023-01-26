@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package spaceone.api.cost_analysis.v1;
 
+option go_package = "dist/go";
+
 import "google/protobuf/struct.proto";
 import "google/api/annotations.proto";
 import "spaceone/api/core/v1/query.proto";
@@ -48,10 +50,10 @@ service BudgetUsage {
         };
     }
     rpc analyze (BudgetUsageAnalyzeQuery) returns (google.protobuf.Struct) {
-        option (google.api.http) = { post: "/cost-analysis/v1/budget/{budget_id}/usage/analyze" };
+        option (google.api.http) = { post: "/cost-analysis/v1/budget/usage/analyze" };
     }
     rpc stat (BudgetUsageStatQuery) returns (google.protobuf.Struct) {
-        option (google.api.http) = { post: "/cost-analysis/v1/budget/{budget_id}/usage/stat" };
+        option (google.api.http) = { post: "/cost-analysis/v1/budget/usage/stat" };
     }
 }
 

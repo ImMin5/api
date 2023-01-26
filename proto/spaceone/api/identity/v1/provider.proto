@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package spaceone.api.identity.v1;
 
+option go_package = "dist/go";
+
 import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
 import "google/api/annotations.proto";
@@ -12,13 +14,13 @@ service Provider {
         option (google.api.http) = { post: "/identity/v1/providers" };
     }
     rpc update (UpdateProviderRequest) returns (ProviderInfo) {
-        option (google.api.http) = { put: "/identity/v1/provider/{provider_id}" };
+        option (google.api.http) = { put: "/identity/v1/provider" };
     }
     rpc delete (ProviderRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = { delete: "/identity/v1/provider/{provider_id}" };
     }
     rpc get (GetProviderRequest) returns (ProviderInfo) {
-        option (google.api.http) = { get: "/identity/v1/provider/{provider_id}" };
+        option (google.api.http) = { get: "/identity/v1/provider" };
     }
     rpc list (ProviderQuery) returns (ProvidersInfo) {
         option (google.api.http) = {
@@ -72,6 +74,8 @@ message ProviderRequest {
     string provider = 1;
     // is_required: true
     string domain_id = 2;
+    string provider_id = 3;
+
 }
 
 message GetProviderRequest {

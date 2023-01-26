@@ -54,7 +54,7 @@ service BinauthzManagementServiceV1Beta1 {
   // if the request is malformed.
   rpc UpdatePolicy(UpdatePolicyRequest) returns (Policy) {
     option (google.api.http) = {
-      put: "/v1beta1/{policy.name=projects/*/policy}"
+      put: "/v1beta1"
       body: "policy"
     };
   }

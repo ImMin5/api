@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package spaceone.api.identity.v1;
 
+option go_package = "dist/go";
+
 import "google/protobuf/empty.proto";
 import "google/api/annotations.proto";
 
@@ -11,7 +13,7 @@ service DomainOwner {
         option (google.api.http) = { post: "/identity/v1/domain/{domain_id}/owner" };
     }
     rpc update (UpdateDomainOwner) returns (DomainOwnerInfo) {
-        option (google.api.http) = { put: " /identity/v1/domain/{domain_id}/owner" };
+        option (google.api.http) = { put: "/identity/v1/domain/{domain_id}/owner" };
     }
     rpc delete (DomainOwnerRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = { delete: "/identity/v1/domain/{domain_id}/owner" };
