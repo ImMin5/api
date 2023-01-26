@@ -3,6 +3,8 @@ desc: A Budget is a planned amount of cost expenditure for reduction and predict
 */
 syntax = "proto3";
 
+option go_package = "dist/go";
+
 package spaceone.api.cost_analysis.v1;
 
 import "google/protobuf/empty.proto";

@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package spaceone.api.identity.v1;
 
+option go_package = "dist/go";
+
 import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
 import "google/api/annotations.proto";
@@ -17,7 +19,7 @@ service ProjectGroup {
         option (google.api.http) = { put: "/identity/v1/project-group/{project_group_id}" };
     }
     rpc delete (ProjectGroupRequest) returns (google.protobuf.Empty) {
-        option (google.api.http) = { delete: "/identity/v1/project-group/{project_id}" };
+        option (google.api.http) = { delete: "/identity/v1/project-group" };
     }
     rpc get (GetProjectGroupRequest) returns (ProjectGroupInfo) {
         option (google.api.http) = { get: "/identity/v1/project-group/{project_group_id}" };
@@ -46,15 +48,15 @@ service ProjectGroup {
         option (google.api.http) = {
             get: "/identity/v1/project-group/{project_group_id}/members"
             additional_bindings {
-                post: "/identity/v1/project-group/{project_id}/members/search"
+                post: "/identity/v1/project-group/members/search"
             }
         };
     }
     rpc list_projects (ProjectGroupProjectQuery) returns (ProjectGroupProjectsInfo) {
         option (google.api.http) = {
-            get: "/identity/v1/project-group/{project_group_id}/projects"
+            get: "/identity/v1/project-group/projects"
             additional_bindings {
-                post: "/identity/v1/project-group/{project_id}/projects/search"
+                post: "/identity/v1/project-group/projects/search"
             }
         };
     }

@@ -5,6 +5,8 @@ syntax = "proto3";
 
 package spaceone.api.monitoring.v1;
 
+option go_package = "dist/go";
+
 import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
 import "google/api/annotations.proto";
@@ -72,7 +74,7 @@ service ProjectAlertConfig {
         }
      */
     rpc update (UpdateProjectAlertConfigRequest) returns (ProjectAlertConfigInfo) {
-        option (google.api.http) = { put: "/monitoring/v1/project-alert-config/{project_alert_config_id}" };
+        option (google.api.http) = { put: "/monitoring/v1/project-alert-config" };
     }
     /*
     desc: Deletes a specific ProjectAlertConfig. Deletes alert configuration data in a Project.
@@ -83,7 +85,7 @@ service ProjectAlertConfig {
         }
      */
     rpc delete (ProjectAlertConfigRequest) returns (google.protobuf.Empty) {
-        option (google.api.http) = { delete: "/monitoring/v1/project-alert-config/{project_alert_config_id}" };
+        option (google.api.http) = { delete: "/monitoring/v1/project-alert-config" };
     }
     /*
     desc: Gets a specific ProjectAlertConfig. Prints detailed information about the ProjectAlertConfig, including EscalationPolicy, recovery mode, and notification urgency.
@@ -109,7 +111,7 @@ service ProjectAlertConfig {
         }
      */
     rpc get (GetProjectAlertConfigRequest) returns (ProjectAlertConfigInfo) {
-        option (google.api.http) = { get: "/monitoring/v1/project-alert-config/{project_alert_config_id}" };
+        option (google.api.http) = { get: "/monitoring/v1/project-alert-config" };
     }
     /*
     desc: Gets a list of all ProjectAlertConfigs from all projects configured in the same domain. You can use a query to get a filtered list of ProjectAlertConfigs.

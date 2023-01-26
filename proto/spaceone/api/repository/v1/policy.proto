@@ -5,6 +5,8 @@ syntax = "proto3";
 
 package spaceone.api.repository.v1;
 
+option go_package = "dist/go";
+
 import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
 import "google/api/annotations.proto";
@@ -79,7 +81,7 @@ service Policy {
         }
      */
     rpc update (UpdatePolicyRequest) returns (PolicyInfo) {
-        option (google.api.http) = { put: "/repository/v1/policy/{policy}" };
+        option (google.api.http) = { put: "/repository/v1/policy" };
     }
     /*
     desc: Deletes a specific Policy. You must specify the `policy_id` of the Policy to delete, as the `policy_id` is an identifier of Policy resources.
@@ -89,7 +91,7 @@ service Policy {
         }
      */
     rpc delete (PolicyRequest) returns (google.protobuf.Empty) {
-        option (google.api.http) = { delete: "/repository/v1/policy/{policy}" };
+        option (google.api.http) = { delete: "/repository/v1/policy" };
     }
     /*
     desc: Gets a specific Policy. You must specify the `policy_id` of the Policy to get, as the `policy_id` is an identifier of Policy resources. You can use the parameter `repository_id` to limit the scope of the method to a specific Repository.
@@ -119,7 +121,7 @@ service Policy {
         }
      */
     rpc get (GetRepositoryPolicyRequest) returns (PolicyInfo) {
-        option (google.api.http) = { get: "/repository/v1/policies/{policy}" };
+        option (google.api.http) = { get: "/repository/v1/policies" };
     }
     /*
     desc: Gets a list of all Policies in a specific Repository. The parameter `repository_id` is used as an identifier of a Repository to get its list of Policies. You can use a query to get a filtered list of Policies.

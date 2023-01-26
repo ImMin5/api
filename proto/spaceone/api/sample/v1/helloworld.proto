@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package spaceone.api.sample.v1;
 
+option go_package = "dist/go";
+
 // desc: The greeting service definition.
 service HelloWorld {
   // desc: Sends a greeting
