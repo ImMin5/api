@@ -24,8 +24,8 @@ jobs:
         make json
 
     - name: Remove Artifact from Repo since its transfer has finished
-    run: |
-      sudo chmod -R 777 dist/json
-      git rm dist/json -r -f
-      git commit -m "Remove auto-generated artifact"
+      run: |
+        sudo chmod -R 777 dist/json
+        git rm dist/json -r -f
+        git commit -m "Remove auto-generated artifact"
 
