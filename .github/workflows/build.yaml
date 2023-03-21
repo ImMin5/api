@@ -1,0 +1,31 @@
+name: Cloudforet API build test
+
+on:
+  push:
+    branches:
+    - test/git-action-build
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version'
+        required: true
+        default: '0.0.0'
+
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v3
+        with:
+            ref: test/git-action-build
+
+      - name: Create documents
+        run: |
+          make json
+
+      - name: Remove Artifact from Repo since its transfer has finished
+      run: |
+        sudo chmod -R 777 dist/json
+        git rm dist/json -r -f
+        git commit -m "Remove auto-generated artifact"
+
