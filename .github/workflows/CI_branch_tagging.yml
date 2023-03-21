@@ -128,6 +128,12 @@ jobs:
           sudo chmod -R 777 dist
           cd dist/python
           python setup.py sdist bdist_wheel
+      - name: Build register_gateway.go
+        run: python3 make_server.py # register_gateway.go 생성됨
+      - name: Build image for grpc gateway
+        run: docker build xxx -f Dockerfile.grpc_gateway
+      - name: Push new image for grpc gateway
+        run: docker push xxx
       - name: Upload Pypi
         id: upload
         run: |
