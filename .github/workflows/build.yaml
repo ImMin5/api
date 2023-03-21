@@ -17,11 +17,20 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
+          token: ${{ secrets.PAT }}
           ref: test/git-action-build
 
     - name: Create documents
       run: |
         make json
+    - name: Push Json files to repository
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "Update Json files"
+        commit_user_name: "Cloudforet"
+        commit_user_email: "mino@megazone.com"
+        repository: "test/git-action-build"
+
 
     - name: Remove Artifact from Repo since its transfer has finished
       run: |
