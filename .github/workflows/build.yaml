@@ -29,7 +29,8 @@ jobs:
         commit_message: "Update Json files"
         commit_user_name: "Cloudforet"
         commit_user_email: "mino@megazone.com"
-        repository: "test/git-action-build"
+        branch: "test/git-action-build"
+        repository: "dist/json"
 
 
     - name: Remove Artifact from Repo since its transfer has finished
