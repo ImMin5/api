@@ -55,7 +55,7 @@ jobs:
       - name: Push artifacts to origin master
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          branch: master
+          branch: test/git-action-build
           commit_message: "[CI] api has been built"
           commit_user_name: Immin5
           commit_user_email: iam.minhokim@gmail.com
@@ -69,7 +69,7 @@ jobs:
           personal_token: ${{ secrets.PAT_TOKEN }}
           src_path: /dist/json
           dst_path: /dist/json
-          dst_owner: cloudforet-io
+          dst_owner: ImMin5
           dst_repo_name: api-doc
 
 #      - name: Notice when job fails
