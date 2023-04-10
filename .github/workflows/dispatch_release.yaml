@@ -61,9 +61,9 @@ jobs:
         with:
           branch: test/git-action-build
           commit_message: "[CI] api has been built"
-          commit_user_name: Immin5
+          commit_user_name: ImmMin5
           commit_user_email: iam.minhokim@gmail.com
-          commit_author: cloudforet-admin <admin@cloudforet.io>
+          commit_author: ImMin5 <mino@megazone.com>
           push_options: '--force'
           tagging_message: ${{ env.VERSION }}
 
@@ -72,6 +72,8 @@ jobs:
         with:
           personal_token: ${{ secrets.PAT_TOKEN }}
           src_path: dist/json
+          src_branch: test/git-action-build
+          dst_branch: test/gitaction
           dst_path: dist/json
           dst_owner: ImMin5
           dst_repo_name: api-doc
