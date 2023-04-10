@@ -39,10 +39,15 @@ jobs:
 
       - name: Make all and Packaging
         run: |
-          make all
+          make python
           sudo chmod -R 777 dist
           cd dist/python
           python setup.py sdist bdist_wheel
+
+      - name: Make all and Packaging
+        run: |
+          make json
+          sudo chmod -R 777 dist
 
 #      - name: Publish a Python distribution to PyPI
 #        uses: pypa/gh-action-pypi-publish@release/v1
