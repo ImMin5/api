@@ -6,7 +6,7 @@
       "package": "spaceone.api.cost_analysis.v1",
       "hasEnums": false,
       "hasExtensions": true,
-      "hasMessages": true,
+      "hasMessages": false,
       "hasServices": false,
       "enums": [],
       "extensions": [],
