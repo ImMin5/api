@@ -71,7 +71,7 @@ jobs:
         uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.PAT_TOKEN }}
-          src_path: /dist/json/
+          src_path: dist/json/
           src_branch: test/git-action-build
           dst_branch: test/gitaction
           dst_path: /dist/json/
