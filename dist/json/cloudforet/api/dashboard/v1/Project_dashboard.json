@@ -1,32 +1,78 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/dashboard/v1/project_dashboard.proto",
+      "description": "desc: description of dashboard",
+      "package": "spaceone.api.dashboard.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
       "enums": [
         {
-          "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+          "name": "Viewers",
+          "longName": "CreateProjectDashboardRequest.Viewers",
+          "fullName": "spaceone.api.dashboard.v1.CreateProjectDashboardRequest.Viewers",
           "description": "",
           "values": [
             {
-              "name": "NONE",
+              "name": "VIEWERS_NONE",
               "number": "0",
               "description": ""
             },
             {
-              "name": "ENABLED",
+              "name": "PUBLIC",
               "number": "1",
               "description": ""
             },
             {
-              "name": "DISABLED",
+              "name": "PRIVATE",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "Viewers",
+          "longName": "ProjectDashboardInfo.Viewers",
+          "fullName": "spaceone.api.dashboard.v1.ProjectDashboardInfo.Viewers",
+          "description": "",
+          "values": [
+            {
+              "name": "VIEWERS_NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "PUBLIC",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "PRIVATE",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "Viewers",
+          "longName": "ProjectDashboardQuery.Viewers",
+          "fullName": "spaceone.api.dashboard.v1.ProjectDashboardQuery.Viewers",
+          "description": "",
+          "values": [
+            {
+              "name": "VIEWERS_NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "PUBLIC",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "PRIVATE",
               "number": "2",
               "description": ""
             }
@@ -36,9 +82,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "CreateProjectDashboardRequest",
+          "longName": "CreateProjectDashboardRequest",
+          "fullName": "spaceone.api.dashboard.v1.CreateProjectDashboardRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -46,8 +92,8 @@
           "extensions": [],
           "fields": [
             {
-              "name": "name",
-              "description": "is_required: false",
+              "name": "project_id",
+              "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -58,24 +104,84 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "name",
               "description": "is_required: true",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "viewers",
+              "description": "is_required: true",
+              "label": "",
+              "type": "Viewers",
+              "longType": "CreateProjectDashboardRequest.Viewers",
+              "fullType": "spaceone.api.dashboard.v1.CreateProjectDashboardRequest.Viewers",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "layouts",
+              "description": "is_required: false",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "variables",
               "description": "is_required: false",
               "label": "",
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "settings",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "variables_schema",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "is_required: false",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -88,18 +194,6 @@
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -120,9 +214,9 @@
           ]
         },
         {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+          "name": "GetProjectDashboardRequest",
+          "longName": "GetProjectDashboardRequest",
+          "fullName": "spaceone.api.dashboard.v1.GetProjectDashboardRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -130,7 +224,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "project_dashboard_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -168,9 +262,9 @@
           ]
         },
         {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+          "name": "GetProjectDashboardVersionRequest",
+          "longName": "GetProjectDashboardVersionRequest",
+          "fullName": "spaceone.api.dashboard.v1.GetProjectDashboardVersionRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,7 +272,79 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "project_dashboard_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "version",
+              "description": "is_required: true",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "only",
+              "description": "is_required: false",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectDashboardInfo",
+          "longName": "ProjectDashboardInfo",
+          "fullName": "spaceone.api.dashboard.v1.ProjectDashboardInfo",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project_dashboard_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -202,36 +368,84 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "viewers",
               "description": "",
               "label": "",
-              "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+              "type": "Viewers",
+              "longType": "ProjectDashboardInfo.Viewers",
+              "fullType": "spaceone.api.dashboard.v1.ProjectDashboardInfo.Viewers",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "version",
               "description": "",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "layouts",
+              "description": "",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "variables",
               "description": "",
               "label": "",
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "settings",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "variables_schema",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -250,7 +464,7 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "user_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -286,7 +500,7 @@
               "defaultValue": ""
             },
             {
-              "name": "last_scheduled_at",
+              "name": "updated_at",
               "description": "",
               "label": "",
               "type": "string",
@@ -300,9 +514,9 @@
           ]
         },
         {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+          "name": "ProjectDashboardQuery",
+          "longName": "ProjectDashboardQuery",
+          "fullName": "spaceone.api.dashboard.v1.ProjectDashboardQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -322,7 +536,19 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule_id",
+              "name": "project_dashboard_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -346,19 +572,19 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "viewers",
               "description": "is_required: false",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "Viewers",
+              "longType": "ProjectDashboardQuery.Viewers",
+              "fullType": "spaceone.api.dashboard.v1.ProjectDashboardQuery.Viewers",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "user_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -384,9 +610,9 @@
           ]
         },
         {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+          "name": "ProjectDashboardRequest",
+          "longName": "ProjectDashboardRequest",
+          "fullName": "spaceone.api.dashboard.v1.ProjectDashboardRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -394,7 +620,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "project_dashboard_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -420,9 +646,9 @@
           ]
         },
         {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+          "name": "ProjectDashboardStatQuery",
+          "longName": "ProjectDashboardStatQuery",
+          "fullName": "spaceone.api.dashboard.v1.ProjectDashboardStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -456,9 +682,9 @@
           ]
         },
         {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
+          "name": "ProjectDashboardVersionInfo",
+          "longName": "ProjectDashboardVersionInfo",
+          "fullName": "spaceone.api.dashboard.v1.ProjectDashboardVersionInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -466,7 +692,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "cron",
+              "name": "project_dashboard_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -478,7 +704,7 @@
               "defaultValue": ""
             },
             {
-              "name": "interval",
+              "name": "version",
               "description": "",
               "label": "",
               "type": "int32",
@@ -490,9 +716,129 @@
               "defaultValue": ""
             },
             {
-              "name": "minutes",
+              "name": "latest",
               "description": "",
-              "label": "repeated",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "layouts",
+              "description": "",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "variables",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "settings",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "variables_schema",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectDashboardVersionQuery",
+          "longName": "ProjectDashboardVersionQuery",
+          "fullName": "spaceone.api.dashboard.v1.ProjectDashboardVersionQuery",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "query",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Query",
+              "longType": "spaceone.api.core.v1.Query",
+              "fullType": "spaceone.api.core.v1.Query",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_dashboard_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "version",
+              "description": "is_required: false",
+              "label": "",
               "type": "int32",
               "longType": "int32",
               "fullType": "int32",
@@ -502,12 +848,12 @@
               "defaultValue": ""
             },
             {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -516,9 +862,57 @@
           ]
         },
         {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+          "name": "ProjectDashboardVersionRequest",
+          "longName": "ProjectDashboardVersionRequest",
+          "fullName": "spaceone.api.dashboard.v1.ProjectDashboardVersionRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project_dashboard_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "version",
+              "description": "is_required: true",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectDashboardVersionsInfo",
+          "longName": "ProjectDashboardVersionsInfo",
+          "fullName": "spaceone.api.dashboard.v1.ProjectDashboardVersionsInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -529,9 +923,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "type": "ProjectDashboardVersionInfo",
+              "longType": "ProjectDashboardVersionInfo",
+              "fullType": "spaceone.api.dashboard.v1.ProjectDashboardVersionInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -552,9 +946,9 @@
           ]
         },
         {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+          "name": "ProjectDashboardsInfo",
+          "longName": "ProjectDashboardsInfo",
+          "fullName": "spaceone.api.dashboard.v1.ProjectDashboardsInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -562,7 +956,43 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "results",
+              "description": "",
+              "label": "repeated",
+              "type": "ProjectDashboardInfo",
+              "longType": "ProjectDashboardInfo",
+              "fullType": "spaceone.api.dashboard.v1.ProjectDashboardInfo",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "total_count",
+              "description": "",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UpdateProjectDashboardRequest",
+          "longName": "UpdateProjectDashboardRequest",
+          "fullName": "spaceone.api.dashboard.v1.UpdateProjectDashboardRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project_dashboard_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -586,24 +1016,60 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "layouts",
               "description": "is_required: false",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "variables",
               "description": "is_required: false",
               "label": "",
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "settings",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "variables_schema",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "is_required: false",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -638,28 +1104,28 @@
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "ProjectDashboard",
+          "longName": "ProjectDashboard",
+          "fullName": "spaceone.api.dashboard.v1.ProjectDashboard",
           "description": "",
           "methods": [
             {
               "name": "create",
               "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+              "requestType": "CreateProjectDashboardRequest",
+              "requestLongType": "CreateProjectDashboardRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.CreateProjectDashboardRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "ProjectDashboardInfo",
+              "responseLongType": "ProjectDashboardInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.ProjectDashboardInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
+                      "pattern": "/dashboard/v1/project-dashboard/create",
                       "body": "*"
                     }
                   ]
@@ -669,66 +1135,20 @@
             {
               "name": "update",
               "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+              "requestType": "UpdateProjectDashboardRequest",
+              "requestLongType": "UpdateProjectDashboardRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.UpdateProjectDashboardRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "ProjectDashboardInfo",
+              "responseLongType": "ProjectDashboardInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.ProjectDashboardInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "enable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "disable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
+                      "pattern": "/dashboard/v1/project-dashboard/update",
                       "body": "*"
                     }
                   ]
@@ -738,9 +1158,9 @@
             {
               "name": "delete",
               "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "requestType": "ProjectDashboardRequest",
+              "requestLongType": "ProjectDashboardRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.ProjectDashboardRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -751,7 +1171,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/dashboard/v1/project-dashboard/delete",
                       "body": "*"
                     }
                   ]
@@ -761,20 +1181,112 @@
             {
               "name": "get",
               "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "requestType": "GetProjectDashboardRequest",
+              "requestLongType": "GetProjectDashboardRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.GetProjectDashboardRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "ProjectDashboardInfo",
+              "responseLongType": "ProjectDashboardInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.ProjectDashboardInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/dashboard/v1/project-dashboard/get",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "delete_version",
+              "description": "",
+              "requestType": "ProjectDashboardVersionRequest",
+              "requestLongType": "ProjectDashboardVersionRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.ProjectDashboardVersionRequest",
+              "requestStreaming": false,
+              "responseType": "Empty",
+              "responseLongType": ".google.protobuf.Empty",
+              "responseFullType": "google.protobuf.Empty",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/dashboard/v1/project-dashboard/delete-version",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "revert_version",
+              "description": "",
+              "requestType": "ProjectDashboardVersionRequest",
+              "requestLongType": "ProjectDashboardVersionRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.ProjectDashboardVersionRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectDashboardInfo",
+              "responseLongType": "ProjectDashboardInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.ProjectDashboardInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/dashboard/v1/project-dashboard/revert-version",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "get_version",
+              "description": "",
+              "requestType": "GetProjectDashboardVersionRequest",
+              "requestLongType": "GetProjectDashboardVersionRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.GetProjectDashboardVersionRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectDashboardVersionInfo",
+              "responseLongType": "ProjectDashboardVersionInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.ProjectDashboardVersionInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/dashboard/v1/project-dashboard/get-version",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "list_versions",
+              "description": "",
+              "requestType": "ProjectDashboardVersionQuery",
+              "requestLongType": "ProjectDashboardVersionQuery",
+              "requestFullType": "spaceone.api.dashboard.v1.ProjectDashboardVersionQuery",
+              "requestStreaming": false,
+              "responseType": "ProjectDashboardVersionsInfo",
+              "responseLongType": "ProjectDashboardVersionsInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.ProjectDashboardVersionsInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/dashboard/v1/project-dashboard/list-versions",
                       "body": "*"
                     }
                   ]
@@ -784,20 +1296,20 @@
             {
               "name": "list",
               "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "requestType": "ProjectDashboardQuery",
+              "requestLongType": "ProjectDashboardQuery",
+              "requestFullType": "spaceone.api.dashboard.v1.ProjectDashboardQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "ProjectDashboardsInfo",
+              "responseLongType": "ProjectDashboardsInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.ProjectDashboardsInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/dashboard/v1/project-dashboard/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +1319,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "ProjectDashboardStatQuery",
+              "requestLongType": "ProjectDashboardStatQuery",
+              "requestFullType": "spaceone.api.dashboard.v1.ProjectDashboardStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +1332,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/dashboard/v1/project-dashboard/stat",
                       "body": "*"
                     }
                   ]

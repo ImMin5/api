@@ -1,44 +1,20 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/monitoring/v1/event.proto",
+      "description": "desc: An Event is an alarm raised by an external monitoring system and collected by a Cloudforet plugin.",
+      "package": "spaceone.api.monitoring.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
-      "enums": [
-        {
-          "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
-          "description": "",
-          "values": [
-            {
-              "name": "NONE",
-              "number": "0",
-              "description": ""
-            },
-            {
-              "name": "ENABLED",
-              "number": "1",
-              "description": ""
-            },
-            {
-              "name": "DISABLED",
-              "number": "2",
-              "description": ""
-            }
-          ]
-        }
-      ],
+      "enums": [],
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "CreateEventRequest",
+          "longName": "CreateEventRequest",
+          "fullName": "spaceone.api.monitoring.v1.CreateEventRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -46,8 +22,8 @@
           "extensions": [],
           "fields": [
             {
-              "name": "name",
-              "description": "is_required: false",
+              "name": "webhook_id",
+              "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -58,60 +34,24 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "access_key",
               "description": "is_required: true",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
-              "description": "is_required: false",
+              "name": "data",
+              "description": "is_required: true",
               "label": "",
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tags",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -120,9 +60,9 @@
           ]
         },
         {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+          "name": "EventInfo",
+          "longName": "EventInfo",
+          "fullName": "spaceone.api.monitoring.v1.EventInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -130,55 +70,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "only",
-              "description": "is_required: false",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "schedule_id",
+              "name": "event_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -190,7 +82,7 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
+              "name": "event_key",
               "description": "",
               "label": "",
               "type": "string",
@@ -202,31 +94,115 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "event_type",
               "description": "",
               "label": "",
-              "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "title",
               "description": "",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "description",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "severity",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "rule",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "resource",
+              "description": "",
+              "label": "",
+              "type": "EventResource",
+              "longType": "EventResource",
+              "fullType": "spaceone.api.monitoring.v1.EventResource",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "provider",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "account",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "image_url",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "raw_data",
               "description": "",
               "label": "",
               "type": "Struct",
@@ -238,7 +214,7 @@
               "defaultValue": ""
             },
             {
-              "name": "tags",
+              "name": "additional_info",
               "description": "",
               "label": "",
               "type": "Struct",
@@ -250,7 +226,31 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "alert_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "webhook_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -286,7 +286,7 @@
               "defaultValue": ""
             },
             {
-              "name": "last_scheduled_at",
+              "name": "occurred_at",
               "description": "",
               "label": "",
               "type": "string",
@@ -300,9 +300,9 @@
           ]
         },
         {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+          "name": "EventQuery",
+          "longName": "EventQuery",
+          "fullName": "spaceone.api.monitoring.v1.EventQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -322,8 +322,164 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule_id",
+              "name": "event_id",
               "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "event_key",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "event_type",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "severity",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "resource_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "provider",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "account",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "alert_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "webhook_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "EventResource",
+          "longName": "EventResource",
+          "fullName": "spaceone.api.monitoring.v1.EventResource",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "resource_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "resource_type",
+              "description": "",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -335,43 +491,7 @@
             },
             {
               "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "state",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
+              "description": "",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -384,45 +504,9 @@
           ]
         },
         {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "schedule_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+          "name": "EventStatQuery",
+          "longName": "EventStatQuery",
+          "fullName": "spaceone.api.monitoring.v1.EventStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -456,69 +540,9 @@
           ]
         },
         {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cron",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "interval",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "minutes",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+          "name": "EventsInfo",
+          "longName": "EventsInfo",
+          "fullName": "spaceone.api.monitoring.v1.EventsInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -529,9 +553,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "type": "EventInfo",
+              "longType": "EventInfo",
+              "fullType": "spaceone.api.monitoring.v1.EventInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -552,9 +576,9 @@
           ]
         },
         {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+          "name": "GetEventRequest",
+          "longName": "GetEventRequest",
+          "fullName": "spaceone.api.monitoring.v1.GetEventRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -562,60 +586,12 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "event_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",
               "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "options",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tags",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -632,115 +608,35 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "only",
+              "description": "is_required: false",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         }
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "Event",
+          "longName": "Event",
+          "fullName": "spaceone.api.monitoring.v1.Event",
           "description": "",
           "methods": [
             {
               "name": "create",
-              "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "update",
-              "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "enable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "disable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "delete",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "description": "desc: Creates a new Event. The Event creation process starts with validation checking whether the input data is from a webhook or not. After the input data is validated, the data is processed and used to create the Event.",
+              "requestType": "CreateEventRequest",
+              "requestLongType": "CreateEventRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.CreateEventRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -751,7 +647,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/monitoring/v1/event/create",
                       "body": "*"
                     }
                   ]
@@ -760,21 +656,21 @@
             },
             {
               "name": "get",
-              "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "description": "desc: Gets a specific Event matching the input parameters, `event_id` and `domain_id`. Prints detailed information about the Event.\nrequest_example: \u003e-\n{\n\"event_id\": \"event-4e16ba3bd384\",\n\"domain_id\": \"domain-58010aa2e451\"\n}\nresponse_example: \u003e-\n{\n\"event_id\": \"event-4e16ba3bd384\",\n\"event_key\": \"cfbdd0cee08f0f2664dbef297c370017\",\n\"event_type\": \"ALERT\",\n\"title\": \"Notification of access to the SpaceONE bastion Host\",\n\"description\": \"SSH Access to stargate-dev-kubectl-amzl2 from spaceoneadm\",\n\"severity\": \"INFO\",\n\"resource\": {\n\"resource_id\": \"server-1187737cc0d9\",\n\"resource_type\": \"inventory.Server\",\n\"name\": \"stargate-dev-kubectl-amzl2\"\n},\n\"raw_data\": {\n\"resource\": {\n\"name\": \"stargate-dev-kubectl-amzl2\",\n\"resource_id\": \"server-1187737cc0d9\",\n\"resource_type\": \"inventory.Server\"\n},\n\"event_key\": \"cfbdd0cee08f0f2664dbef297c370017\",\n\"title\": \"Notification of access to the SpaceONE bastion Host\",\n\"severity\": \"INFO\",\n\"description\": \"SSH Access to stargate-dev-kubectl-amzl2 from spaceoneadm\",\n\"event_type\": \"ALERT\",\n\"additional_info\": {\n\"host\": [],\n\"user\": \"spaceoneadm\"\n}\n},\n\"additional_info\": {\n\"host\": \"[]\",\n\"user\": \"spaceoneadm\"\n},\n\"alert_id\": \"alert-06462f6cb54e\",\n\"webhook_id\": \"webhook-ff9e2eda678a\",\n\"project_id\": \"project-18655561c535\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-06-21T00:34:58.034Z\"\n}",
+              "requestType": "GetEventRequest",
+              "requestLongType": "GetEventRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.GetEventRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "EventInfo",
+              "responseLongType": "EventInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.EventInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/monitoring/v1/event/get",
                       "body": "*"
                     }
                   ]
@@ -783,21 +679,21 @@
             },
             {
               "name": "list",
-              "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "description": "desc: Gets a list of all Events. You must specify the `domain_id`. You can use a query to get a filtered list of Events.\nrequest_example: \u003e-\n{\n\"query\": {},\n\"domain_id\": \"domain-58010aa2e451\"\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"event_id\": \"event-4e16ba3bd384\",\n\"event_key\": \"cfbdd0cee08f0f2664dbef297c370017\",\n\"event_type\": \"ALERT\",\n\"title\": \"Notification of access to the SpaceONE bastion Host\",\n\"description\": \"SSH Access to stargate-dev-kubectl-amzl2 from spaceoneadm\",\n\"severity\": \"INFO\",\n\"resource\": {\n\"resource_id\": \"server-1187737cc0d9\",\n\"resource_type\": \"inventory.Server\",\n\"name\": \"stargate-dev-kubectl-amzl2\"\n},\n\"raw_data\": {\n\"resource\": {\n\"name\": \"stargate-dev-kubectl-amzl2\",\n\"resource_type\": \"inventory.Server\",\n\"resource_id\": \"server-1187737cc0d9\"\n},\n\"event_key\": \"cfbdd0cee08f0f2664dbef297c370017\",\n\"additional_info\": {\n\"user\": \"spaceoneadm\",\n\"host\": []\n},\n\"severity\": \"INFO\",\n\"description\": \"SSH Access to stargate-dev-kubectl-amzl2 from spaceoneadm\",\n\"title\": \"Notification of access to the SpaceONE bastion Host\",\n\"event_type\": \"ALERT\"\n},\n\"additional_info\": {\n\"user\": \"spaceoneadm\",\n\"host\": \"[]\"\n},\n\"alert_id\": \"alert-06462f6cb54e\",\n\"webhook_id\": \"webhook-ff9e2eda678a\",\n\"project_id\": \"project-18655561c535\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-06-21T00:34:58.034Z\"\n},\n{\n\"event_id\": \"event-b178e1b71daf\",\n\"event_key\": \"abc16e5455c26ab7611bf8aa8d1020cc\",\n\"event_type\": \"ALERT\",\n\"title\": \"Notification of access to the SpaceONE bastion Host\",\n\"description\": \"SSH Access to stargate-dev-kubectl-amzl2 from glee@mz.co.kr\",\n\"severity\": \"INFO\",\n\"resource\": {\n\"resource_id\": \"server-1187737cc0d9\",\n\"resource_type\": \"inventory.Server\",\n\"name\": \"stargate-dev-kubectl-amzl2\"\n},\n\"raw_data\": {\n\"additional_info\": {\n\"host\": [\n\"125.131.104.40\"\n],\n\"user\": \"glee@mz.co.kr\"\n},\n\"description\": \"SSH Access to stargate-dev-kubectl-amzl2 from glee@mz.co.kr\",\n\"severity\": \"INFO\",\n\"event_type\": \"ALERT\",\n\"title\": \"Notification of access to the SpaceONE bastion Host\",\n\"resource\": {\n\"resource_type\": \"inventory.Server\",\n\"name\": \"stargate-dev-kubectl-amzl2\",\n\"resource_id\": \"server-1187737cc0d9\"\n},\n\"event_key\": \"abc16e5455c26ab7611bf8aa8d1020cc\"\n},\n\"additional_info\": {\n\"user\": \"glee@mz.co.kr\",\n\"host\": \"['125.131.104.40']\"\n},\n\"alert_id\": \"alert-332617cf2894\",\n\"webhook_id\": \"webhook-ff9e2eda678a\",\n\"project_id\": \"project-18655561c535\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-06-21T00:34:52.822Z\"\n}\n],\n\"total_count\": 2\n}",
+              "requestType": "EventQuery",
+              "requestLongType": "EventQuery",
+              "requestFullType": "spaceone.api.monitoring.v1.EventQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "EventsInfo",
+              "responseLongType": "EventsInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.EventsInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/monitoring/v1/event/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +703,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "EventStatQuery",
+              "requestLongType": "EventStatQuery",
+              "requestFullType": "spaceone.api.monitoring.v1.EventStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +716,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/monitoring/v1/event/stat",
                       "body": "*"
                     }
                   ]

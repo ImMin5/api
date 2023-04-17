@@ -1,44 +1,20 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/inventory/v1/region.proto",
+      "description": "desc: A Region is a resource storing regional information from each cloud service provider. Regional data stored by the resource includes the latitude and longitude of the region.",
+      "package": "spaceone.api.inventory.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
-      "enums": [
-        {
-          "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
-          "description": "",
-          "values": [
-            {
-              "name": "NONE",
-              "number": "0",
-              "description": ""
-            },
-            {
-              "name": "ENABLED",
-              "number": "1",
-              "description": ""
-            },
-            {
-              "name": "DISABLED",
-              "number": "2",
-              "description": ""
-            }
-          ]
-        }
-      ],
+      "enums": [],
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "CreateRegionRequest",
+          "longName": "CreateRegionRequest",
+          "fullName": "spaceone.api.inventory.v1.CreateRegionRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -47,7 +23,7 @@
           "fields": [
             {
               "name": "name",
-              "description": "is_required: false",
+              "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -58,24 +34,24 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "region_code",
               "description": "is_required: true",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "provider",
               "description": "is_required: false",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -88,18 +64,6 @@
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -120,9 +84,9 @@
           ]
         },
         {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+          "name": "GetRegionRequest",
+          "longName": "GetRegionRequest",
+          "fullName": "spaceone.api.inventory.v1.GetRegionRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -130,7 +94,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "region_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -168,9 +132,9 @@
           ]
         },
         {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+          "name": "RegionInfo",
+          "longName": "RegionInfo",
+          "fullName": "spaceone.api.inventory.v1.RegionInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,7 +142,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "region_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -202,36 +166,36 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "region_key",
               "description": "",
               "label": "",
-              "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "region_code",
               "description": "",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "provider",
               "description": "",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -244,18 +208,6 @@
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -286,7 +238,7 @@
               "defaultValue": ""
             },
             {
-              "name": "last_scheduled_at",
+              "name": "updated_at",
               "description": "",
               "label": "",
               "type": "string",
@@ -300,9 +252,9 @@
           ]
         },
         {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+          "name": "RegionQuery",
+          "longName": "RegionQuery",
+          "fullName": "spaceone.api.inventory.v1.RegionQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -322,7 +274,7 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule_id",
+              "name": "region_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -346,7 +298,7 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "region_key",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -358,7 +310,19 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "region_code",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "provider",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -384,9 +348,9 @@
           ]
         },
         {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+          "name": "RegionRequest",
+          "longName": "RegionRequest",
+          "fullName": "spaceone.api.inventory.v1.RegionRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -394,7 +358,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "region_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -420,9 +384,9 @@
           ]
         },
         {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+          "name": "RegionStatQuery",
+          "longName": "RegionStatQuery",
+          "fullName": "spaceone.api.inventory.v1.RegionStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -456,69 +420,9 @@
           ]
         },
         {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cron",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "interval",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "minutes",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+          "name": "RegionsInfo",
+          "longName": "RegionsInfo",
+          "fullName": "spaceone.api.inventory.v1.RegionsInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -529,9 +433,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "type": "RegionInfo",
+              "longType": "RegionInfo",
+              "fullType": "spaceone.api.inventory.v1.RegionInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -552,9 +456,9 @@
           ]
         },
         {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+          "name": "UpdateRegionRequest",
+          "longName": "UpdateRegionRequest",
+          "fullName": "spaceone.api.inventory.v1.UpdateRegionRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -562,7 +466,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "region_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -580,30 +484,6 @@
               "type": "string",
               "longType": "string",
               "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "options",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -638,28 +518,28 @@
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "Region",
+          "longName": "Region",
+          "fullName": "spaceone.api.inventory.v1.Region",
           "description": "",
           "methods": [
             {
               "name": "create",
-              "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+              "description": "desc: Creates a new Region. As the parameter `region_key`, which is automatically created when a Region is created, is in a form of `{provider}.{region_code}`, it is unique regardless of providers. You can also specify the latitude, longitude, and continent information in `tags`.\nrequest_example: \u003e-\n{\n\"name\": \"Asia Pacific (Seoul)\",\n\"region_code\": \"ap-northeast-2\",\n\"provider\": \"aws\",\n\"tags\": {\n\"continent\": \"asis_pacific\",\n\"longitude\": \"73.013805\",\n\"latitude\": \"19.147428\"\n}\n}\nresponse_example: \u003e-\n{\n\"region_id\": \"region-e41deed3c939\",\n\"name\": \"Asia Pacific (Seoul)\",\n\"region_key\": \"aws.ap-northeast-2\",\n\"region_code\": \"ap-northeast-2\",\n\"provider\": \"aws\",\n\"tags\": {\n\"continent\": \"asia_pacific\",\n\"longitude\": \"73.013805\",\n\"latitude\": \"19.147428\"\n},\n\"domain_id\": \"domain-x1b3c34v432\",\n\"created_at\": \"2021-11-18T13:07:31.382Z\",\n\"updated_at\": \"2022-06-17T00:07:35.469Z\"\n}",
+              "requestType": "CreateRegionRequest",
+              "requestLongType": "CreateRegionRequest",
+              "requestFullType": "spaceone.api.inventory.v1.CreateRegionRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "RegionInfo",
+              "responseLongType": "RegionInfo",
+              "responseFullType": "spaceone.api.inventory.v1.RegionInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
+                      "pattern": "/inventory/v1/region/create",
                       "body": "*"
                     }
                   ]
@@ -668,67 +548,21 @@
             },
             {
               "name": "update",
-              "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+              "description": "desc: Updates a specific Region. You can make changes in Region settings, including `name` and `tags`. The `tags` contain the continent, latitude, and longitude.\nrequest_example: \u003e-\n{\n\"region_id\": \"region-e41deed3c939\",\n\"name\": \"Region home\",\n\"tags\": {\n\"latitude\": \"6.34545\",\n\"continent\": \"asia_pacific\",\n\"longitude\": \"5.6433213\"\n}\n}\nresponse_example: \u003e-\n{\n\"region_id\": \"region-e41deed3c939\",\n\"name\": \"Region home\",\n\"region_key\": \"aws.ap-northeast-2\",\n\"region_code\": \"ap-northeast-2\",\n\"provider\": \"aws\",\n\"tags\": {\n\"latitude\": \"6.34545\",\n\"continent\": \"asia_pacific\",\n\"longitude\": \"5.6433213\"\n},\n\"domain_id\": \"domain-x1b3c34v432\",\n\"created_at\": \"2021-11-18T13:07:31.382Z\",\n\"updated_at\": \"2022-06-17T00:07:35.469Z\"\n}",
+              "requestType": "UpdateRegionRequest",
+              "requestLongType": "UpdateRegionRequest",
+              "requestFullType": "spaceone.api.inventory.v1.UpdateRegionRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "RegionInfo",
+              "responseLongType": "RegionInfo",
+              "responseFullType": "spaceone.api.inventory.v1.RegionInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "enable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "disable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
+                      "pattern": "/inventory/v1/region/update",
                       "body": "*"
                     }
                   ]
@@ -737,10 +571,10 @@
             },
             {
               "name": "delete",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "description": "desc: Deletes a specific Region. You must specify the `region_id` of the Region to delete.\nrequest_example: \u003e-\n{\n\"region_id\": \"region-e41deed3c939\"\n}",
+              "requestType": "RegionRequest",
+              "requestLongType": "RegionRequest",
+              "requestFullType": "spaceone.api.inventory.v1.RegionRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -751,7 +585,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/inventory/v1/region/delete",
                       "body": "*"
                     }
                   ]
@@ -760,21 +594,21 @@
             },
             {
               "name": "get",
-              "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "description": "desc: Gets a specific Region. Prints detailed information about the Region, including `name`, `region_code`, and a location coordinate.\nrequest_example: \u003e-\n{\n\"region_id\": \"region-f803eb00b567\"\n}\nresponse_example: \u003e-\n{\n\"region_id\": \"region-f803eb00b567\",\n\"name\": \"Asia Pacific (Seoul)\",\n\"region_key\": \"aws.ap-northeast-2\",\n\"region_code\": \"ap-northeast-2\",\n\"provider\": \"aws\",\n\"tags\": {\n\"latitude\": \"6.34545\",\n\"continent\": \"asia_pacific\",\n\"longitude\": \"5.6433213\"\n},\n\"domain_id\": \"domain-x1b3c34v432\",\n\"created_at\": \"2022-03-21T09:08:31.961Z\",\n\"updated_at\": \"2022-06-17T00:07:35.749Z\"\n}",
+              "requestType": "GetRegionRequest",
+              "requestLongType": "GetRegionRequest",
+              "requestFullType": "spaceone.api.inventory.v1.GetRegionRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "RegionInfo",
+              "responseLongType": "RegionInfo",
+              "responseFullType": "spaceone.api.inventory.v1.RegionInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/inventory/v1/region/get",
                       "body": "*"
                     }
                   ]
@@ -783,21 +617,21 @@
             },
             {
               "name": "list",
-              "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "description": "desc: Gets a list of all Regions. You can use a query to get a filtered list of Regions.\nrequest_example: \u003e-\n{\n\"query\": {\n\"filter\": [\n{\n\"key\": \"name\",\n\"value\": \"Asia Pacific\",\n\"operator\": \"contain\"\n}\n]\n}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"region_id\": \"region-e41deed3c939\",\n\"name\": \"Asia Pacific (Mumbai)\",\n\"region_key\": \"aws.ap-south-1\",\n\"region_code\": \"ap-south-1\",\n\"provider\": \"aws\",\n\"tags\": {\n\"continent\": \"asia_pacific\",\n\"longitude\": \"73.013805\",\n\"latitude\": \"19.147428\"\n},\n\"domain_id\": \"domain-x1b3c34v432\",\n\"created_at\": \"2021-11-18T13:07:31.382Z\",\n\"updated_at\": \"2022-06-17T00:07:35.469Z\"\n},\n{\n\"region_id\": \"region-f803eb00b567\",\n\"name\": \"Asia Pacific (Seoul)\",\n\"region_key\": \"aws.ap-northeast-2\",\n\"region_code\": \"ap-northeast-2\",\n\"provider\": \"aws\",\n\"tags\": {\n\"latitude\": \"6.34545\",\n\"continent\": \"asia_pacific\",\n\"longitude\": \"5.6433213\"\n},\n\"domain_id\": \"domain-x1b3c34v432\",\n\"created_at\": \"2022-03-21T09:08:31.961Z\",\n\"updated_at\": \"2022-06-17T00:07:35.749Z\"\n}\n],\n\"total_count\": 2\n}",
+              "requestType": "RegionQuery",
+              "requestLongType": "RegionQuery",
+              "requestFullType": "spaceone.api.inventory.v1.RegionQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "RegionsInfo",
+              "responseLongType": "RegionsInfo",
+              "responseFullType": "spaceone.api.inventory.v1.RegionsInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/inventory/v1/region/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +641,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "RegionStatQuery",
+              "requestLongType": "RegionStatQuery",
+              "requestFullType": "spaceone.api.inventory.v1.RegionStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +654,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/inventory/v1/region/stat",
                       "body": "*"
                     }
                   ]

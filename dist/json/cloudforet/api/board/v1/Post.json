@@ -1,32 +1,101 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/board/v1/post.proto",
+      "description": "desc: A Post is a message published on a Board. It also provides notifications to Projects affected by the Post.",
+      "package": "spaceone.api.board.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
       "enums": [
         {
-          "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+          "name": "PostType",
+          "longName": "PostInfo.PostType",
+          "fullName": "spaceone.api.board.v1.PostInfo.PostType",
           "description": "",
           "values": [
             {
-              "name": "NONE",
+              "name": "POST_TYPE_NONE",
               "number": "0",
               "description": ""
             },
             {
-              "name": "ENABLED",
+              "name": "SYSTEM",
               "number": "1",
               "description": ""
             },
             {
-              "name": "DISABLED",
+              "name": "INTERNAL",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "Scope",
+          "longName": "PostInfo.Scope",
+          "fullName": "spaceone.api.board.v1.PostInfo.Scope",
+          "description": "",
+          "values": [
+            {
+              "name": "SCOPE_NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "PUBLIC",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "DOMAIN",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "PostType",
+          "longName": "PostQuery.PostType",
+          "fullName": "spaceone.api.board.v1.PostQuery.PostType",
+          "description": "",
+          "values": [
+            {
+              "name": "POST_TYPE_NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "SYSTEM",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "INTERNAL",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "Scope",
+          "longName": "PostQuery.Scope",
+          "fullName": "spaceone.api.board.v1.PostQuery.Scope",
+          "description": "",
+          "values": [
+            {
+              "name": "SCOPE_NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "PUBLIC",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "DOMAIN",
               "number": "2",
               "description": ""
             }
@@ -36,9 +105,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "CreatePostRequest",
+          "longName": "CreatePostRequest",
+          "fullName": "spaceone.api.board.v1.CreatePostRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -46,7 +115,19 @@
           "extensions": [],
           "fields": [
             {
-              "name": "name",
+              "name": "board_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "category",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -58,12 +139,24 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "title",
               "description": "is_required: true",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "contents",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -82,20 +175,8 @@
               "defaultValue": ""
             },
             {
-              "name": "tags",
+              "name": "writer",
               "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -106,8 +187,20 @@
               "defaultValue": ""
             },
             {
+              "name": "files",
+              "description": "is_required: false",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "domain_id",
-              "description": "is_required: true",
+              "description": "is_required: false",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -120,9 +213,9 @@
           ]
         },
         {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+          "name": "GetPostRequest",
+          "longName": "GetPostRequest",
+          "fullName": "spaceone.api.board.v1.GetPostRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -130,7 +223,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "board_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -142,7 +235,7 @@
               "defaultValue": ""
             },
             {
-              "name": "domain_id",
+              "name": "post_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -164,13 +257,25 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
         {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+          "name": "PostInfo",
+          "longName": "PostInfo",
+          "fullName": "spaceone.api.board.v1.PostInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,7 +283,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "board_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -190,7 +295,7 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
+              "name": "post_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -202,24 +307,48 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "post_type",
               "description": "",
               "label": "",
-              "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+              "type": "PostType",
+              "longType": "PostInfo.PostType",
+              "fullType": "spaceone.api.board.v1.PostInfo.PostType",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "category",
               "description": "",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "title",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "contents",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -238,19 +367,19 @@
               "defaultValue": ""
             },
             {
-              "name": "tags",
+              "name": "view_count",
               "description": "",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "writer",
               "description": "",
               "label": "",
               "type": "string",
@@ -262,7 +391,55 @@
               "defaultValue": ""
             },
             {
+              "name": "scope",
+              "description": "",
+              "label": "",
+              "type": "Scope",
+              "longType": "PostInfo.Scope",
+              "fullType": "spaceone.api.board.v1.PostInfo.Scope",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "files",
+              "description": "",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "domain_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "user_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "user_domain_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -286,7 +463,7 @@
               "defaultValue": ""
             },
             {
-              "name": "last_scheduled_at",
+              "name": "updated_at",
               "description": "",
               "label": "",
               "type": "string",
@@ -300,15 +477,123 @@
           ]
         },
         {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+          "name": "PostQuery",
+          "longName": "PostQuery",
+          "fullName": "spaceone.api.board.v1.PostQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
           "extensions": [],
           "fields": [
+            {
+              "name": "board_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "post_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "post_type",
+              "description": "is_required: false",
+              "label": "",
+              "type": "PostType",
+              "longType": "PostQuery.PostType",
+              "fullType": "spaceone.api.board.v1.PostQuery.PostType",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "category",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "writer",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "scope",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Scope",
+              "longType": "PostQuery.Scope",
+              "fullType": "spaceone.api.board.v1.PostQuery.Scope",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "user_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "user_domain_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
             {
               "name": "query",
               "description": "is_required: false",
@@ -320,73 +605,13 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
-            {
-              "name": "schedule_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "state",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
             }
           ]
         },
         {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+          "name": "PostRequest",
+          "longName": "PostRequest",
+          "fullName": "spaceone.api.board.v1.PostRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -394,7 +619,19 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "board_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "post_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -407,7 +644,7 @@
             },
             {
               "name": "domain_id",
-              "description": "is_required: true",
+              "description": "is_required: false",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -420,9 +657,9 @@
           ]
         },
         {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+          "name": "PostStatQuery",
+          "longName": "PostStatQuery",
+          "fullName": "spaceone.api.board.v1.PostStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -456,69 +693,9 @@
           ]
         },
         {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cron",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "interval",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "minutes",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+          "name": "PostsInfo",
+          "longName": "PostsInfo",
+          "fullName": "spaceone.api.board.v1.PostsInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -529,9 +706,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "type": "PostInfo",
+              "longType": "PostInfo",
+              "fullType": "spaceone.api.board.v1.PostInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -552,9 +729,9 @@
           ]
         },
         {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+          "name": "SendNotificationRequest",
+          "longName": "SendNotificationRequest",
+          "fullName": "spaceone.api.board.v1.SendNotificationRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -562,7 +739,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "board_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -574,7 +751,67 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
+              "name": "post_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UpdatePostRequest",
+          "longName": "UpdatePostRequest",
+          "fullName": "spaceone.api.board.v1.UpdatePostRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "board_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "post_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "category",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -586,12 +823,24 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "title",
               "description": "is_required: false",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "contents",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -610,12 +859,24 @@
               "defaultValue": ""
             },
             {
-              "name": "tags",
-              "description": "is_required: false",
+              "name": "writer",
+              "description": "is_required: true",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "files",
+              "description": "is_required: false",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -638,28 +899,28 @@
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "Post",
+          "longName": "Post",
+          "fullName": "spaceone.api.board.v1.Post",
           "description": "",
           "methods": [
             {
               "name": "create",
-              "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+              "description": "desc: Creates a new Post under a specific Board. You must specify the `board_id`, `title`, and `contents`. The parameter `category` is not required but can be set in the scope of `categories` specified in the parent Board. You can make the new Post pinned or pop up by adjusting the parameters.\nrequest_example: \u003e-\n{\n\"board_id\": \"board-123456789012\",\n\"category\": \"developer\",\n\"title\": \"title\",\n\"contents\": \"This is contents.\",\n\"options\": {\"is_popup\": true},\n\"writer\": \"user1\",\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"board_id\": \"board-123456789012\",\n\"post_id\": \"post-123456789012\",\n\"post_type\": \"INTERNAL\",\n\"category\": \"developer\",\n\"title\": \"title\",\n\"contents\": \"This is contents.\",\n\"options\": {\n\"is_pinned\": false,\n\"is_popup\": true\n},\n\"view_count\": 0,\n\"writer\": \"user1\",\n\"scope\": \"DOMAIN\",\n\"domain_id\": \"domain-123456789012\",\n\"user_id\": \"user1@email.com\",\n\"created_at\": \"2022-01-01T01:06:23.732Z\",\n\"updated_at\": \"2022-01-01T01:06:23.732Z\"\n}",
+              "requestType": "CreatePostRequest",
+              "requestLongType": "CreatePostRequest",
+              "requestFullType": "spaceone.api.board.v1.CreatePostRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "PostInfo",
+              "responseLongType": "PostInfo",
+              "responseFullType": "spaceone.api.board.v1.PostInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
+                      "pattern": "/board/v1/board/create",
                       "body": "*"
                     }
                   ]
@@ -668,21 +929,21 @@
             },
             {
               "name": "update",
-              "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+              "description": "desc: Updates a specific Post. You can make changes in Post settings, except `board_id`, `post_id`, and `domain_id`.\nrequest_example: \u003e-\n{\n\"board_id\": \"board-123456789012\",\n\"post_id\": \"post-2118473ce15e\",\n\"category\": \"developer\",\n\"title\": \"title2\",\n\"contents\": \"this is contents2.\",\n\"options\": {\n\"is_popup\": false,\n\"is_pinned\": true\n},\n\"writer\": \"user1\",\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"board_id\": \"board-123456789012\",\n\"post_id\": \"post-123456789012\",\n\"post_type\": \"INTERNAL\",\n\"category\": \"developer\",\n\"title\": \"title2\",\n\"contents\": \"this is contents2.\",\n\"options\": {\n\"is_popup\": false,\n\"is_pinned\": true\n},\n\"view_count\": 1,\n\"writer\": \"user1\",\n\"scope\": \"DOMAIN\",\n\"domain_id\": \"domain-123456789012\",\n\"user_id\": \"user1@email.com\",\n\"created_at\": \"2022-06-13T01:06:23.732Z\",\n\"updated_at\": \"2022-06-13T01:06:23.732Z\"\n}",
+              "requestType": "UpdatePostRequest",
+              "requestLongType": "UpdatePostRequest",
+              "requestFullType": "spaceone.api.board.v1.UpdatePostRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "PostInfo",
+              "responseLongType": "PostInfo",
+              "responseFullType": "spaceone.api.board.v1.PostInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
+                      "pattern": "/board/v1/board/update",
                       "body": "*"
                     }
                   ]
@@ -690,57 +951,11 @@
               }
             },
             {
-              "name": "enable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "disable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "delete",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "name": "send_notification",
+              "description": "desc: Not Implemented",
+              "requestType": "SendNotificationRequest",
+              "requestLongType": "SendNotificationRequest",
+              "requestFullType": "spaceone.api.board.v1.SendNotificationRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -751,7 +966,30 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/board/v1/board/send-notification",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "delete",
+              "description": "desc: Deletes a specific Post. You must specify the `post_id` of the Post to delete, and the `board_id` of the Board where the child Post to delete belongs.\nrequest_example: \u003e-\n{\n\"board_id\": \"board-b9aa34e65c60\",\n\"post_id\": \"post-2118473ce15e\",\n\"domain_id\": \"domain-123456789012\"\n}",
+              "requestType": "PostRequest",
+              "requestLongType": "PostRequest",
+              "requestFullType": "spaceone.api.board.v1.PostRequest",
+              "requestStreaming": false,
+              "responseType": "Empty",
+              "responseLongType": ".google.protobuf.Empty",
+              "responseFullType": "google.protobuf.Empty",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/board/v1/board/delete",
                       "body": "*"
                     }
                   ]
@@ -760,21 +998,21 @@
             },
             {
               "name": "get",
-              "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "description": "desc: Gets a specific Post. You must specify the `post_id` of the Post to get, and the `board_id` of the Board where the child Post to get belongs. Prints detailed information about the Post.\nrequest_example: \u003e-\n{\n\"board_id\": \"board-b9aa34e65c60\",\n\"post_id\": \"post-2118473ce15e\",\n\"domain_id\": \"domain-58010aa2e451\"\n}\nresponse_example: \u003e-\n{\n\"board_id\": \"board-b9aa34e65c60\",\n\"post_id\": \"post-2118473ce15e\",\n\"post_type\": \"INTERNAL\",\n\"category\": \"flower\",\n\"title\": \"title\",\n\"contents\": \"this is contents.\",\n\"options\": {\n\"is_pinned\": false,\n\"is_popup\": true\n},\n\"view_count\": 2,\n\"writer\": \"seolmin\",\n\"scope\": \"DOMAIN\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"user_id\": \"supervisor\",\n\"created_at\": \"2022-06-13T01:06:23.732Z\",\n\"updated_at\": \"2022-06-13T01:06:23.732Z\"\n}",
+              "requestType": "GetPostRequest",
+              "requestLongType": "GetPostRequest",
+              "requestFullType": "spaceone.api.board.v1.GetPostRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "PostInfo",
+              "responseLongType": "PostInfo",
+              "responseFullType": "spaceone.api.board.v1.PostInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/board/v1/board/get",
                       "body": "*"
                     }
                   ]
@@ -783,21 +1021,21 @@
             },
             {
               "name": "list",
-              "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "description": "desc: Gets a list of all Posts. You can use a query to get a filtered list of Posts.\nrequest_example: \u003e-\n{\n\"board_id\": \"board-b9aa34e65c60\",\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"board_id\": \"board-b9aa34e65c60\",\n\"post_id\": \"post-2118473ce15e\",\n\"post_type\": \"INTERNAL\",\n\"category\": \"spaceone\",\n\"title\": \"title2\",\n\"contents\": \"this is contents2.\",\n\"options\": {\n\"is_popup\": false,\n\"is_pinned\": true\n},\n\"view_count\": 3,\n\"writer\": \"seolmin2\",\n\"scope\": \"DOMAIN\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"user_id\": \"user1@email.com\",\n\"created_at\": \"2022-06-13T01:06:23.732Z\",\n\"updated_at\": \"2022-06-13T01:06:23.732Z\"\n},\n{\n\"board_id\": \"board-b9aa34e65c60\",\n\"post_id\": \"post-532ae1191233\",\n\"post_type\": \"INTERNAL\",\n\"category\": \"flower\",\n\"title\": \"작업공지\",\n\"contents\": \"This is description\",\n\"options\": {\n\"is_pinned\": true,\n\"is_popup\": true\n},\n\"writer\": \"권설민\",\n\"scope\": \"PUBLIC\",\n\"user_id\": \"supervisor\",\n\"created_at\": \"2022-06-10T07:01:44.384Z\",\n\"updated_at\": \"2022-06-10T07:01:44.384Z\"\n}\n],\n\"total_count\": 2\n}",
+              "requestType": "PostQuery",
+              "requestLongType": "PostQuery",
+              "requestFullType": "spaceone.api.board.v1.PostQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "PostsInfo",
+              "responseLongType": "PostsInfo",
+              "responseFullType": "spaceone.api.board.v1.PostsInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/board/v1/board/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +1045,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "PostStatQuery",
+              "requestLongType": "PostStatQuery",
+              "requestFullType": "spaceone.api.board.v1.PostStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +1058,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/board/v1/board/stat",
                       "body": "*"
                     }
                   ]

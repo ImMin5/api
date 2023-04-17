@@ -1,32 +1,55 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/monitoring/v1/project_alert_config.proto",
+      "description": "desc: A ProjectAlertConfig is a resource to set the alert policies for a Project.",
+      "package": "spaceone.api.monitoring.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
       "enums": [
         {
-          "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+          "name": "RecoveryOption",
+          "longName": "AlertOptions.RecoveryOption",
+          "fullName": "spaceone.api.monitoring.v1.AlertOptions.RecoveryOption",
           "description": "",
           "values": [
             {
-              "name": "NONE",
+              "name": "RECOVERY_NONE",
               "number": "0",
               "description": ""
             },
             {
-              "name": "ENABLED",
+              "name": "AUTO",
               "number": "1",
               "description": ""
             },
             {
-              "name": "DISABLED",
+              "name": "MANUAL",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "UrgencyOption",
+          "longName": "AlertOptions.UrgencyOption",
+          "fullName": "spaceone.api.monitoring.v1.AlertOptions.UrgencyOption",
+          "description": "",
+          "values": [
+            {
+              "name": "URGENCY_NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "ALL",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "HIGH_ONLY",
               "number": "2",
               "description": ""
             }
@@ -36,9 +59,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "AlertOptions",
+          "longName": "AlertOptions",
+          "fullName": "spaceone.api.monitoring.v1.AlertOptions",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -46,8 +69,44 @@
           "extensions": [],
           "fields": [
             {
-              "name": "name",
-              "description": "is_required: false",
+              "name": "notification_urgency",
+              "description": "",
+              "label": "",
+              "type": "UrgencyOption",
+              "longType": "AlertOptions.UrgencyOption",
+              "fullType": "spaceone.api.monitoring.v1.AlertOptions.UrgencyOption",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "recovery_mode",
+              "description": "",
+              "label": "",
+              "type": "RecoveryOption",
+              "longType": "AlertOptions.RecoveryOption",
+              "fullType": "spaceone.api.monitoring.v1.AlertOptions.RecoveryOption",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CreateProjectAlertConfigRequest",
+          "longName": "CreateProjectAlertConfigRequest",
+          "fullName": "spaceone.api.monitoring.v1.CreateProjectAlertConfigRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project_id",
+              "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -58,12 +117,12 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
-              "description": "is_required: true",
+              "name": "escalation_policy_id",
+              "description": "is_required: false",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -73,33 +132,9 @@
               "name": "options",
               "description": "is_required: false",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tags",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "AlertOptions",
+              "longType": "AlertOptions",
+              "fullType": "spaceone.api.monitoring.v1.AlertOptions",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -120,9 +155,9 @@
           ]
         },
         {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+          "name": "GetProjectAlertConfigRequest",
+          "longName": "GetProjectAlertConfigRequest",
+          "fullName": "spaceone.api.monitoring.v1.GetProjectAlertConfigRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -130,7 +165,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "project_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -168,9 +203,9 @@
           ]
         },
         {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+          "name": "ProjectAlertConfigInfo",
+          "longName": "ProjectAlertConfigInfo",
+          "fullName": "spaceone.api.monitoring.v1.ProjectAlertConfigInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,48 +213,12 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "project_id",
               "description": "",
               "label": "",
               "type": "string",
               "longType": "string",
               "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "state",
-              "description": "",
-              "label": "",
-              "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule",
-              "description": "",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -229,33 +228,21 @@
               "name": "options",
               "description": "",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "AlertOptions",
+              "longType": "AlertOptions",
+              "fullType": "spaceone.api.monitoring.v1.AlertOptions",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "tags",
+              "name": "escalation_policy_info",
               "description": "",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "EscalationPolicyInfo",
+              "longType": "EscalationPolicyInfo",
+              "fullType": "spaceone.api.monitoring.v1.EscalationPolicyInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -284,25 +271,13 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
-            {
-              "name": "last_scheduled_at",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
             }
           ]
         },
         {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+          "name": "ProjectAlertConfigQuery",
+          "longName": "ProjectAlertConfigQuery",
+          "fullName": "spaceone.api.monitoring.v1.ProjectAlertConfigQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -322,7 +297,7 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule_id",
+              "name": "project_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -334,31 +309,7 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "state",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
+              "name": "escalation_policy_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -384,9 +335,9 @@
           ]
         },
         {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+          "name": "ProjectAlertConfigRequest",
+          "longName": "ProjectAlertConfigRequest",
+          "fullName": "spaceone.api.monitoring.v1.ProjectAlertConfigRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -394,7 +345,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "project_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -420,9 +371,9 @@
           ]
         },
         {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+          "name": "ProjectAlertConfigStatQuery",
+          "longName": "ProjectAlertConfigStatQuery",
+          "fullName": "spaceone.api.monitoring.v1.ProjectAlertConfigStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -456,69 +407,9 @@
           ]
         },
         {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cron",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "interval",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "minutes",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+          "name": "ProjectAlertConfigsInfo",
+          "longName": "ProjectAlertConfigsInfo",
+          "fullName": "spaceone.api.monitoring.v1.ProjectAlertConfigsInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -529,9 +420,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "type": "ProjectAlertConfigInfo",
+              "longType": "ProjectAlertConfigInfo",
+              "fullType": "spaceone.api.monitoring.v1.ProjectAlertConfigInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -552,9 +443,9 @@
           ]
         },
         {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+          "name": "UpdateProjectAlertConfigRequest",
+          "longName": "UpdateProjectAlertConfigRequest",
+          "fullName": "spaceone.api.monitoring.v1.UpdateProjectAlertConfigRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -562,7 +453,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "project_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -574,7 +465,7 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
+              "name": "escalation_policy_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -586,36 +477,12 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "options",
               "description": "is_required: false",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tags",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "AlertOptions",
+              "longType": "AlertOptions",
+              "fullType": "spaceone.api.monitoring.v1.AlertOptions",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -638,28 +505,28 @@
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "ProjectAlertConfig",
+          "longName": "ProjectAlertConfig",
+          "fullName": "spaceone.api.monitoring.v1.ProjectAlertConfig",
           "description": "",
           "methods": [
             {
               "name": "create",
-              "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+              "description": "desc: Creates a new ProjectAlertConfig in a specific Project. When creating a ProjectAlertConfig, validation of the Project is preceded. After the validation is done, ProjectAlertConfig enables EscalationPolicy to be set in the Project, or enables `enum` type `recovery_mode` and `notification_urgency` to be set through the `options` parameter.  The parameter `recovery_mode` is for changing the state of the Alert to `resolved` if the external monitoring solution sends the resolved Alert. The parameter `notification_urgency` is used to choose whether you will get all Alerts or only urgent ones.\nrequest_example: \u003e-\n{\n\"project_id\": \"project-dee2a81d4859\",\n\"escalation_policy_id\": \"ep-b441abe04ca9\",\n\"options\": {\n\"notification_urgency\": \"ALL\",\n\"recovery_mode\": \"AUTO\"\n},\n\"domain_id\": \"domain-58010aa2e451\"\n}\nresponse_example: \u003e-\n{\n\"project_id\": \"project-dee2a81d4859\",\n\"options\": {\n\"notification_urgency\": \"ALL\",\n\"recovery_mode\": \"AUTO\"\n},\n\"escalation_policy_info\": {\n\"escalation_policy_id\": \"ep-b441abe04ca9\",\n\"name\": \"Global New Policy\"\n},\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-06-27T05:12:22.998Z\"\n}",
+              "requestType": "CreateProjectAlertConfigRequest",
+              "requestLongType": "CreateProjectAlertConfigRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.CreateProjectAlertConfigRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "ProjectAlertConfigInfo",
+              "responseLongType": "ProjectAlertConfigInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.ProjectAlertConfigInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
+                      "pattern": "/monitoring/v1/project-alert-config/create",
                       "body": "*"
                     }
                   ]
@@ -668,67 +535,21 @@
             },
             {
               "name": "update",
-              "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+              "description": "desc: Updates a specific ProjectAlertConfig. You can make changes in ProjectAlertConfig settings, including the EscalationPolicy to apply. You can also change `notification_urgency` and `recovery_mode` by modifying the `options` parameter.\nrequest_example: \u003e-\n{\n\"project_id\": \"project-dee2a81d4859\",\n\"escalation_policy_id\": \"ep-4ee42a9b2d96\",\n\"options\": {\n\"notification_urgency\": \"ALL\",\n\"recovery_mode\": \"MANUAL\"\n},\n\"domain_id\": \"domain-58010aa2e451\"\n}\nresponse_example: \u003e-\n{\n\"project_id\": \"project-dee2a81d4859\",\n\"options\": {\n\"notification_urgency\": \"ALL\",\n\"recovery_mode\": \"MANUAL\"\n},\n\"escalation_policy_info\": {\n\"escalation_policy_id\": \"ep-4ee42a9b2d96\",\n\"name\": \"HAHA\",\n\"is_default\": true\n},\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-06-27T05:15:02.697Z\"\n}",
+              "requestType": "UpdateProjectAlertConfigRequest",
+              "requestLongType": "UpdateProjectAlertConfigRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.UpdateProjectAlertConfigRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "ProjectAlertConfigInfo",
+              "responseLongType": "ProjectAlertConfigInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.ProjectAlertConfigInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "enable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "disable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
+                      "pattern": "/monitoring/v1/project-alert-config/update",
                       "body": "*"
                     }
                   ]
@@ -737,10 +558,10 @@
             },
             {
               "name": "delete",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "description": "desc: Deletes a specific ProjectAlertConfig. Deletes alert configuration data in a Project.\nrequest_example: \u003e-\n{\n\"project_id\": \"project-dee2a81d4859\",\n\"domain_id\": \"domain-58010aa2e451\"\n}",
+              "requestType": "ProjectAlertConfigRequest",
+              "requestLongType": "ProjectAlertConfigRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.ProjectAlertConfigRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -751,7 +572,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/monitoring/v1/project-alert-config/delete",
                       "body": "*"
                     }
                   ]
@@ -760,21 +581,21 @@
             },
             {
               "name": "get",
-              "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "description": "desc: Gets a specific ProjectAlertConfig. Prints detailed information about the ProjectAlertConfig, including EscalationPolicy, recovery mode, and notification urgency.\nrequest_example: \u003e-\n{\n\"project_id\": \"project-430bf6ab1e6d\",\n\"domain_id\": \"domain-58010aa2e451\"\n}\nresponse_example: \u003e-\n{\n\"project_id\": \"project-430bf6ab1e6d\",\n\"options\": {\n\"notification_urgency\": \"ALL\",\n\"recovery_mode\": \"AUTO\"\n},\n\"escalation_policy_info\": {\n\"escalation_policy_id\": \"ep-4ee42a9b2d96\",\n\"name\": \"HAHA\",\n\"is_default\": true\n},\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-05-03T08:17:11.715Z\"\n}",
+              "requestType": "GetProjectAlertConfigRequest",
+              "requestLongType": "GetProjectAlertConfigRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.GetProjectAlertConfigRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "ProjectAlertConfigInfo",
+              "responseLongType": "ProjectAlertConfigInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.ProjectAlertConfigInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/monitoring/v1/project-alert-config/get",
                       "body": "*"
                     }
                   ]
@@ -783,21 +604,21 @@
             },
             {
               "name": "list",
-              "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "description": "desc: Gets a list of all ProjectAlertConfigs from all projects configured in the same domain. You can use a query to get a filtered list of ProjectAlertConfigs.\nrequest_example: \u003e-\n{\n\"query\": {},\n\"domain_id\": \"domain-58010aa2e451\"\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"project_id\": \"project-18655561c535\",\n\"options\": {\n\"notification_urgency\": \"ALL\",\n\"recovery_mode\": \"MANUAL\"\n},\n\"escalation_policy_info\": {\n\"escalation_policy_id\": \"ep-4ee42a9b2d96\",\n\"name\": \"HAHA\",\n\"is_default\": true\n},\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-05-17T02:09:19.839Z\"\n},\n{\n\"project_id\": \"project-9074eea97d7e\",\n\"options\": {\n\"notification_urgency\": \"ALL\",\n\"recovery_mode\": \"MANUAL\"\n},\n\"escalation_policy_info\": {\n\"escalation_policy_id\": \"ep-b441abe04ca9\",\n\"name\": \"Global New Policy\"\n},\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2021-06-24T02:50:50.535Z\"\n}\n],\n\"total_count\": 2\n}",
+              "requestType": "ProjectAlertConfigQuery",
+              "requestLongType": "ProjectAlertConfigQuery",
+              "requestFullType": "spaceone.api.monitoring.v1.ProjectAlertConfigQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "ProjectAlertConfigsInfo",
+              "responseLongType": "ProjectAlertConfigsInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.ProjectAlertConfigsInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/monitoring/v1/project-alert-config/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +628,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "ProjectAlertConfigStatQuery",
+              "requestLongType": "ProjectAlertConfigStatQuery",
+              "requestFullType": "spaceone.api.monitoring.v1.ProjectAlertConfigStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +641,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/monitoring/v1/project-alert-config/stat",
                       "body": "*"
                     }
                   ]

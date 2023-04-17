@@ -1,50 +1,158 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
-      "description": "",
+      "name": "spaceone/api/cost_analysis/v1/cost_query_set.proto",
+      "description": "desc: A CostQuerySet is a set of saved queries a User frequently uses as a setting.",
       "package": "spaceone.api.cost_analysis.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
-      "enums": [
-        {
-          "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
-          "description": "",
-          "values": [
-            {
-              "name": "NONE",
-              "number": "0",
-              "description": ""
-            },
-            {
-              "name": "ENABLED",
-              "number": "1",
-              "description": ""
-            },
-            {
-              "name": "DISABLED",
-              "number": "2",
-              "description": ""
-            }
-          ]
-        }
-      ],
+      "enums": [],
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "CostQuerySetInfo",
+          "longName": "CostQuerySetInfo",
+          "fullName": "spaceone.api.cost_analysis.v1.CostQuerySetInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
           "extensions": [],
           "fields": [
+            {
+              "name": "cost_query_set_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "options",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "user_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "updated_at",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CostQuerySetQuery",
+          "longName": "CostQuerySetQuery",
+          "fullName": "spaceone.api.cost_analysis.v1.CostQuerySetQuery",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "query",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Query",
+              "longType": "spaceone.api.core.v1.Query",
+              "fullType": "spaceone.api.core.v1.Query",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "cost_query_set_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
             {
               "name": "name",
               "description": "is_required: false",
@@ -58,43 +166,43 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "user_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
               "description": "is_required: true",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
+            }
+          ]
+        },
+        {
+          "name": "CostQuerySetRequest",
+          "longName": "CostQuerySetRequest",
+          "fullName": "spaceone.api.cost_analysis.v1.CostQuerySetRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
             {
-              "name": "options",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tags",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
+              "name": "cost_query_set_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -120,9 +228,9 @@
           ]
         },
         {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+          "name": "CostQuerySetStatQuery",
+          "longName": "CostQuerySetStatQuery",
+          "fullName": "spaceone.api.cost_analysis.v1.CostQuerySetStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -130,7 +238,139 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "query",
+              "description": "is_required: true",
+              "label": "",
+              "type": "StatisticsQuery",
+              "longType": "spaceone.api.core.v1.StatisticsQuery",
+              "fullType": "spaceone.api.core.v1.StatisticsQuery",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CostQuerySetsInfo",
+          "longName": "CostQuerySetsInfo",
+          "fullName": "spaceone.api.cost_analysis.v1.CostQuerySetsInfo",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "results",
+              "description": "",
+              "label": "repeated",
+              "type": "CostQuerySetInfo",
+              "longType": "CostQuerySetInfo",
+              "fullType": "spaceone.api.cost_analysis.v1.CostQuerySetInfo",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "total_count",
+              "description": "",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CreateCostQuerySetRequest",
+          "longName": "CreateCostQuerySetRequest",
+          "fullName": "spaceone.api.cost_analysis.v1.CreateCostQuerySetRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "options",
+              "description": "is_required: true",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "GetCostQuerySetRequest",
+          "longName": "GetCostQuerySetRequest",
+          "fullName": "spaceone.api.cost_analysis.v1.GetCostQuerySetRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "cost_query_set_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -168,9 +408,9 @@
           ]
         },
         {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+          "name": "UpdateCostQuerySetRequest",
+          "longName": "UpdateCostQuerySetRequest",
+          "fullName": "spaceone.api.cost_analysis.v1.UpdateCostQuerySetRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,391 +418,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "state",
-              "description": "",
-              "label": "",
-              "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule",
-              "description": "",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "options",
-              "description": "",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tags",
-              "description": "",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "created_at",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "last_scheduled_at",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "query",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Query",
-              "longType": "spaceone.api.core.v1.Query",
-              "fullType": "spaceone.api.core.v1.Query",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "state",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "schedule_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "query",
-              "description": "is_required: true",
-              "label": "",
-              "type": "StatisticsQuery",
-              "longType": "spaceone.api.core.v1.StatisticsQuery",
-              "fullType": "spaceone.api.core.v1.StatisticsQuery",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cron",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "interval",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "minutes",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "results",
-              "description": "",
-              "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "total_count",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "schedule_id",
+              "name": "cost_query_set_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -580,18 +436,6 @@
               "type": "string",
               "longType": "string",
               "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -638,28 +482,28 @@
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "CostQuerySet",
+          "longName": "CostQuerySet",
+          "fullName": "spaceone.api.cost_analysis.v1.CostQuerySet",
           "description": "",
           "methods": [
             {
               "name": "create",
-              "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+              "description": "desc: Creates a new CostQuerySet. You can make your own custom query that meets your needs, and input it as an `option` parameter of the resource. Queries such as `group_by` and `granularity` are provided by default.\nrequest_example: \u003e-\n{\n\"name\": \"project_provider_region\",\n\"options\": {\n\"primary_group_by\": \"project_id\",\n\"filters\": {},\n\"period\": {\n\"end\": \"2022-07-31T23:59:59Z\",\n\"start\": \"2022-07-01T00:00:00Z\"\n},\n\"group_by\": [\n\"project_id\",\n\"provider\",\n\"region_code\"\n],\n\"stack\": false,\n\"granularity\": \"ACCUMULATED\"}\n}\nresponse_example: \u003e-\n{\n\"cost_query_set_id\": \"query-76a58ea5d02c\",\n\"name\": \"project_provider_region\",\n\"options\": {\n\"group_by\": [\n\"project_id\",\n\"provider\",\n\"region_code\"\n],\n\"filters\": {},\n\"primary_group_by\": \"project_id\",\n\"period\": {\n\"end\": \"2022-07-31T23:59:59Z\",\n\"start\": \"2022-07-01T00:00:00Z\"\n},\n\"stack\": false,\n\"granularity\": \"ACCUMULATED\"\n},\n\"tags\": {},\n\"user_id\": \"test@cloudforet.io\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-07-19T06:11:03.701Z\",\n\"updated_at\": \"2022-07-19T06:11:03.701Z\"\n}",
+              "requestType": "CreateCostQuerySetRequest",
+              "requestLongType": "CreateCostQuerySetRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.CreateCostQuerySetRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "CostQuerySetInfo",
+              "responseLongType": "CostQuerySetInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.CostQuerySetInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
+                      "pattern": "/cost-analysis/v1/cost-query-set/create",
                       "body": "*"
                     }
                   ]
@@ -668,67 +512,21 @@
             },
             {
               "name": "update",
-              "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+              "description": "desc: Updates a specific CostQuerySet. You can make changes in the details of queries.\nrequest_example: \u003e-\n{\n\"cost_query_set_id\": \"query-76a58ea5d02c\",\n\"options\": {\n\"stack\": false,\n\"filters\": {},\n\"period\": {\n\"start\": \"2022-07-01T00:00:00Z\",\n\"end\": \"2022-07-31T23:59:59Z\"\n},\n\"group_by\": [\n\"project_id\",\n\"provider\",\n\"region_code\",\n\"product\"\n],\n\"granularity\": \"ACCUMULATED\",\n\"primary_group_by\": \"project_id\"\n}\n}\nresponse_example: \u003e-\n{\n\"cost_query_set_id\": \"query-76a58ea5d02c\",\n\"name\": \"project_provider_region\",\n\"options\": {\n\"primary_group_by\": \"project_id\",\n\"stack\": false,\n\"period\": {\n\"end\": \"2022-07-31T23:59:59Z\",\n\"start\": \"2022-07-01T00:00:00Z\"\n},\n\"filters\": {},\n\"granularity\": \"ACCUMULATED\",\n\"group_by\": [\n\"project_id\",\n\"provider\",\n\"region_code\",\n\"product\"\n]\n},\n\"tags\": {},\n\"user_id\": \"test@cloudforet.io\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-07-19T06:11:03.701Z\",\n\"updated_at\": \"2022-07-19T06:11:03.701Z\"\n}",
+              "requestType": "UpdateCostQuerySetRequest",
+              "requestLongType": "UpdateCostQuerySetRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateCostQuerySetRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "CostQuerySetInfo",
+              "responseLongType": "CostQuerySetInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.CostQuerySetInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "enable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "disable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
+                      "pattern": "/cost-analysis/v1/cost-query-set/update",
                       "body": "*"
                     }
                   ]
@@ -737,10 +535,10 @@
             },
             {
               "name": "delete",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "description": "desc: Deletes a specific CostQuerySet. You must specify the `cost_query_set_id` of the CostQuerySet to delete.\nrequest_example: \u003e-\n{\n\"cost_query_set_id\": \"query-16ae671dc8fb\"\n}",
+              "requestType": "CostQuerySetRequest",
+              "requestLongType": "CostQuerySetRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.CostQuerySetRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -751,7 +549,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/cost-analysis/v1/cost-query-set/delete",
                       "body": "*"
                     }
                   ]
@@ -760,21 +558,21 @@
             },
             {
               "name": "get",
-              "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "description": "desc: Gets a specific CostQuerySet. Prints detailed information about the CostQuerySet, including the details of queries.\nrequest_example: \u003e-\n{\n\"cost_query_set_id\": \"query-16ae671dc8fb\"\n}\nresponse_example: \u003e-\n{\n\"cost_query_set_id\": \"query-16ae671dc8fb\",\n\"name\": \"3 month product pie chart\",\n\"options\": {\n\"group_by\": [\n\"product\"\n],\n\"period\": {\n\"start\": \"2022-01-01\",\n\"end\": \"2022-03-31\"\n},\n\"primary_group_by\": \"product\",\n\"stack\": false,\n\"filters\": {},\n\"granularity\": \"ACCUMULATED\"\n},\n\"tags\": {},\n\"user_id\": \"test1@cloudforet.io\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-03-08T03:37:31.404Z\",\n\"updated_at\": \"2022-03-08T03:37:31.404Z\"\n}",
+              "requestType": "GetCostQuerySetRequest",
+              "requestLongType": "GetCostQuerySetRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.GetCostQuerySetRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "CostQuerySetInfo",
+              "responseLongType": "CostQuerySetInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.CostQuerySetInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/cost-analysis/v1/cost-query-set/get",
                       "body": "*"
                     }
                   ]
@@ -783,21 +581,21 @@
             },
             {
               "name": "list",
-              "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "description": "desc: Gets a list of all CostQuerySets. You can use a query to get a filtered list of CostQuerySets.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"cost_query_set_id\": \"query-16ae671dc8fb\",\n\"name\": \"3 month product pie chart\",\n\"options\": {\n\"primary_group_by\": \"product\",\n\"granularity\": \"ACCUMULATED\",\n\"stack\": false,\n\"filters\": {},\n\"period\": {\n\"end\": \"2022-03-31\",\n\"start\": \"2022-01-01\"\n},\n\"group_by\": [\n\"product\"\n]\n},\n\"tags\": {},\n\"user_id\": \"yuda@mz.co.kr\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-03-08T03:37:31.404Z\",\n\"updated_at\": \"2022-03-08T03:37:31.404Z\"\n},\n{\n\"cost_query_set_id\": \"query-d90addf25e4b\",\n\"name\": \"6 month project group\",\n\"options\": {\n\"primary_group_by\": \"project_group_id\",\n\"period\": {\n\"start\": \"2021-10-01\",\n\"end\": \"2022-03-31\"\n},\n\"stack\": false,\n\"group_by\": [\n\"project_group_id\"\n],\n\"granularity\": \"MONTHLY\",\n\"filters\": {}\n},\n\"tags\": {},\n\"user_id\": \"yuda@mz.co.kr\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-03-14T09:29:54.306Z\",\n\"updated_at\": \"2022-03-14T09:29:54.306Z\"\n}\n],\n\"total_count\": 34\n}",
+              "requestType": "CostQuerySetQuery",
+              "requestLongType": "CostQuerySetQuery",
+              "requestFullType": "spaceone.api.cost_analysis.v1.CostQuerySetQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "CostQuerySetsInfo",
+              "responseLongType": "CostQuerySetsInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.CostQuerySetsInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/cost-analysis/v1/cost-query-sets/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +605,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "CostQuerySetStatQuery",
+              "requestLongType": "CostQuerySetStatQuery",
+              "requestFullType": "spaceone.api.cost_analysis.v1.CostQuerySetStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +618,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/cost-analysis/v1/cost-query-sets/stat",
                       "body": "*"
                     }
                   ]

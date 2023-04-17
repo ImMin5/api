@@ -1,44 +1,20 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
+      "name": "spaceone/api/identity/v1/role_binding.proto",
       "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "package": "spaceone.api.identity.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
-      "enums": [
-        {
-          "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
-          "description": "",
-          "values": [
-            {
-              "name": "NONE",
-              "number": "0",
-              "description": ""
-            },
-            {
-              "name": "ENABLED",
-              "number": "1",
-              "description": ""
-            },
-            {
-              "name": "DISABLED",
-              "number": "2",
-              "description": ""
-            }
-          ]
-        }
-      ],
+      "enums": [],
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "CreateRoleBindingRequest",
+          "longName": "CreateRoleBindingRequest",
+          "fullName": "spaceone.api.identity.v1.CreateRoleBindingRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -46,7 +22,43 @@
           "extensions": [],
           "fields": [
             {
-              "name": "name",
+              "name": "resource_type",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "resource_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -58,24 +70,24 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
-              "description": "is_required: true",
+              "name": "project_group_id",
+              "description": "is_required: false",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "labels",
               "description": "is_required: false",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -88,18 +100,6 @@
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -120,9 +120,9 @@
           ]
         },
         {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+          "name": "GetRoleBindingRequest",
+          "longName": "GetRoleBindingRequest",
+          "fullName": "spaceone.api.identity.v1.GetRoleBindingRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -130,7 +130,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "role_binding_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -168,9 +168,9 @@
           ]
         },
         {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+          "name": "RoleBindingInfo",
+          "longName": "RoleBindingInfo",
+          "fullName": "spaceone.api.identity.v1.RoleBindingInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,7 +178,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "role_binding_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -190,7 +190,7 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
+              "name": "resource_type",
               "description": "",
               "label": "",
               "type": "string",
@@ -202,36 +202,60 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "resource_id",
               "description": "",
               "label": "",
-              "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "role_info",
               "description": "",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "RoleInfo",
+              "longType": "RoleInfo",
+              "fullType": "spaceone.api.identity.v1.RoleInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "project_info",
               "description": "",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "ProjectInfo",
+              "longType": "ProjectInfo",
+              "fullType": "spaceone.api.identity.v1.ProjectInfo",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_group_info",
+              "description": "",
+              "label": "",
+              "type": "ProjectGroupInfo",
+              "longType": "ProjectGroupInfo",
+              "fullType": "spaceone.api.identity.v1.ProjectGroupInfo",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -244,18 +268,6 @@
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -284,25 +296,13 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
-            {
-              "name": "last_scheduled_at",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
             }
           ]
         },
         {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+          "name": "RoleBindingQuery",
+          "longName": "RoleBindingQuery",
+          "fullName": "spaceone.api.identity.v1.RoleBindingQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -322,7 +322,7 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule_id",
+              "name": "role_binding_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -334,7 +334,7 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
+              "name": "resource_type",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -346,7 +346,7 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "resource_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -358,7 +358,43 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "role_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role_type",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_group_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -384,9 +420,9 @@
           ]
         },
         {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+          "name": "RoleBindingRequest",
+          "longName": "RoleBindingRequest",
+          "fullName": "spaceone.api.identity.v1.RoleBindingRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -394,7 +430,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "role_binding_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -420,9 +456,9 @@
           ]
         },
         {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+          "name": "RoleBindingStatQuery",
+          "longName": "RoleBindingStatQuery",
+          "fullName": "spaceone.api.identity.v1.RoleBindingStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -456,69 +492,9 @@
           ]
         },
         {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cron",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "interval",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "minutes",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+          "name": "RoleBindingsInfo",
+          "longName": "RoleBindingsInfo",
+          "fullName": "spaceone.api.identity.v1.RoleBindingsInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -529,9 +505,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "type": "RoleBindingInfo",
+              "longType": "RoleBindingInfo",
+              "fullType": "spaceone.api.identity.v1.RoleBindingInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -552,9 +528,9 @@
           ]
         },
         {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+          "name": "UpdateRoleBindingRequest",
+          "longName": "UpdateRoleBindingRequest",
+          "fullName": "spaceone.api.identity.v1.UpdateRoleBindingRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -562,7 +538,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "role_binding_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -574,36 +550,12 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
+              "name": "labels",
               "description": "is_required: false",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "options",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -638,28 +590,28 @@
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "RoleBinding",
+          "longName": "RoleBinding",
+          "fullName": "spaceone.api.identity.v1.RoleBinding",
           "description": "",
           "methods": [
             {
               "name": "create",
               "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+              "requestType": "CreateRoleBindingRequest",
+              "requestLongType": "CreateRoleBindingRequest",
+              "requestFullType": "spaceone.api.identity.v1.CreateRoleBindingRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "RoleBindingInfo",
+              "responseLongType": "RoleBindingInfo",
+              "responseFullType": "spaceone.api.identity.v1.RoleBindingInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
+                      "pattern": "/identity/v1/role-binding/create",
                       "body": "*"
                     }
                   ]
@@ -669,66 +621,20 @@
             {
               "name": "update",
               "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+              "requestType": "UpdateRoleBindingRequest",
+              "requestLongType": "UpdateRoleBindingRequest",
+              "requestFullType": "spaceone.api.identity.v1.UpdateRoleBindingRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "RoleBindingInfo",
+              "responseLongType": "RoleBindingInfo",
+              "responseFullType": "spaceone.api.identity.v1.RoleBindingInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "enable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "disable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
+                      "pattern": "/identity/v1/role-binding/update",
                       "body": "*"
                     }
                   ]
@@ -738,9 +644,9 @@
             {
               "name": "delete",
               "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "requestType": "RoleBindingRequest",
+              "requestLongType": "RoleBindingRequest",
+              "requestFullType": "spaceone.api.identity.v1.RoleBindingRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -751,7 +657,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/identity/v1/role-binding/delete",
                       "body": "*"
                     }
                   ]
@@ -761,20 +667,20 @@
             {
               "name": "get",
               "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "requestType": "GetRoleBindingRequest",
+              "requestLongType": "GetRoleBindingRequest",
+              "requestFullType": "spaceone.api.identity.v1.GetRoleBindingRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "RoleBindingInfo",
+              "responseLongType": "RoleBindingInfo",
+              "responseFullType": "spaceone.api.identity.v1.RoleBindingInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/identity/v1/role-binding/get",
                       "body": "*"
                     }
                   ]
@@ -784,20 +690,20 @@
             {
               "name": "list",
               "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "requestType": "RoleBindingQuery",
+              "requestLongType": "RoleBindingQuery",
+              "requestFullType": "spaceone.api.identity.v1.RoleBindingQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "RoleBindingsInfo",
+              "responseLongType": "RoleBindingsInfo",
+              "responseFullType": "spaceone.api.identity.v1.RoleBindingsInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/identity/v1/role-binding/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +713,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "RoleBindingStatQuery",
+              "requestLongType": "RoleBindingStatQuery",
+              "requestFullType": "spaceone.api.identity.v1.RoleBindingStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +726,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/identity/v1/role-binding/stat",
                       "body": "*"
                     }
                   ]

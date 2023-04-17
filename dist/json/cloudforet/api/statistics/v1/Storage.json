@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
+      "name": "spaceone/api/statistics/v1/storage.proto",
       "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "package": "spaceone.api.statistics.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
@@ -11,8 +11,8 @@
       "enums": [
         {
           "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+          "longName": "StorageInfo.State",
+          "fullName": "spaceone.api.statistics.v1.StorageInfo.State",
           "description": "",
           "values": [
             {
@@ -36,9 +36,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "GetStorageRequest",
+          "longName": "GetStorageRequest",
+          "fullName": "spaceone.api.statistics.v1.GetStorageRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -46,91 +46,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule",
-              "description": "is_required: true",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "options",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tags",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "schedule_id",
+              "name": "storage_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -168,9 +84,9 @@
           ]
         },
         {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+          "name": "PluginInfo",
+          "longName": "PluginInfo",
+          "fullName": "spaceone.api.statistics.v1.PluginInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,7 +94,223 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "plugin_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "version",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "options",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "secret_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "metadata",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PluginRequest",
+          "longName": "PluginRequest",
+          "fullName": "spaceone.api.statistics.v1.PluginRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "plugin_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "version",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "options",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "secret_data",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "schema",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "RegisterStorageRequest",
+          "longName": "RegisterStorageRequest",
+          "fullName": "spaceone.api.statistics.v1.RegisterStorageRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "plugin_info",
+              "description": "is_required: false",
+              "label": "",
+              "type": "PluginRequest",
+              "longType": "PluginRequest",
+              "fullType": "spaceone.api.statistics.v1.PluginRequest",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "user_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "StorageInfo",
+          "longName": "StorageInfo",
+          "fullName": "spaceone.api.statistics.v1.StorageInfo",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "storage_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -206,20 +338,8 @@
               "description": "",
               "label": "",
               "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule",
-              "description": "",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "longType": "StorageInfo.State",
+              "fullType": "spaceone.api.statistics.v1.StorageInfo.State",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -238,6 +358,30 @@
               "defaultValue": ""
             },
             {
+              "name": "capability",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "plugin_info",
+              "description": "",
+              "label": "",
+              "type": "PluginInfo",
+              "longType": "PluginInfo",
+              "fullType": "spaceone.api.statistics.v1.PluginInfo",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "tags",
               "description": "",
               "label": "",
@@ -250,7 +394,7 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "user_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -284,25 +428,13 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
-            {
-              "name": "last_scheduled_at",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
             }
           ]
         },
         {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+          "name": "StorageQuery",
+          "longName": "StorageQuery",
+          "fullName": "spaceone.api.statistics.v1.StorageQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -322,7 +454,7 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule_id",
+              "name": "storage_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -358,7 +490,7 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "user_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -384,9 +516,9 @@
           ]
         },
         {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+          "name": "StorageRequest",
+          "longName": "StorageRequest",
+          "fullName": "spaceone.api.statistics.v1.StorageRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -394,7 +526,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "storage_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -420,9 +552,9 @@
           ]
         },
         {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+          "name": "StorageStatQuery",
+          "longName": "StorageStatQuery",
+          "fullName": "spaceone.api.statistics.v1.StorageStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -456,69 +588,9 @@
           ]
         },
         {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cron",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "interval",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "minutes",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+          "name": "StoragesInfo",
+          "longName": "StoragesInfo",
+          "fullName": "spaceone.api.statistics.v1.StoragesInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -529,9 +601,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "type": "StorageInfo",
+              "longType": "StorageInfo",
+              "fullType": "spaceone.api.statistics.v1.StorageInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -552,9 +624,9 @@
           ]
         },
         {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+          "name": "UpdateStoragePluginRequest",
+          "longName": "UpdateStoragePluginRequest",
+          "fullName": "spaceone.api.statistics.v1.UpdateStoragePluginRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -562,7 +634,79 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "storage_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "version",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "options",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "secret_data",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UpdateStorageRequest",
+          "longName": "UpdateStorageRequest",
+          "fullName": "spaceone.api.statistics.v1.UpdateStorageRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "storage_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -580,30 +724,6 @@
               "type": "string",
               "longType": "string",
               "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "options",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -638,28 +758,28 @@
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "Storage",
+          "longName": "Storage",
+          "fullName": "spaceone.api.statistics.v1.Storage",
           "description": "",
           "methods": [
             {
-              "name": "create",
+              "name": "register",
               "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+              "requestType": "RegisterStorageRequest",
+              "requestLongType": "RegisterStorageRequest",
+              "requestFullType": "spaceone.api.statistics.v1.RegisterStorageRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "StorageInfo",
+              "responseLongType": "StorageInfo",
+              "responseFullType": "spaceone.api.statistics.v1.StorageInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
+                      "pattern": "/statistics/v1/storage/register",
                       "body": "*"
                     }
                   ]
@@ -669,20 +789,20 @@
             {
               "name": "update",
               "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+              "requestType": "UpdateStorageRequest",
+              "requestLongType": "UpdateStorageRequest",
+              "requestFullType": "spaceone.api.statistics.v1.UpdateStorageRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "StorageInfo",
+              "responseLongType": "StorageInfo",
+              "responseFullType": "spaceone.api.statistics.v1.StorageInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
+                      "pattern": "/statistics/v1/storage/update",
                       "body": "*"
                     }
                   ]
@@ -690,22 +810,22 @@
               }
             },
             {
-              "name": "enable",
+              "name": "update_plugin",
               "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "requestType": "UpdateStoragePluginRequest",
+              "requestLongType": "UpdateStoragePluginRequest",
+              "requestFullType": "spaceone.api.statistics.v1.UpdateStoragePluginRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "StorageInfo",
+              "responseLongType": "StorageInfo",
+              "responseFullType": "spaceone.api.statistics.v1.StorageInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
+                      "pattern": "/statistics/v1/storage/update-plugin",
                       "body": "*"
                     }
                   ]
@@ -713,34 +833,11 @@
               }
             },
             {
-              "name": "disable",
+              "name": "verify_plugin",
               "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "delete",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "requestType": "StorageRequest",
+              "requestLongType": "StorageRequest",
+              "requestFullType": "spaceone.api.statistics.v1.StorageRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -751,7 +848,76 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/statistics/v1/storage/verify-plugin",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "enable",
+              "description": "",
+              "requestType": "StorageRequest",
+              "requestLongType": "StorageRequest",
+              "requestFullType": "spaceone.api.statistics.v1.StorageRequest",
+              "requestStreaming": false,
+              "responseType": "StorageInfo",
+              "responseLongType": "StorageInfo",
+              "responseFullType": "spaceone.api.statistics.v1.StorageInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/statistics/v1/storage/enable",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "disable",
+              "description": "",
+              "requestType": "StorageRequest",
+              "requestLongType": "StorageRequest",
+              "requestFullType": "spaceone.api.statistics.v1.StorageRequest",
+              "requestStreaming": false,
+              "responseType": "StorageInfo",
+              "responseLongType": "StorageInfo",
+              "responseFullType": "spaceone.api.statistics.v1.StorageInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/statistics/v1/storage/disable",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "deregister",
+              "description": "",
+              "requestType": "StorageRequest",
+              "requestLongType": "StorageRequest",
+              "requestFullType": "spaceone.api.statistics.v1.StorageRequest",
+              "requestStreaming": false,
+              "responseType": "Empty",
+              "responseLongType": ".google.protobuf.Empty",
+              "responseFullType": "google.protobuf.Empty",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/statistics/v1/storage/deregister",
                       "body": "*"
                     }
                   ]
@@ -761,20 +927,20 @@
             {
               "name": "get",
               "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "requestType": "GetStorageRequest",
+              "requestLongType": "GetStorageRequest",
+              "requestFullType": "spaceone.api.statistics.v1.GetStorageRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "StorageInfo",
+              "responseLongType": "StorageInfo",
+              "responseFullType": "spaceone.api.statistics.v1.StorageInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/statistics/v1/storage/get",
                       "body": "*"
                     }
                   ]
@@ -784,20 +950,20 @@
             {
               "name": "list",
               "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "requestType": "StorageQuery",
+              "requestLongType": "StorageQuery",
+              "requestFullType": "spaceone.api.statistics.v1.StorageQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "StoragesInfo",
+              "responseLongType": "StoragesInfo",
+              "responseFullType": "spaceone.api.statistics.v1.StoragesInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/statistics/v1/storage/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +973,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "StorageStatQuery",
+              "requestLongType": "StorageStatQuery",
+              "requestFullType": "spaceone.api.statistics.v1.StorageStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +986,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/statistics/v1/storage/stat",
                       "body": "*"
                     }
                   ]
