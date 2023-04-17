@@ -1,18 +1,18 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
-      "description": "",
+      "name": "spaceone/api/cost_analysis/v1/data_source_rule.proto",
+      "description": "desc: A DataSourceRule is a resource filtering the raw data from the DataSource. The Cost resource is created after the raw data is filtered by the DataSourceRule.",
       "package": "spaceone.api.cost_analysis.v1",
-      "hasEnums": false,
+      "hasEnums": true,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
       "enums": [
         {
-          "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+          "name": "ConditionsPolicy",
+          "longName": "ConditionsPolicy",
+          "fullName": "spaceone.api.cost_analysis.v1.ConditionsPolicy",
           "description": "",
           "values": [
             {
@@ -21,13 +21,18 @@
               "description": ""
             },
             {
-              "name": "ENABLED",
+              "name": "ALL",
               "number": "1",
               "description": ""
             },
             {
-              "name": "DISABLED",
+              "name": "ANY",
               "number": "2",
+              "description": ""
+            },
+            {
+              "name": "ALWAYS",
+              "number": "3",
               "description": ""
             }
           ]
@@ -36,9 +41,57 @@
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "ChangeDataSourceRuleOrderRequest",
+          "longName": "ChangeDataSourceRuleOrderRequest",
+          "fullName": "spaceone.api.cost_analysis.v1.ChangeDataSourceRuleOrderRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "data_source_rule_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "order",
+              "description": "is_required: true",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CreateDataSourceRuleRequest",
+          "longName": "CreateDataSourceRuleRequest",
+          "fullName": "spaceone.api.cost_analysis.v1.CreateDataSourceRuleRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -58,12 +111,36 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "conditions",
+              "description": "is_required: false",
+              "label": "repeated",
+              "type": "DataSourceRuleCondition",
+              "longType": "DataSourceRuleCondition",
+              "fullType": "spaceone.api.cost_analysis.v1.DataSourceRuleCondition",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "conditions_policy",
               "description": "is_required: true",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "ConditionsPolicy",
+              "longType": "ConditionsPolicy",
+              "fullType": "spaceone.api.cost_analysis.v1.ConditionsPolicy",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "actions",
+              "description": "is_required: true",
+              "label": "",
+              "type": "DataSourceRuleActions",
+              "longType": "DataSourceRuleActions",
+              "fullType": "spaceone.api.cost_analysis.v1.DataSourceRuleActions",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -73,9 +150,9 @@
               "name": "options",
               "description": "is_required: false",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "DataSourceRuleOptions",
+              "longType": "DataSourceRuleOptions",
+              "fullType": "spaceone.api.cost_analysis.v1.DataSourceRuleOptions",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -120,9 +197,9 @@
           ]
         },
         {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+          "name": "DataSourceRuleActions",
+          "longName": "DataSourceRuleActions",
+          "fullName": "spaceone.api.cost_analysis.v1.DataSourceRuleActions",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -130,8 +207,8 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
-              "description": "is_required: true",
+              "name": "change_project",
+              "description": "",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -142,8 +219,56 @@
               "defaultValue": ""
             },
             {
-              "name": "domain_id",
-              "description": "is_required: true",
+              "name": "match_project",
+              "description": "",
+              "label": "",
+              "type": "MatchRule",
+              "longType": "MatchRule",
+              "fullType": "spaceone.api.cost_analysis.v1.MatchRule",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "match_service_account",
+              "description": "",
+              "label": "",
+              "type": "MatchRule",
+              "longType": "MatchRule",
+              "fullType": "spaceone.api.cost_analysis.v1.MatchRule",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "add_additional_info",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "DataSourceRuleCondition",
+          "longName": "DataSourceRuleCondition",
+          "fullName": "spaceone.api.cost_analysis.v1.DataSourceRuleCondition",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -154,9 +279,21 @@
               "defaultValue": ""
             },
             {
-              "name": "only",
-              "description": "is_required: false",
-              "label": "repeated",
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "operator",
+              "description": "",
+              "label": "",
               "type": "string",
               "longType": "string",
               "fullType": "string",
@@ -168,9 +305,9 @@
           ]
         },
         {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+          "name": "DataSourceRuleInfo",
+          "longName": "DataSourceRuleInfo",
+          "fullName": "spaceone.api.cost_analysis.v1.DataSourceRuleInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,7 +315,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "data_source_rule_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -202,24 +339,48 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "order",
               "description": "",
               "label": "",
-              "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "conditions",
+              "description": "",
+              "label": "repeated",
+              "type": "DataSourceRuleCondition",
+              "longType": "DataSourceRuleCondition",
+              "fullType": "spaceone.api.cost_analysis.v1.DataSourceRuleCondition",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "conditions_policy",
               "description": "",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "ConditionsPolicy",
+              "longType": "ConditionsPolicy",
+              "fullType": "spaceone.api.cost_analysis.v1.ConditionsPolicy",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "actions",
+              "description": "",
+              "label": "",
+              "type": "DataSourceRuleActions",
+              "longType": "DataSourceRuleActions",
+              "fullType": "spaceone.api.cost_analysis.v1.DataSourceRuleActions",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -229,9 +390,9 @@
               "name": "options",
               "description": "",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "DataSourceRuleOptions",
+              "longType": "DataSourceRuleOptions",
+              "fullType": "spaceone.api.cost_analysis.v1.DataSourceRuleOptions",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -244,6 +405,18 @@
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "rule_type",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -284,14 +457,26 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
+            }
+          ]
+        },
+        {
+          "name": "DataSourceRuleOptions",
+          "longName": "DataSourceRuleOptions",
+          "fullName": "spaceone.api.cost_analysis.v1.DataSourceRuleOptions",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
             {
-              "name": "last_scheduled_at",
+              "name": "stop_processing",
               "description": "",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -300,9 +485,9 @@
           ]
         },
         {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+          "name": "DataSourceRuleQuery",
+          "longName": "DataSourceRuleQuery",
+          "fullName": "spaceone.api.cost_analysis.v1.DataSourceRuleQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -322,7 +507,7 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule_id",
+              "name": "data_source_rule_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -335,18 +520,6 @@
             },
             {
               "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "state",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -384,9 +557,9 @@
           ]
         },
         {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+          "name": "DataSourceRuleRequest",
+          "longName": "DataSourceRuleRequest",
+          "fullName": "spaceone.api.cost_analysis.v1.DataSourceRuleRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -394,7 +567,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "data_source_rule_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -420,9 +593,9 @@
           ]
         },
         {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+          "name": "DataSourceRuleStatQuery",
+          "longName": "DataSourceRuleStatQuery",
+          "fullName": "spaceone.api.cost_analysis.v1.DataSourceRuleStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -456,69 +629,9 @@
           ]
         },
         {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cron",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "interval",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "minutes",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+          "name": "DataSourceRulesInfo",
+          "longName": "DataSourceRulesInfo",
+          "fullName": "spaceone.api.cost_analysis.v1.DataSourceRulesInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -529,9 +642,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "type": "DataSourceRuleInfo",
+              "longType": "DataSourceRuleInfo",
+              "fullType": "spaceone.api.cost_analysis.v1.DataSourceRuleInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -552,9 +665,9 @@
           ]
         },
         {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+          "name": "GetDataSourceRuleRequest",
+          "longName": "GetDataSourceRuleRequest",
+          "fullName": "spaceone.api.cost_analysis.v1.GetDataSourceRuleRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -562,7 +675,91 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "data_source_rule_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "only",
+              "description": "is_required: false",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "MatchRule",
+          "longName": "MatchRule",
+          "fullName": "spaceone.api.cost_analysis.v1.MatchRule",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "source",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "target",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UpdateDataSourceRuleRequest",
+          "longName": "UpdateDataSourceRuleRequest",
+          "fullName": "spaceone.api.cost_analysis.v1.UpdateDataSourceRuleRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "data_source_rule_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -586,12 +783,36 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "conditions",
+              "description": "is_required: false",
+              "label": "repeated",
+              "type": "DataSourceRuleCondition",
+              "longType": "DataSourceRuleCondition",
+              "fullType": "spaceone.api.cost_analysis.v1.DataSourceRuleCondition",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "conditions_policy",
               "description": "is_required: false",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "ConditionsPolicy",
+              "longType": "ConditionsPolicy",
+              "fullType": "spaceone.api.cost_analysis.v1.ConditionsPolicy",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "actions",
+              "description": "is_required: false",
+              "label": "",
+              "type": "DataSourceRuleActions",
+              "longType": "DataSourceRuleActions",
+              "fullType": "spaceone.api.cost_analysis.v1.DataSourceRuleActions",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -601,9 +822,9 @@
               "name": "options",
               "description": "is_required: false",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "DataSourceRuleOptions",
+              "longType": "DataSourceRuleOptions",
+              "fullType": "spaceone.api.cost_analysis.v1.DataSourceRuleOptions",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -638,28 +859,28 @@
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "DataSourceRule",
+          "longName": "DataSourceRule",
+          "fullName": "spaceone.api.cost_analysis.v1.DataSourceRule",
           "description": "",
           "methods": [
             {
               "name": "create",
-              "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+              "description": "desc: Creates a new DataSourceRule. When creating the resource, this method can apply two types of conditions: mapping projects where the cost incurred to the Cost, and mapping cloud service accounts to the Cost. By adjusting the `condition_policy` parameter, the DataSourceRule can be applied when all conditions are met, applied when any of the conditions are met, or always applied regardless of whether the conditions are met.\nrequest_example: \u003e-\n{\n\"name\": \"match_service_account_test\",\n\"conditions_policy\": \"ALWAYS\",\n\"actions\": {\n\"match_service_account\": {\"source\": \"account\", \"target\": \"data.project_id\"}\n},\n\"options\": {\"stop_processing\": true},\n\"tags\": {\"b\": \"c\", \"a\": \"b\"},\n\"data_source_id\": \"ds-c96609f5afeb\"\n}\nresponse_example: \u003e-\n{\n\"data_source_rule_id\": \"rule-c8055231e212\",\n\"name\": \"match_service_account_test\",\n\"order\": 2,\n\"conditions_policy\": \"ALWAYS\",\n\"actions\": {\n\"match_service_account\": {\n\"source\": \"account\",\n\"target\": \"data.project_id\"\n}\n},\n\"options\": {\n\"stop_processing\": true\n},\n\"tags\": {\n\"a\": \"b\",\n\"b\": \"c\"\n},\n\"data_source_id\": \"ds-c96609f5afeb\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-07-19T10:13:28.335Z\"\n}",
+              "requestType": "CreateDataSourceRuleRequest",
+              "requestLongType": "CreateDataSourceRuleRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.CreateDataSourceRuleRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "DataSourceRuleInfo",
+              "responseLongType": "DataSourceRuleInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.DataSourceRuleInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
+                      "pattern": "/cost-analysis/v1/data-source-rule/create",
                       "body": "*"
                     }
                   ]
@@ -668,21 +889,21 @@
             },
             {
               "name": "update",
-              "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+              "description": "desc: Updates a specific DataSourceRule. You can make changes in DataSourceRule settings, including filtering conditions. If the parameter `is_default` is `true`, only `Admin` type User can use this method.\nrequest_example: \u003e-\n{\n\"data_source_rule_id\": \"rule-c8055231e212\",\n\"name\": \"match_service_account_test\",\n\"conditions_policy\": \"ALWAYS\",\n\"actions\": {\n\"match_service_account\": {\n\"source\": \"account\",\n\"target\": \"data.project_id\"\n}\n},\n\"options\": {\n\"stop_processing\": true\n},\n\"tags\": {\"b\": \"c\", \"a\": \"b\"}\n}\nresponse_example: \u003e-\n{\n\"data_source_rule_id\": \"rule-c8055231e212\",\n\"name\": \"match_service_account_test\",\n\"order\": 2,\n\"conditions_policy\": \"ALWAYS\",\n\"actions\": {\n\"match_service_account\": {\n\"source\": \"account\",\n\"target\": \"data.project_id\"\n}\n},\n\"options\": {\n\"stop_processing\": true\n},\n\"tags\": {\n\"a\": \"b\",\n\"b\": \"c\"\n},\n\"data_source_id\": \"ds-c96609f5afeb\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-07-19T10:13:28.335Z\"\n}",
+              "requestType": "UpdateDataSourceRuleRequest",
+              "requestLongType": "UpdateDataSourceRuleRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateDataSourceRuleRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "DataSourceRuleInfo",
+              "responseLongType": "DataSourceRuleInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.DataSourceRuleInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
+                      "pattern": "/cost-analysis/v1/data-source-rule/update",
                       "body": "*"
                     }
                   ]
@@ -690,45 +911,22 @@
               }
             },
             {
-              "name": "enable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "name": "change_order",
+              "description": "desc: Changes the priority order of the DataSourceRules to apply. If there are multiple DataSourceRules applied in a specific service account, the priority order of the resources is requried. This method changes the priority order to apply DataSourceRules.\nrequest_example: \u003e-\n{\n\"data_source_rule_id\": \"rule-c8055231e212\",\n\"order\": 2\n}\nresponse_example: \u003e-\n{\n\"data_source_rule_id\": \"rule-c8055231e212\",\n\"name\": \"match_service_account_test\",\n\"order\": 2,\n\"conditions_policy\": \"ALWAYS\",\n\"actions\": {\n\"match_service_account\": {\n\"source\": \"account\",\n\"target\": \"data.project_id\"\n}\n},\n\"options\": {\n\"stop_processing\": true\n},\n\"tags\": {\n\"a\": \"b\",\n\"b\": \"c\"\n},\n\"data_source_id\": \"ds-c96609f5afeb\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-07-19T10:13:28.335Z\"\n}",
+              "requestType": "ChangeDataSourceRuleOrderRequest",
+              "requestLongType": "ChangeDataSourceRuleOrderRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.ChangeDataSourceRuleOrderRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "DataSourceRuleInfo",
+              "responseLongType": "DataSourceRuleInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.DataSourceRuleInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "disable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
+                      "pattern": "/cost-analysis/v1/data-source-rule/change-order",
                       "body": "*"
                     }
                   ]
@@ -737,10 +935,10 @@
             },
             {
               "name": "delete",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "description": "desc: Deletes a specific DataSourceRule. You must specify the `data_source_rule_id` of the DataSourceRule to delete. If the parameter `is_default` is `true`, only `Admin` type User can use this method.\nrequest_example: \u003e-\n{\n\"data_source_rule_id\": \"rule-22fab02f6b51\"\n}",
+              "requestType": "DataSourceRuleRequest",
+              "requestLongType": "DataSourceRuleRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.DataSourceRuleRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -751,7 +949,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/cost-analysis/v1/data-source-rule/delete",
                       "body": "*"
                     }
                   ]
@@ -760,21 +958,21 @@
             },
             {
               "name": "get",
-              "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "description": "desc: Gets a specific DataSourceRule. Prints detailed information about the DataSourceRule, including  `conditions_policy` and conditions applied to DataSources.\nrequest_example: \u003e-\n{\n\"data_source_rule_id\": \"rule-22fab02f6b51\"\n}\nresponse_example: \u003e-\n{\n\"data_source_rule_id\": \"rule-22fab02f6b51\",\n\"name\": \"match_service_account\",\n\"order\": 1,\n\"conditions_policy\": \"ALWAYS\",\n\"actions\": {\n\"match_service_account\": {\n\"source\": \"account\",\n\"target\": \"data.project_id\"\n}\n},\n\"options\": {\n\"stop_processing\": true\n},\n\"tags\": {},\n\"data_source_id\": \"ds-c96609f5afeb\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-05-25T16:01:51.858Z\"\n}",
+              "requestType": "GetDataSourceRuleRequest",
+              "requestLongType": "GetDataSourceRuleRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.GetDataSourceRuleRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "DataSourceRuleInfo",
+              "responseLongType": "DataSourceRuleInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.DataSourceRuleInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/cost-analysis/v1/data-source-rule/get",
                       "body": "*"
                     }
                   ]
@@ -783,21 +981,21 @@
             },
             {
               "name": "list",
-              "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "description": "desc: Gets a list of all DataSourceRules. You can use a query to get a filtered list of DataSourceRules.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"data_source_rule_id\": \"rule-22fab02f6b51\",\n\"name\": \"match_service_account\",\n\"order\": 1,\n\"conditions_policy\": \"ALWAYS\",\n\"actions\": {\n\"match_service_account\": {\n\"source\": \"account\",\n\"target\": \"data.project_id\"\n}\n},\n\"options\": {\n\"stop_processing\": true\n},\n\"tags\": {},\n\"data_source_id\": \"ds-c96609f5afeb\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-05-25T16:01:51.858Z\"\n},\n{\n\"data_source_rule_id\": \"rule-188d366e9817\",\n\"name\": \"match_service_account\",\n\"order\": 1,\n\"conditions_policy\": \"ALWAYS\",\n\"actions\": {\n\"match_service_account\": {\n\"source\": \"account\",\n\"target\": \"data.account_id\"\n}\n},\n\"options\": {\n\"stop_processing\": true\n},\n\"tags\": {},\n\"data_source_id\": \"ds-fcba92ca73b1\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-06-03T16:00:54.099Z\"\n}\n],\n\"total_count\": 2\n}",
+              "requestType": "DataSourceRuleQuery",
+              "requestLongType": "DataSourceRuleQuery",
+              "requestFullType": "spaceone.api.cost_analysis.v1.DataSourceRuleQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "DataSourceRulesInfo",
+              "responseLongType": "DataSourceRulesInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.DataSourceRulesInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/cost-analysis/v1/data-source-rule/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +1005,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "DataSourceRuleStatQuery",
+              "requestLongType": "DataSourceRuleStatQuery",
+              "requestFullType": "spaceone.api.cost_analysis.v1.DataSourceRuleStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +1018,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/cost-analysis/v1/data-source-rule/stat",
                       "body": "*"
                     }
                   ]

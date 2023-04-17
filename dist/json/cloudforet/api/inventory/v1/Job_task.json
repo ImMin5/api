@@ -1,33 +1,86 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/inventory/v1/job_task.proto",
+      "description": "desc: A JobTask is a unit for collecting external cloud resources. The resource belongs to a specific service account.",
+      "package": "spaceone.api.inventory.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
       "enums": [
         {
-          "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+          "name": "JobTaskStatus",
+          "longName": "JobTaskInfo.JobTaskStatus",
+          "fullName": "spaceone.api.inventory.v1.JobTaskInfo.JobTaskStatus",
           "description": "",
           "values": [
             {
-              "name": "NONE",
+              "name": "JOB_TASK_STATE_NONE",
               "number": "0",
               "description": ""
             },
             {
-              "name": "ENABLED",
+              "name": "PENDING",
               "number": "1",
               "description": ""
             },
             {
-              "name": "DISABLED",
+              "name": "CANCELED",
               "number": "2",
+              "description": ""
+            },
+            {
+              "name": "IN_PROGRESS",
+              "number": "3",
+              "description": ""
+            },
+            {
+              "name": "SUCCESS",
+              "number": "4",
+              "description": ""
+            },
+            {
+              "name": "FAILURE",
+              "number": "5",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "JobTaskStatus",
+          "longName": "JobTaskQuery.JobTaskStatus",
+          "fullName": "spaceone.api.inventory.v1.JobTaskQuery.JobTaskStatus",
+          "description": "",
+          "values": [
+            {
+              "name": "JOB_TASK_STATE_NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "PENDING",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "CANCELED",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "IN_PROGRESS",
+              "number": "3",
+              "description": ""
+            },
+            {
+              "name": "SUCCESS",
+              "number": "4",
+              "description": ""
+            },
+            {
+              "name": "FAILURE",
+              "number": "5",
               "description": ""
             }
           ]
@@ -36,9 +89,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "GetJobTaskRequest",
+          "longName": "GetJobTaskRequest",
+          "fullName": "spaceone.api.inventory.v1.GetJobTaskRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -46,91 +99,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule",
-              "description": "is_required: true",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "options",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tags",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "schedule_id",
+              "name": "job_task_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -168,9 +137,9 @@
           ]
         },
         {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+          "name": "JobTaskInfo",
+          "longName": "JobTaskInfo",
+          "fullName": "spaceone.api.inventory.v1.JobTaskInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,7 +147,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "job_task_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -190,7 +159,91 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
+              "name": "status",
+              "description": "",
+              "label": "",
+              "type": "JobTaskStatus",
+              "longType": "JobTaskInfo.JobTaskStatus",
+              "fullType": "spaceone.api.inventory.v1.JobTaskInfo.JobTaskStatus",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_count",
+              "description": "",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "updated_count",
+              "description": "",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "failure_count",
+              "description": "",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "deleted_count",
+              "description": "",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "disconnected_count",
+              "description": "",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "errors",
+              "description": "",
+              "label": "repeated",
+              "type": "ErrorInfo",
+              "longType": "ErrorInfo",
+              "fullType": "spaceone.api.inventory.v1.ErrorInfo",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "job_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -202,55 +255,43 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "secret_id",
               "description": "",
               "label": "",
-              "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "provider",
               "description": "",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "service_account_id",
               "description": "",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "tags",
-              "description": "",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
+              "name": "project_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -286,7 +327,19 @@
               "defaultValue": ""
             },
             {
-              "name": "last_scheduled_at",
+              "name": "started_at",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "finished_at",
               "description": "",
               "label": "",
               "type": "string",
@@ -300,9 +353,9 @@
           ]
         },
         {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+          "name": "JobTaskQuery",
+          "longName": "JobTaskQuery",
+          "fullName": "spaceone.api.inventory.v1.JobTaskQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -322,7 +375,7 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule_id",
+              "name": "job_task_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -334,7 +387,19 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
+              "name": "status",
+              "description": "is_required: false",
+              "label": "",
+              "type": "JobTaskStatus",
+              "longType": "JobTaskQuery.JobTaskStatus",
+              "fullType": "spaceone.api.inventory.v1.JobTaskQuery.JobTaskStatus",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "job_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -346,7 +411,7 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "secret_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -358,7 +423,31 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "provider",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "service_account_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -384,9 +473,9 @@
           ]
         },
         {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+          "name": "JobTaskRequest",
+          "longName": "JobTaskRequest",
+          "fullName": "spaceone.api.inventory.v1.JobTaskRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -394,7 +483,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "job_task_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -420,9 +509,9 @@
           ]
         },
         {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+          "name": "JobTaskStatQuery",
+          "longName": "JobTaskStatQuery",
+          "fullName": "spaceone.api.inventory.v1.JobTaskStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -456,69 +545,9 @@
           ]
         },
         {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cron",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "interval",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "minutes",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+          "name": "JobTasksInfo",
+          "longName": "JobTasksInfo",
+          "fullName": "spaceone.api.inventory.v1.JobTasksInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -529,9 +558,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "type": "JobTaskInfo",
+              "longType": "JobTaskInfo",
+              "fullType": "spaceone.api.inventory.v1.JobTaskInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -550,197 +579,21 @@
               "defaultValue": ""
             }
           ]
-        },
-        {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "schedule_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "options",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tags",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
         }
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "JobTask",
+          "longName": "JobTask",
+          "fullName": "spaceone.api.inventory.v1.JobTask",
           "description": "",
           "methods": [
             {
-              "name": "create",
-              "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "update",
-              "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "enable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "disable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
               "name": "delete",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "description": "desc: Deletes a specific JobTask. You must specify the `job_task_id` of the JobTask to delete.\nrequest_example: \u003e-\n{\n\"job_task_id\": \"job-task-123456789012\",\n\"domain_id\": \"domain-123456789012\"\n}",
+              "requestType": "JobTaskRequest",
+              "requestLongType": "JobTaskRequest",
+              "requestFullType": "spaceone.api.inventory.v1.JobTaskRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -751,7 +604,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/inventory/v1/job-task/delete",
                       "body": "*"
                     }
                   ]
@@ -760,21 +613,21 @@
             },
             {
               "name": "get",
-              "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "description": "desc: Gets a specific JobTask. Prints detailed information about the JobTask, including its state, updated or failure counts, and error log.\nrequest_example: \u003e-\n{\n\"job_task_id\": \"job-task-123456789012\",\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"job_task_id\": \"job-task-123456789012\",\n\"status\": \"FAILURE\",\n\"updated_count\": 199,\n\"failure_count\": 1,\n\"errors\": [\n{\n\"error_code\": \"ERROR_PLUGIN\",\n\"message\": \"{\\\"tags\\\": [\\\"Could not interpret the value as a list\\\"]}\",\n\"additional\": {\n\"domain_id\": \"domain-123456789012\",\n\"resource_id\": \"eventarc-us-central1-function\",\n\"resource_type\": \"inventory.CloudService\",\n\"cloud_service_group\": \"Pub/Sub\",\n\"cloud_service_type\": \"Subscription\",\n\"provider\": \"google_cloud\"\n}\n}\n],\n\"job_id\": \"job-123456789012\",\n\"secret_id\": \"secret-123456789012\",\n\"provider\": \"google_cloud\",\n\"service_account_id\": \"sa-123456789012\",\n\"project_id\": \"project-123456789012\",\n\"domain_id\": \"domain-123456789012\",\n\"created_at\": \"2022-01-01T11:00:02.588Z\",\n\"started_at\": \"2022-01-01T11:00:02.819Z\",\n\"finished_at\": \"2022-01-01T11:00:34.398Z\"\n}",
+              "requestType": "GetJobTaskRequest",
+              "requestLongType": "GetJobTaskRequest",
+              "requestFullType": "spaceone.api.inventory.v1.GetJobTaskRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "JobTaskInfo",
+              "responseLongType": "JobTaskInfo",
+              "responseFullType": "spaceone.api.inventory.v1.JobTaskInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/inventory/v1/job-task/get",
                       "body": "*"
                     }
                   ]
@@ -783,21 +636,21 @@
             },
             {
               "name": "list",
-              "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "description": "desc: Gets a list of all JobTasks in a specific Job. You can use a query to get a filtered list of JobTasks.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"job_task_id\": \"job_task-69b301d0fbfc\",\n\"status\": \"SUCCESS\",\n\"updated_count\": 55,\n\"job_id\": \"job-587a3d3b4db3\",\n\"secret_id\": \"secret-957e407bfc15\",\n\"provider\": \"aws\",\n\"service_account_id\": \"sa-a41ff4765671\",\n\"project_id\": \"project-77dffd3f7cd3\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-06-17T08:00:00.680Z\",\n\"started_at\": \"2022-06-17T08:00:00.914Z\",\n\"finished_at\": \"2022-06-17T08:05:48.933Z\"\n},\n{\n\"job_task_id\": \"job_task-c5077338cf23\",\n\"status\": \"SUCCESS\",\n\"updated_count\": 1921,\n\"job_id\": \"job-587a3d3b4db3\",\n\"secret_id\": \"secret-1cd7417c1889\",\n\"provider\": \"aws\",\n\"service_account_id\": \"sa-5e186fcc7c91\",\n\"project_id\": \"project-18655561c535\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-06-17T08:00:00.582Z\",\n\"started_at\": \"2022-06-17T08:00:00.814Z\",\n\"finished_at\": \"2022-06-17T08:07:31.995Z\"\n}\n],\n\"total_count\": 4839\n}",
+              "requestType": "JobTaskQuery",
+              "requestLongType": "JobTaskQuery",
+              "requestFullType": "spaceone.api.inventory.v1.JobTaskQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "JobTasksInfo",
+              "responseLongType": "JobTasksInfo",
+              "responseFullType": "spaceone.api.inventory.v1.JobTasksInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/inventory/v1/job-task/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +660,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "JobTaskStatQuery",
+              "requestLongType": "JobTaskStatQuery",
+              "requestFullType": "spaceone.api.inventory.v1.JobTaskStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +673,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/inventory/v1/job-task/stat",
                       "body": "*"
                     }
                   ]

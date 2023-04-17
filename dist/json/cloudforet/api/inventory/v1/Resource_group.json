@@ -1,44 +1,20 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/inventory/v1/resource_group.proto",
+      "description": "desc: A ResourceGroup is a group of `resource`s from various `provider`s.",
+      "package": "spaceone.api.inventory.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
-      "enums": [
-        {
-          "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
-          "description": "",
-          "values": [
-            {
-              "name": "NONE",
-              "number": "0",
-              "description": ""
-            },
-            {
-              "name": "ENABLED",
-              "number": "1",
-              "description": ""
-            },
-            {
-              "name": "DISABLED",
-              "number": "2",
-              "description": ""
-            }
-          ]
-        }
-      ],
+      "enums": [],
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "CreateResourceGroupRequest",
+          "longName": "CreateResourceGroupRequest",
+          "fullName": "spaceone.api.inventory.v1.CreateResourceGroupRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -47,7 +23,7 @@
           "fields": [
             {
               "name": "name",
-              "description": "is_required: false",
+              "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -58,12 +34,12 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "resources",
               "description": "is_required: true",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "label": "repeated",
+              "type": "Resource",
+              "longType": "Resource",
+              "fullType": "spaceone.api.inventory.v1.Resource",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -94,7 +70,7 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "project_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -120,9 +96,9 @@
           ]
         },
         {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+          "name": "GetResourceGroupRequest",
+          "longName": "GetResourceGroupRequest",
+          "fullName": "spaceone.api.inventory.v1.GetResourceGroupRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -130,7 +106,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "resource_group_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -168,9 +144,9 @@
           ]
         },
         {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+          "name": "Resource",
+          "longName": "Resource",
+          "fullName": "spaceone.api.inventory.v1.Resource",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,7 +154,55 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "resource_type",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "filter",
+              "description": "is_required: false",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "keyword",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ResourceGroupInfo",
+          "longName": "ResourceGroupInfo",
+          "fullName": "spaceone.api.inventory.v1.ResourceGroupInfo",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "resource_group_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -202,24 +226,12 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "resources",
               "description": "",
-              "label": "",
-              "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule",
-              "description": "",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "label": "repeated",
+              "type": "Resource",
+              "longType": "Resource",
+              "fullType": "spaceone.api.inventory.v1.Resource",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -250,7 +262,7 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "project_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -284,25 +296,13 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
-            {
-              "name": "last_scheduled_at",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
             }
           ]
         },
         {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+          "name": "ResourceGroupQuery",
+          "longName": "ResourceGroupQuery",
+          "fullName": "spaceone.api.inventory.v1.ResourceGroupQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -322,7 +322,7 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule_id",
+              "name": "resource_group_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -346,19 +346,7 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
+              "name": "project_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -384,9 +372,9 @@
           ]
         },
         {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+          "name": "ResourceGroupRequest",
+          "longName": "ResourceGroupRequest",
+          "fullName": "spaceone.api.inventory.v1.ResourceGroupRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -394,7 +382,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "resource_group_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -420,9 +408,9 @@
           ]
         },
         {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+          "name": "ResourceGroupStatQuery",
+          "longName": "ResourceGroupStatQuery",
+          "fullName": "spaceone.api.inventory.v1.ResourceGroupStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -456,69 +444,9 @@
           ]
         },
         {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cron",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "interval",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "minutes",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+          "name": "ResourceGroupsInfo",
+          "longName": "ResourceGroupsInfo",
+          "fullName": "spaceone.api.inventory.v1.ResourceGroupsInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -529,9 +457,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "type": "ResourceGroupInfo",
+              "longType": "ResourceGroupInfo",
+              "fullType": "spaceone.api.inventory.v1.ResourceGroupInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -552,9 +480,9 @@
           ]
         },
         {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+          "name": "UpdateResourceGroupRequest",
+          "longName": "UpdateResourceGroupRequest",
+          "fullName": "spaceone.api.inventory.v1.UpdateResourceGroupRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -562,7 +490,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "resource_group_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -586,12 +514,12 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "resources",
               "description": "is_required: false",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "label": "repeated",
+              "type": "Resource",
+              "longType": "Resource",
+              "fullType": "spaceone.api.inventory.v1.Resource",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -622,6 +550,30 @@
               "defaultValue": ""
             },
             {
+              "name": "release_project",
+              "description": "is_required: false",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "domain_id",
               "description": "is_required: true",
               "label": "",
@@ -638,28 +590,28 @@
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "ResourceGroup",
+          "longName": "ResourceGroup",
+          "fullName": "spaceone.api.inventory.v1.ResourceGroup",
           "description": "",
           "methods": [
             {
               "name": "create",
-              "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+              "description": "desc: Creates a new ResourceGroup. You can integrate `resource`s from different `provider`s by specifying the cloud resources to be grouped in the `resources` parameter.\nrequest_example: \u003e-\n{\n\"name\": \"azure-group-1\",\n\"resources\": [\n{\n\"resource_type\": \"inventory.Server?provider=azure\u0026cloud_service_group=Compute\u0026cloud_service_type=VirtualMachine\",\n\"filter\": [\n{\"o\": \"eq\", \"k\": \"provider\", \"v\": \"azure\"},\n{\"o\": \"eq\", \"k\": \"cloud_service_group\", \"v\": \"Compute\"},\n{\"o\": \"eq\", \"k\": \"cloud_service_type\", \"v\": \"VirtualMachine\"}\n]\n}\n],\n\"options\": {\n\"raw_filter\": []\n},\n\"tags\": {\n\"a\": \"b\"\n}\n}\nresponse_example: \u003e-\n{\n\"resource_group_id\": \"rsc-grp-7d46a1fc7738\",\n\"name\": \"azure-group-1\",\n\"resources\": [\n{\n\"resource_type\": \"inventory.Server?provider=azure\u0026cloud_service_group=Compute\u0026cloud_service_type=VirtualMachine\",\n\"filter\": [\n{\n\"k\": \"provider\",\n\"v\": \"azure\",\n\"o\": \"eq\"\n},\n{\n\"k\": \"cloud_service_group\",\n\"v\": \"Compute\",\n\"o\": \"eq\"\n},\n{\n\"k\": \"cloud_service_type\",\n\"v\": \"VirtualMachine\",\n\"o\": \"eq\"\n}\n]\n}\n],\n\"options\": {\n\"raw_filter\": []\n},\n\"tags\": {\n\"a\": \"b\"\n},\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-06-23T01:50:33.152Z\"\n}",
+              "requestType": "CreateResourceGroupRequest",
+              "requestLongType": "CreateResourceGroupRequest",
+              "requestFullType": "spaceone.api.inventory.v1.CreateResourceGroupRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "ResourceGroupInfo",
+              "responseLongType": "ResourceGroupInfo",
+              "responseFullType": "spaceone.api.inventory.v1.ResourceGroupInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
+                      "pattern": "/inventory/v1/resource-group/create",
                       "body": "*"
                     }
                   ]
@@ -668,67 +620,21 @@
             },
             {
               "name": "update",
-              "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+              "description": "desc: Updates a specific ResourceGroup. You can make changes in ResourceGroup settings, including `name`, `tags`, and grouped resources in the ResourceGroup.\nrequest_example: \u003e-\n{\n\"resource_group_id\": \"rsc-grp-7d46a1fc7738\",\n\"name\": \"azure-grp-test2\",\n\"resources\": [\n{\n\"resource_type\": \"inventory.Server?provider=azure\u0026cloud_service_group=Compute\u0026cloud_service_type=VirtualMachine\",\n\"filter\": [\n{\"k\": \"provider\", \"v\": \"azure\", \"o\": \"eq\"},\n{\"o\": \"eq\", \"k\": \"cloud_service_group\", \"v\": \"Compute\"},\n{\"v\": \"VirtualMachine\", \"k\": \"cloud_service_type\", \"o\": \"eq\"}\n]\n}\n],\n\"options\": {},\n\"tags\": {\n\"b\": \"c\"\n}\n}\nresponse_example: \u003e-\n{\n\"resource_group_id\": \"rsc-grp-7d46a1fc7738\",\n\"name\": \"azure-grp-test2\",\n\"resources\": [\n{\n\"resource_type\": \"inventory.Server?provider=azure\u0026cloud_service_group=Compute\u0026cloud_service_type=VirtualMachine\",\n\"filter\": [\n{\n\"k\": \"provider\",\n\"v\": \"azure\",\n\"o\": \"eq\"\n},\n{\n\"k\": \"cloud_service_group\",\n\"v\": \"Compute\",\n\"o\": \"eq\"\n},\n{\n\"k\": \"cloud_service_type\",\n\"v\": \"VirtualMachine\",\n\"o\": \"eq\"\n}\n]\n}\n],\n\"options\": {\n\"raw_filter\": []\n},\n\"tags\": {\n\"a\": \"b\"\n},\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-06-23T01:50:33.152Z\"\n}",
+              "requestType": "UpdateResourceGroupRequest",
+              "requestLongType": "UpdateResourceGroupRequest",
+              "requestFullType": "spaceone.api.inventory.v1.UpdateResourceGroupRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "ResourceGroupInfo",
+              "responseLongType": "ResourceGroupInfo",
+              "responseFullType": "spaceone.api.inventory.v1.ResourceGroupInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "enable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "disable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
+                      "pattern": "/inventory/v1/resource-group/update",
                       "body": "*"
                     }
                   ]
@@ -737,10 +643,10 @@
             },
             {
               "name": "delete",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "description": "desc: Deletes a specific ResourceGroup. You must specify the `resource_group_id` of the ResourceGroup to delete.\nrequest_example: \u003e-\n{\n\"resource_group_id\": \"rsc-grp-aa3c4ca465b2\"\n}",
+              "requestType": "ResourceGroupRequest",
+              "requestLongType": "ResourceGroupRequest",
+              "requestFullType": "spaceone.api.inventory.v1.ResourceGroupRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -751,7 +657,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/inventory/v1/resource-group/delete",
                       "body": "*"
                     }
                   ]
@@ -760,21 +666,21 @@
             },
             {
               "name": "get",
-              "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "description": "desc: Gets a specific ResourceGroup. Prints detailed information about the ResourceGroup, including the information of the grouped cloud resources.\nrequest_example: \u003e-\n{\n\"resource_group_id\": \"rsc-grp-aa3c4ca465b2\"\n}\nresponse_example: \u003e-\n{\n\"resource_group_id\": \"rsc-grp-aa3c4ca465b2\",\n\"name\": \"stset\",\n\"resources\": [\n{\n\"resource_type\": \"inventory.Server?provider=aws\u0026cloud_service_group=EC2\u0026cloud_service_type=Instance\",\n\"filter\": [\n{\n\"k\": \"provider\",\n\"o\": \"eq\",\n\"v\": \"aws\"\n},\n{\n\"v\": \"EC2\",\n\"k\": \"cloud_service_group\",\n\"o\": \"eq\"\n},\n{\n\"o\": \"eq\",\n\"k\": \"cloud_service_type\",\n\"v\": \"Instance\"\n}\n],\n\"keyword\": \"test\"\n}\n],\n\"options\": {\n\"raw_filter\": []\n},\n\"tags\": {},\n\"project_id\": \"project-18655561c535\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2021-06-01T10:23:20.537Z\"\n}",
+              "requestType": "GetResourceGroupRequest",
+              "requestLongType": "GetResourceGroupRequest",
+              "requestFullType": "spaceone.api.inventory.v1.GetResourceGroupRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "ResourceGroupInfo",
+              "responseLongType": "ResourceGroupInfo",
+              "responseFullType": "spaceone.api.inventory.v1.ResourceGroupInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/inventory/v1/resource-group/get",
                       "body": "*"
                     }
                   ]
@@ -783,21 +689,21 @@
             },
             {
               "name": "list",
-              "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "description": "desc: Gets a list of all ResourceGroups. You can use a query to get a filtered list of ResourceGroups.\nrequest_example: \u003e-\n{\n\"query\": {\n\"filter\": [\n{\n\"key\": \"name\",\n\"value\": [\n\"azure-vmss-group\",\n\"stset\"\n],\n\"operator\": \"in\"\n}\n]\n}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"resource_group_id\": \"rsc-grp-4c86e071e0f0\",\n\"name\": \"azure-vmss-group\",\n\"resources\": [\n{\n\"resource_type\": \"inventory.CloudService?provider=azure\u0026cloud_service_group=Compute\u0026cloud_service_type=VmScaleSet\",\n\"filter\": [\n{\n\"k\": \"provider\",\n\"v\": \"azure\",\n\"o\": \"eq\"\n},\n{\n\"v\": \"Compute\",\n\"k\": \"cloud_service_group\",\n\"o\": \"eq\"\n},\n{\n\"k\": \"cloud_service_type\",\n\"v\": \"VmScaleSet\",\n\"o\": \"eq\"\n}\n]\n}\n],\n\"options\": {\n\"raw_filter\": []\n},\n\"tags\": {},\n\"project_id\": \"project-9074eea97d7e\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2021-04-23T03:23:40.037Z\"\n},\n{\n\"resource_group_id\": \"rsc-grp-aa3c4ca465b2\",\n\"name\": \"stset\",\n\"resources\": [\n{\n\"resource_type\": \"inventory.Server?provider=aws\u0026cloud_service_group=EC2\u0026cloud_service_type=Instance\",\n\"filter\": [\n{\n\"k\": \"provider\",\n\"v\": \"aws\",\n\"o\": \"eq\"\n},\n{\n\"v\": \"EC2\",\n\"k\": \"cloud_service_group\",\n\"o\": \"eq\"\n},\n{\n\"k\": \"cloud_service_type\",\n\"v\": \"Instance\",\n\"o\": \"eq\"\n}\n],\n\"keyword\": \"test\"\n}\n],\n\"options\": {\n\"raw_filter\": [\n[\n\"test\"\n]\n]\n},\n\"tags\": {},\n\"project_id\": \"project-18655561c535\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2021-06-01T10:23:20.537Z\"\n}\n],\n\"total_count\": 2\n}",
+              "requestType": "ResourceGroupQuery",
+              "requestLongType": "ResourceGroupQuery",
+              "requestFullType": "spaceone.api.inventory.v1.ResourceGroupQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "ResourceGroupsInfo",
+              "responseLongType": "ResourceGroupsInfo",
+              "responseFullType": "spaceone.api.inventory.v1.ResourceGroupsInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/inventory/v1/resource-group/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +713,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "ResourceGroupStatQuery",
+              "requestLongType": "ResourceGroupStatQuery",
+              "requestFullType": "spaceone.api.inventory.v1.ResourceGroupStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +726,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/inventory/v1/resource-group/stat",
                       "body": "*"
                     }
                   ]

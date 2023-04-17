@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/repository/v1/schema.proto",
+      "description": "desc: A Schema is a data structure used in all domains. For example, data forms of Google OAuth2 credentials or AWS access keys can be a Schema resource.",
+      "package": "spaceone.api.repository.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
@@ -11,8 +11,8 @@
       "enums": [
         {
           "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+          "longName": "SchemaQuery.State",
+          "fullName": "spaceone.api.repository.v1.SchemaQuery.State",
           "description": "",
           "values": [
             {
@@ -36,9 +36,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "CreateSchemaRequest",
+          "longName": "CreateSchemaRequest",
+          "fullName": "spaceone.api.repository.v1.CreateSchemaRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -47,7 +47,7 @@
           "fields": [
             {
               "name": "name",
-              "description": "is_required: false",
+              "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -58,24 +58,48 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "service_type",
               "description": "is_required: true",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
-              "description": "is_required: false",
+              "name": "schema_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "schema",
+              "description": "is_required: true",
               "label": "",
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "is_required: false",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -94,8 +118,8 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
-              "description": "is_required: true",
+              "name": "project_id",
+              "description": "is_required: false",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -120,9 +144,9 @@
           ]
         },
         {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+          "name": "GetRepositorySchemaRequest",
+          "longName": "GetRepositorySchemaRequest",
+          "fullName": "spaceone.api.repository.v1.GetRepositorySchemaRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -130,7 +154,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "name",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -144,6 +168,18 @@
             {
               "name": "domain_id",
               "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "repository_id",
+              "description": "is_required: false",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -164,22 +200,10 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
+            },
             {
-              "name": "schedule_id",
-              "description": "",
+              "name": "schema_id",
+              "description": "is_required: false",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -188,7 +212,19 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
+            }
+          ]
+        },
+        {
+          "name": "SchemaInfo",
+          "longName": "SchemaInfo",
+          "fullName": "spaceone.api.repository.v1.SchemaInfo",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
             {
               "name": "name",
               "description": "",
@@ -202,36 +238,48 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "service_type",
               "description": "",
               "label": "",
-              "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "schema_id",
               "description": "",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "schema",
               "description": "",
               "label": "",
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -250,7 +298,19 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "repository_info",
+              "description": "",
+              "label": "",
+              "type": "RepositoryInfo",
+              "longType": "RepositoryInfo",
+              "fullType": "spaceone.api.repository.v1.RepositoryInfo",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -286,7 +346,7 @@
               "defaultValue": ""
             },
             {
-              "name": "last_scheduled_at",
+              "name": "updated_at",
               "description": "",
               "label": "",
               "type": "string",
@@ -300,9 +360,9 @@
           ]
         },
         {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+          "name": "SchemaQuery",
+          "longName": "SchemaQuery",
+          "fullName": "spaceone.api.repository.v1.SchemaQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -322,7 +382,7 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule_id",
+              "name": "name",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -334,7 +394,55 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
+              "name": "service_type",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "repository_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "schema_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -349,6 +457,30 @@
               "name": "state",
               "description": "is_required: false",
               "label": "",
+              "type": "State",
+              "longType": "SchemaQuery.State",
+              "fullType": "spaceone.api.repository.v1.SchemaQuery.State",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "SchemaRequest",
+          "longName": "SchemaRequest",
+          "fullName": "spaceone.api.repository.v1.SchemaRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "is_required: true",
+              "label": "",
               "type": "string",
               "longType": "string",
               "fullType": "string",
@@ -358,7 +490,19 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "schema_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -368,61 +512,13 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
             }
           ]
         },
         {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "schedule_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+          "name": "SchemaStatQuery",
+          "longName": "SchemaStatQuery",
+          "fullName": "spaceone.api.repository.v1.SchemaStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -442,6 +538,18 @@
               "defaultValue": ""
             },
             {
+              "name": "repository_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "domain_id",
               "description": "is_required: true",
               "label": "",
@@ -456,69 +564,9 @@
           ]
         },
         {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cron",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "interval",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "minutes",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+          "name": "SchemasInfo",
+          "longName": "SchemasInfo",
+          "fullName": "spaceone.api.repository.v1.SchemasInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -529,9 +577,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "type": "SchemaInfo",
+              "longType": "SchemaInfo",
+              "fullType": "spaceone.api.repository.v1.SchemaInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -552,9 +600,9 @@
           ]
         },
         {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+          "name": "UpdateSchemaRequest",
+          "longName": "UpdateSchemaRequest",
+          "fullName": "spaceone.api.repository.v1.UpdateSchemaRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -562,7 +610,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "name",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -574,36 +622,24 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "schedule",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "options",
+              "name": "schema",
               "description": "is_required: false",
               "label": "",
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "is_required: false",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -638,28 +674,28 @@
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "Schema",
+          "longName": "Schema",
+          "fullName": "spaceone.api.repository.v1.Schema",
           "description": "",
           "methods": [
             {
               "name": "create",
-              "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+              "description": "desc: Creates a new Schema. You must specify the parameters: `service_type`, `name`, and `schema`(data structure). With the parameter `domain_id`, you can choose whether you will create a Schema in `Local` or externally. The Schema created includes `repository_info`, information about where the resource is managed.\nrequest_example: \u003e-\n{\n\"name\": \"slack_webhook\",\n\"service_type\": \"secret.credentials\",\n\"schema\": {},\n\"labels\": [],\n\"tags\": {\n\"description\": \"Slack Webhook\"\n},\n\"domain_id\": \"domain-987654321098\"\n}\nresponse_example: \u003e-\n{\n\"name\": \"slack_webhook\",\n\"service_type\": \"secret.credentials\",\n\"schema\": {},\n\"labels\": [],\n\"tags\": {\n\"description\": \"Slack Webhook\"\n},\n\"repository_info\": {\n\"repository_id\": \"repo-123456789012\",\n\"name\": \"Local\",\n\"repository_type\": \"local\"\n},\n\"domain_id\": \"domain-987654321098\",\n\"created_at\": \"2022-01-01T05:46:49.929Z\",\n\"updated_at\": \"2022-01-01T05:46:49.929Z\"\n}",
+              "requestType": "CreateSchemaRequest",
+              "requestLongType": "CreateSchemaRequest",
+              "requestFullType": "spaceone.api.repository.v1.CreateSchemaRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "SchemaInfo",
+              "responseLongType": "SchemaInfo",
+              "responseFullType": "spaceone.api.repository.v1.SchemaInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
+                      "pattern": "/repository/v1/schema/create",
                       "body": "*"
                     }
                   ]
@@ -668,67 +704,21 @@
             },
             {
               "name": "update",
-              "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+              "description": "desc: Updates a specific Schema. You can make changes in Schema settings, including `name`, `schema`, `labels`, and `tags`.\nrequest_example: \u003e-\n{\n\"name\": \"slack_webhook_test\",\n\"schema\": {},\n\"labels\": [],\n\"tags\": {},\n\"domain_id\": \"domain-987654321098\"\n}\nresponse_example: \u003e-\n{\n\"name\": \"slack_webhook_test\",\n\"service_type\": \"secret.credentials\",\n\"schema\": {},\n\"labels\": [],\n\"tags\": {\n\"description\": \"Slack Webhook\"\n},\n\"repository_info\": {\n\"repository_id\": \"repo-123456789012\",\n\"name\": \"Local\",\n\"repository_type\": \"local\"\n},\n\"domain_id\": \"domain-987654321098\",\n\"created_at\": \"2022-01-01T05:46:49.929Z\",\n\"updated_at\": \"2022-01-01T05:46:49.929Z\"\n}",
+              "requestType": "UpdateSchemaRequest",
+              "requestLongType": "UpdateSchemaRequest",
+              "requestFullType": "spaceone.api.repository.v1.UpdateSchemaRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "SchemaInfo",
+              "responseLongType": "SchemaInfo",
+              "responseFullType": "spaceone.api.repository.v1.SchemaInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "enable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "disable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
+                      "pattern": "/repository/v1/schema/update",
                       "body": "*"
                     }
                   ]
@@ -737,10 +727,10 @@
             },
             {
               "name": "delete",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "description": "desc: Deletes a specific Schema. You must specify the `name` of the Schema to delete, as the `name` is an identifier of Schema resources.\nrequest_example: \u003e-\n{\n\"name\": \"slack_webhook\"\n}",
+              "requestType": "SchemaRequest",
+              "requestLongType": "SchemaRequest",
+              "requestFullType": "spaceone.api.repository.v1.SchemaRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -751,7 +741,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/repository/v1/schema/delete",
                       "body": "*"
                     }
                   ]
@@ -760,21 +750,21 @@
             },
             {
               "name": "get",
-              "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "description": "desc: Gets a specific Schema. You must specify the `name` of the Schema to get, as the `name` is an identifier of Schema resources. You can use the parameter `repository_id` to limit the scope of the method to a specific Repository.\nrequest_example: \u003e-\n{\n\"name\": \"slack_webhook\",\n\"repository_id\": \"repo-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"name\": \"slack_webhook\",\n\"service_type\": \"secret.credentials\",\n\"schema\": {},\n\"labels\": [],\n\"tags\": {\n\"description\": \"Slack Webhook\"\n},\n\"repository_info\": {\n\"repository_id\": \"repo-123456789012\",\n\"name\": \"Local\",\n\"repository_type\": \"local\"\n},\n\"domain_id\": \"domain-987654321098\",\n\"created_at\": \"2022-01-01T10:20:09.064Z\",\n\"updated_at\": \"2022-01-01T10:20:09.064Z\"\n}",
+              "requestType": "GetRepositorySchemaRequest",
+              "requestLongType": "GetRepositorySchemaRequest",
+              "requestFullType": "spaceone.api.repository.v1.GetRepositorySchemaRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "SchemaInfo",
+              "responseLongType": "SchemaInfo",
+              "responseFullType": "spaceone.api.repository.v1.SchemaInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/repository/v1/schema/get",
                       "body": "*"
                     }
                   ]
@@ -783,21 +773,21 @@
             },
             {
               "name": "list",
-              "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "description": "desc: Gets a list of all Schemas in a specific Repository. The parameter `repository_id` is used as an identifier of a Repository to get its list of Schemas. You can use a query to get a filtered list of Schemas.\nrequest_example: \u003e-\n{\n\"query\": {},\n\"name\": \"slack_webhook\",\n\"service_type\": \"secret.credentials\",\n\"repository_id\": \"repo-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"name\": \"slack_webhook\",\n\"service_type\": \"secret.credentials\",\n\"schema\": {},\n\"labels\": [],\n\"tags\": {\n\"description\": \"Slack Webhook\"\n},\n\"repository_info\": {\n\"repository_id\": \"repo-123456789012\",\n\"name\": \"Local\",\n\"repository_type\": \"local\"\n},\n\"domain_id\": \"domain-987654321098\",\n\"created_at\": \"2022-01-01T10:20:09.064Z\",\n\"updated_at\": \"2022-01-01T10:20:09.064Z\"\n}\n],\n\"total_count\": 1\n}",
+              "requestType": "SchemaQuery",
+              "requestLongType": "SchemaQuery",
+              "requestFullType": "spaceone.api.repository.v1.SchemaQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "SchemasInfo",
+              "responseLongType": "SchemasInfo",
+              "responseFullType": "spaceone.api.repository.v1.SchemasInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/repository/v1/schema/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +797,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "SchemaStatQuery",
+              "requestLongType": "SchemaStatQuery",
+              "requestFullType": "spaceone.api.repository.v1.SchemaStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +810,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/repository/v1/schema/stat",
                       "body": "*"
                     }
                   ]

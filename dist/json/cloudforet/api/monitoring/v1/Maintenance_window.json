@@ -1,18 +1,18 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/monitoring/v1/maintenance_window.proto",
+      "description": "desc: A MaintenanceWindow is a resource snoozing Alerts during maintenance time.",
+      "package": "spaceone.api.monitoring.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
       "enums": [
         {
-          "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+          "name": "MaintenanceWindowState",
+          "longName": "MaintenanceWindowInfo.MaintenanceWindowState",
+          "fullName": "spaceone.api.monitoring.v1.MaintenanceWindowInfo.MaintenanceWindowState",
           "description": "",
           "values": [
             {
@@ -21,12 +21,35 @@
               "description": ""
             },
             {
-              "name": "ENABLED",
+              "name": "OPEN",
               "number": "1",
               "description": ""
             },
             {
-              "name": "DISABLED",
+              "name": "CLOSED",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "MaintenanceWindowState",
+          "longName": "MaintenanceWindowQuery.MaintenanceWindowState",
+          "fullName": "spaceone.api.monitoring.v1.MaintenanceWindowQuery.MaintenanceWindowState",
+          "description": "",
+          "values": [
+            {
+              "name": "NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "OPEN",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "CLOSED",
               "number": "2",
               "description": ""
             }
@@ -36,9 +59,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "CreateMaintenanceWindowRequest",
+          "longName": "CreateMaintenanceWindowRequest",
+          "fullName": "spaceone.api.monitoring.v1.CreateMaintenanceWindowRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -46,8 +69,8 @@
           "extensions": [],
           "fields": [
             {
-              "name": "name",
-              "description": "is_required: false",
+              "name": "title",
+              "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -58,24 +81,36 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "projects",
               "description": "is_required: true",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
-              "description": "is_required: false",
+              "name": "start_time",
+              "description": "is_required: true",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "end_time",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -88,18 +123,6 @@
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -120,9 +143,9 @@
           ]
         },
         {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+          "name": "GetMaintenanceWindowRequest",
+          "longName": "GetMaintenanceWindowRequest",
+          "fullName": "spaceone.api.monitoring.v1.GetMaintenanceWindowRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -130,7 +153,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "maintenance_window_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -168,9 +191,9 @@
           ]
         },
         {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+          "name": "MaintenanceWindowInfo",
+          "longName": "MaintenanceWindowInfo",
+          "fullName": "spaceone.api.monitoring.v1.MaintenanceWindowInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,7 +201,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "maintenance_window_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -190,7 +213,7 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
+              "name": "title",
               "description": "",
               "label": "",
               "type": "string",
@@ -205,33 +228,33 @@
               "name": "state",
               "description": "",
               "label": "",
-              "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+              "type": "MaintenanceWindowState",
+              "longType": "MaintenanceWindowInfo.MaintenanceWindowState",
+              "fullType": "spaceone.api.monitoring.v1.MaintenanceWindowInfo.MaintenanceWindowState",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "start_time",
               "description": "",
               "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "end_time",
               "description": "",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -250,7 +273,19 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "projects",
+              "description": "",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -262,7 +297,7 @@
               "defaultValue": ""
             },
             {
-              "name": "domain_id",
+              "name": "created_by",
               "description": "",
               "label": "",
               "type": "string",
@@ -286,7 +321,19 @@
               "defaultValue": ""
             },
             {
-              "name": "last_scheduled_at",
+              "name": "updated_at",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "closed_at",
               "description": "",
               "label": "",
               "type": "string",
@@ -300,9 +347,9 @@
           ]
         },
         {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+          "name": "MaintenanceWindowQuery",
+          "longName": "MaintenanceWindowQuery",
+          "fullName": "spaceone.api.monitoring.v1.MaintenanceWindowQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -322,7 +369,7 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule_id",
+              "name": "maintenance_window_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -334,7 +381,7 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
+              "name": "title",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -349,6 +396,18 @@
               "name": "state",
               "description": "is_required: false",
               "label": "",
+              "type": "MaintenanceWindowState",
+              "longType": "MaintenanceWindowQuery.MaintenanceWindowState",
+              "fullType": "spaceone.api.monitoring.v1.MaintenanceWindowQuery.MaintenanceWindowState",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
+              "description": "is_required: false",
+              "label": "",
               "type": "string",
               "longType": "string",
               "fullType": "string",
@@ -358,7 +417,7 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "created_by",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -384,9 +443,9 @@
           ]
         },
         {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+          "name": "MaintenanceWindowRequest",
+          "longName": "MaintenanceWindowRequest",
+          "fullName": "spaceone.api.monitoring.v1.MaintenanceWindowRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -394,7 +453,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "maintenance_window_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -420,9 +479,9 @@
           ]
         },
         {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+          "name": "MaintenanceWindowStatQuery",
+          "longName": "MaintenanceWindowStatQuery",
+          "fullName": "spaceone.api.monitoring.v1.MaintenanceWindowStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -456,69 +515,9 @@
           ]
         },
         {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cron",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "interval",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "minutes",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+          "name": "MaintenanceWindowsInfo",
+          "longName": "MaintenanceWindowsInfo",
+          "fullName": "spaceone.api.monitoring.v1.MaintenanceWindowsInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -529,9 +528,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "type": "MaintenanceWindowInfo",
+              "longType": "MaintenanceWindowInfo",
+              "fullType": "spaceone.api.monitoring.v1.MaintenanceWindowInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -552,9 +551,9 @@
           ]
         },
         {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+          "name": "UpdateMaintenanceWindowRequest",
+          "longName": "UpdateMaintenanceWindowRequest",
+          "fullName": "spaceone.api.monitoring.v1.UpdateMaintenanceWindowRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -562,7 +561,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "maintenance_window_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -574,7 +573,7 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
+              "name": "title",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -586,24 +585,36 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "projects",
               "description": "is_required: false",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "start_time",
               "description": "is_required: false",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "end_time",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -638,28 +649,28 @@
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "MaintenanceWindow",
+          "longName": "MaintenanceWindow",
+          "fullName": "spaceone.api.monitoring.v1.MaintenanceWindow",
           "description": "",
           "methods": [
             {
               "name": "create",
-              "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+              "description": "desc: Creates a new MaintenanceWindow. When creating a MaintenanceWindow, you can set the title and maintenance schedule of the MaintenanceWindow. From the `start_time` to the `end_time` specified by the schedule set in this method, alerts in the Projects linked with the MaintenanceWindow are ceased.\nrequest_example: \u003e-\n{\n\"title\": \"The dev server is under regular maintenance.\",\n\"projects\": [\"project-123456789012\"],\n\"start_time\": \"2022-01-01T09:45:00.000Z\",\n\"end_time\": \"2022-01-01T10:45:00.000Z\",\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"maintenance_window_id\": \"mw-123456789012\",\n\"title\": \"The dev server is under regular maintenance.\",\n\"state\": \"OPEN\",\n\"start_time\": \"2022-01-01T09:45:00.000Z\",\n\"end_time\": \"2022-01-01T10:45:00.000Z\",\n\"tags\": {},\n\"projects\": [\n\"project-123456789012\"\n],\n\"domain_id\": \"domain-123456789012\",\n\"created_by\": \"user1@email.com\",\n\"created_at\": \"2022-06-02T09:46:49.196Z\",\n\"updated_at\": \"2022-06-02T09:46:49.196Z\"\n}",
+              "requestType": "CreateMaintenanceWindowRequest",
+              "requestLongType": "CreateMaintenanceWindowRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.CreateMaintenanceWindowRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "MaintenanceWindowInfo",
+              "responseLongType": "MaintenanceWindowInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.MaintenanceWindowInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
+                      "pattern": "/monitoring/v1/maintenance-window/create",
                       "body": "*"
                     }
                   ]
@@ -668,21 +679,21 @@
             },
             {
               "name": "update",
-              "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+              "description": "desc: Updates a specific MaintenanceWindow. You can make changes in MaintenanceWindow settings including, the `title` and the schedule.\nrequest_example: \u003e-\n{\n\"maintenance_window_id\": \"mw-123456789012\",\n\"title\": \"The dev server is under regular maintenance.\",\n\"projects\": [\"project-123456789012\"],\n\"start_time\": \"2022-01-03T00:00:00.000Z\",\n\"end_time\": \"2022-01-03T01:00:00.000Z\",\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"maintenance_window_id\": \"mw-123456789012\",\n\"title\": \"The dev server is under regular maintenance.\",\n\"state\": \"OPEN\",\n\"start_time\": \"2022-06-03T00:00:00.000Z\",\n\"end_time\": \"2022-06-03T01:00:00.000Z\",\n\"tags\": {},\n\"projects\": [\n\"project-123456789012\"\n],\n\"domain_id\": \"domain-123456789012\",\n\"created_by\": \"user1@email.com\",\n\"created_at\": \"2022-01-02T09:46:49.196Z\",\n\"updated_at\": \"2022-01-02T09:46:49.196Z\"\n}",
+              "requestType": "UpdateMaintenanceWindowRequest",
+              "requestLongType": "UpdateMaintenanceWindowRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.UpdateMaintenanceWindowRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "MaintenanceWindowInfo",
+              "responseLongType": "MaintenanceWindowInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.MaintenanceWindowInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
+                      "pattern": "/monitoring/v1/maintenance-window/update",
                       "body": "*"
                     }
                   ]
@@ -690,68 +701,22 @@
               }
             },
             {
-              "name": "enable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "name": "close",
+              "description": "desc: Closes a MaintenanceWindow by changing the state of the MaintenanceWindow to `CLOSED` when the maintenance is completed. As the MaintenanceWindow is not deleted but closed, the maintenance history remains undeleted.\nrequest_example: \u003e-\n{\n\"maintenance_window_id\": \"mw-123456789012\",\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"maintenance_window_id\": \"mw-123456789012\",\n\"title\": \"The dev server is under regular maintenance.\",\n\"state\": \"CLOSED\",\n\"start_time\": \"2022-06-03T00:00:00.000Z\",\n\"end_time\": \"2022-06-03T01:00:00.000Z\",\n\"tags\": {},\n\"projects\": [\n\"project-123456789012\"\n],\n\"domain_id\": \"domain-123456789012\",\n\"created_by\": \"user1@email.com\",\n\"created_at\": \"2022-01-02T09:46:49.196Z\",\n\"updated_at\": \"2022-01-02T09:46:49.196Z\"\n}",
+              "requestType": "MaintenanceWindowRequest",
+              "requestLongType": "MaintenanceWindowRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.MaintenanceWindowRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "MaintenanceWindowInfo",
+              "responseLongType": "MaintenanceWindowInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.MaintenanceWindowInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "disable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "delete",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "Empty",
-              "responseLongType": ".google.protobuf.Empty",
-              "responseFullType": "google.protobuf.Empty",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/monitoring/v1/maintenance-window/close",
                       "body": "*"
                     }
                   ]
@@ -760,21 +725,21 @@
             },
             {
               "name": "get",
-              "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "description": "desc: Gets a specific MaintenanceWindow. Prints detailed information about the MaintenanceWindow, including the title and the schedule.\nrequest_example: \u003e-\n{\n\"maintenance_window_id\": \"mw-123456789012\",\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"maintenance_window_id\": \"mw-123456789012\",\n\"title\": \"The dev server is under regular maintenance.\",\n\"state\": \"OPEN\",\n\"start_time\": \"2022-06-03T00:00:00.000Z\",\n\"end_time\": \"2022-06-03T01:00:00.000Z\",\n\"tags\": {},\n\"projects\": [\n\"project-123456789012\"\n],\n\"domain_id\": \"domain-123456789012\",\n\"created_by\": \"user1@email.com\",\n\"created_at\": \"2022-01-02T09:46:49.196Z\",\n\"updated_at\": \"2022-01-02T09:46:49.196Z\"\n}",
+              "requestType": "GetMaintenanceWindowRequest",
+              "requestLongType": "GetMaintenanceWindowRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.GetMaintenanceWindowRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "MaintenanceWindowInfo",
+              "responseLongType": "MaintenanceWindowInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.MaintenanceWindowInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/monitoring/v1/maintenance-window/get",
                       "body": "*"
                     }
                   ]
@@ -783,21 +748,21 @@
             },
             {
               "name": "list",
-              "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "description": "desc: Gets a list of all MaintenanceWindows. You can use a query to get a filtered list of MaintenanceWindows.\nrequest_example: \u003e-\n{\n\"query\": {},\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"maintenance_window_id\": \"mw-123456789012\",\n\"title\": \"The dev server is under regular maintenance.\",\n\"state\": \"OPEN\",\n\"start_time\": \"2022-06-03T00:00:00.000Z\",\n\"end_time\": \"2022-06-03T01:00:00.000Z\",\n\"tags\": {},\n\"projects\": [\n\"project-123456789012\"\n],\n\"domain_id\": \"domain-123456789012\",\n\"created_by\": \"user1@email.com\",\n\"created_at\": \"2022-01-01T09:59:01.966Z\",\n\"updated_at\": \"2022-01-01T09:59:01.966Z\"\n},\n{\n\"maintenance_window_id\": \"mw-987654321098\",\n\"title\": \"The prd server is under regular maintenance.\",\n\"state\": \"OPEN\",\n\"start_time\": \"2022-06-03T00:00:00.000Z\",\n\"end_time\": \"2022-06-03T01:00:00.000Z\",\n\"tags\": {},\n\"projects\": [\n\"project-123456789012\"\n],\n\"domain_id\": \"domain-123456789012\",\n\"created_by\": \"user2@email.com\",\n\"created_at\": \"2022-01-02T09:57:28.999Z\",\n\"updated_at\": \"2022-01-02T09:57:28.999Z\"\n}\n],\n\"total_count\": 50\n}",
+              "requestType": "MaintenanceWindowQuery",
+              "requestLongType": "MaintenanceWindowQuery",
+              "requestFullType": "spaceone.api.monitoring.v1.MaintenanceWindowQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "MaintenanceWindowsInfo",
+              "responseLongType": "MaintenanceWindowsInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.MaintenanceWindowsInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/monitoring/v1/maintenance-window/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +772,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "MaintenanceWindowStatQuery",
+              "requestLongType": "MaintenanceWindowStatQuery",
+              "requestFullType": "spaceone.api.monitoring.v1.MaintenanceWindowStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +785,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/monitoring/v1/maintenance-window/stat",
                       "body": "*"
                     }
                   ]

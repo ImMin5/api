@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/schedule.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/repository/v1/policy.proto",
+      "description": "desc: A Policy is a resource managing page access permissions. This resource can be used in all domains if it is defined in the `repository` microservice.",
+      "package": "spaceone.api.repository.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
@@ -11,8 +11,31 @@
       "enums": [
         {
           "name": "State",
-          "longName": "ScheduleInfo.State",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+          "longName": "PolicyInfo.State",
+          "fullName": "spaceone.api.repository.v1.PolicyInfo.State",
+          "description": "",
+          "values": [
+            {
+              "name": "NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "ENABLED",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "DISABLED",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "State",
+          "longName": "PolicyQuery.State",
+          "fullName": "spaceone.api.repository.v1.PolicyQuery.State",
           "description": "",
           "values": [
             {
@@ -36,9 +59,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "CreateScheduleRequest",
-          "longName": "CreateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+          "name": "CreatePolicyRequest",
+          "longName": "CreatePolicyRequest",
+          "fullName": "spaceone.api.repository.v1.CreatePolicyRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -47,7 +70,7 @@
           "fields": [
             {
               "name": "name",
-              "description": "is_required: false",
+              "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -58,24 +81,36 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "permissions",
               "description": "is_required: true",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "policy_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
               "description": "is_required: false",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -94,8 +129,8 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
-              "description": "is_required: true",
+              "name": "project_id",
+              "description": "is_required: false",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -120,9 +155,9 @@
           ]
         },
         {
-          "name": "GetScheduleRequest",
-          "longName": "GetScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+          "name": "GetRepositoryPolicyRequest",
+          "longName": "GetRepositoryPolicyRequest",
+          "fullName": "spaceone.api.repository.v1.GetRepositoryPolicyRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -130,7 +165,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "policy_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -144,6 +179,18 @@
             {
               "name": "domain_id",
               "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "repository_id",
+              "description": "is_required: false",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -168,9 +215,9 @@
           ]
         },
         {
-          "name": "ScheduleInfo",
-          "longName": "ScheduleInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+          "name": "PoliciesInfo",
+          "longName": "PoliciesInfo",
+          "fullName": "spaceone.api.repository.v1.PoliciesInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,7 +225,43 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "results",
+              "description": "desc: list of PolicyInfo",
+              "label": "repeated",
+              "type": "PolicyInfo",
+              "longType": "PolicyInfo",
+              "fullType": "spaceone.api.repository.v1.PolicyInfo",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "total_count",
+              "description": "",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PolicyInfo",
+          "longName": "PolicyInfo",
+          "fullName": "spaceone.api.repository.v1.PolicyInfo",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "policy_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -206,32 +289,32 @@
               "description": "",
               "label": "",
               "type": "State",
-              "longType": "ScheduleInfo.State",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo.State",
+              "longType": "PolicyInfo.State",
+              "fullType": "spaceone.api.repository.v1.PolicyInfo.State",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "schedule",
-              "description": "",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "name": "permissions",
+              "description": "desc: list of permissions",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
-              "description": "",
+              "name": "labels",
+              "description": "desc: list of labels",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -250,7 +333,19 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
+              "name": "repository_info",
+              "description": "",
+              "label": "",
+              "type": "RepositoryInfo",
+              "longType": "RepositoryInfo",
+              "fullType": "spaceone.api.repository.v1.RepositoryInfo",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -286,7 +381,7 @@
               "defaultValue": ""
             },
             {
-              "name": "last_scheduled_at",
+              "name": "updated_at",
               "description": "",
               "label": "",
               "type": "string",
@@ -300,9 +395,9 @@
           ]
         },
         {
-          "name": "ScheduleQuery",
-          "longName": "ScheduleQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+          "name": "PolicyQuery",
+          "longName": "PolicyQuery",
+          "fullName": "spaceone.api.repository.v1.PolicyQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -322,7 +417,7 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule_id",
+              "name": "policy_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -346,7 +441,7 @@
               "defaultValue": ""
             },
             {
-              "name": "state",
+              "name": "project_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -358,8 +453,8 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
-              "description": "is_required: false",
+              "name": "repository_id",
+              "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -380,13 +475,25 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "state",
+              "description": "is_required: false",
+              "label": "",
+              "type": "State",
+              "longType": "PolicyQuery.State",
+              "fullType": "spaceone.api.repository.v1.PolicyQuery.State",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
         {
-          "name": "ScheduleRequest",
-          "longName": "ScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+          "name": "PolicyRequest",
+          "longName": "PolicyRequest",
+          "fullName": "spaceone.api.repository.v1.PolicyRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -394,7 +501,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "schedule_id",
+              "name": "policy_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -420,9 +527,9 @@
           ]
         },
         {
-          "name": "ScheduleStatQuery",
-          "longName": "ScheduleStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+          "name": "PolicyStatQuery",
+          "longName": "PolicyStatQuery",
+          "fullName": "spaceone.api.repository.v1.PolicyStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -442,6 +549,18 @@
               "defaultValue": ""
             },
             {
+              "name": "repository_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "domain_id",
               "description": "is_required: true",
               "label": "",
@@ -456,9 +575,9 @@
           ]
         },
         {
-          "name": "Scheduled",
-          "longName": "Scheduled",
-          "fullName": "spaceone.api.cost_analysis.v1.Scheduled",
+          "name": "UpdatePolicyRequest",
+          "longName": "UpdatePolicyRequest",
+          "fullName": "spaceone.api.repository.v1.UpdatePolicyRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -466,103 +585,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "cron",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "interval",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "minutes",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "hours",
-              "description": "",
-              "label": "repeated",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SchedulesInfo",
-          "longName": "SchedulesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.SchedulesInfo",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "results",
-              "description": "",
-              "label": "repeated",
-              "type": "ScheduleInfo",
-              "longType": "ScheduleInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "total_count",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "UpdateScheduleRequest",
-          "longName": "UpdateScheduleRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "schedule_id",
+              "name": "policy_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -586,24 +609,24 @@
               "defaultValue": ""
             },
             {
-              "name": "schedule",
+              "name": "permissions",
               "description": "is_required: false",
-              "label": "",
-              "type": "Scheduled",
-              "longType": "Scheduled",
-              "fullType": "spaceone.api.cost_analysis.v1.Scheduled",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "options",
+              "name": "labels",
               "description": "is_required: false",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -638,28 +661,28 @@
       ],
       "services": [
         {
-          "name": "Schedule",
-          "longName": "Schedule",
-          "fullName": "spaceone.api.cost_analysis.v1.Schedule",
+          "name": "Policy",
+          "longName": "Policy",
+          "fullName": "spaceone.api.repository.v1.Policy",
           "description": "",
           "methods": [
             {
               "name": "create",
-              "description": "",
-              "requestType": "CreateScheduleRequest",
-              "requestLongType": "CreateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateScheduleRequest",
+              "description": "desc: Creates a new Policy. The parameter `policy_id`, an identifier of Policy resources, can only include lowercase alphabets, numbers, and hyphens(-). The parameter `permissions` is a list type data describing page access permissions.\nrequest_example: \u003e-\n{\n\"policy_id\": \"policy-custom-full-acess\",\n\"name\": \"Full Access\",\n\"permissions\": [\"*\"],\n\"labels\": [],\n\"tags\": {},\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"policy_id\": \"policy-custom-full-acess\",\n\"name\": \"Full Access\",\n\"state\": \"ENABLED\",\n\"permissions\": [\n\"*\"\n],\n\"labels\": [],\n\"tags\": {},\n\"repository_info\": {\n\"repository_id\": \"repo-123456789012\",\n\"name\": \"Local\",\n\"repository_type\": \"local\"\n},\n\"domain_id\": \"domain-123456789012\",\n\"created_at\": \"2022-01-01T06:45:04.582Z\",\n\"updated_at\": \"2022-01-01T06:45:04.582Z\"\n}",
+              "requestType": "CreatePolicyRequest",
+              "requestLongType": "CreatePolicyRequest",
+              "requestFullType": "spaceone.api.repository.v1.CreatePolicyRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "PolicyInfo",
+              "responseLongType": "PolicyInfo",
+              "responseFullType": "spaceone.api.repository.v1.PolicyInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/create",
+                      "pattern": "/repository/v1/policy/create",
                       "body": "*"
                     }
                   ]
@@ -668,67 +691,21 @@
             },
             {
               "name": "update",
-              "description": "",
-              "requestType": "UpdateScheduleRequest",
-              "requestLongType": "UpdateScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.UpdateScheduleRequest",
+              "description": "desc: Updates a specific Policy. You can make changes in Policy settings, including `name`, `labels`, `tags`, and `permissions`. The parameter `policy_id` cannot be updated.\nrequest_example: \u003e-\n{\n\"policy_id\": \"policy-custom-full-acess\",\n\"name\": \"Full Access\",\n\"permissions\": [\"*\"],\n\"labels\": [],\n\"tags\": {},\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"policy_id\": \"policy-custom-full-acess\",\n\"name\": \"Full Access\",\n\"state\": \"ENABLED\",\n\"permissions\": [\n\"*\"\n],\n\"labels\": [],\n\"tags\": {},\n\"repository_info\": {\n\"repository_id\": \"repo-123456789012\",\n\"name\": \"Local\",\n\"repository_type\": \"local\"\n},\n\"domain_id\": \"domain-123456789012\",\n\"created_at\": \"2022-01-01T06:45:04.582Z\",\n\"updated_at\": \"2022-01-01T06:45:04.582Z\"\n}",
+              "requestType": "UpdatePolicyRequest",
+              "requestLongType": "UpdatePolicyRequest",
+              "requestFullType": "spaceone.api.repository.v1.UpdatePolicyRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "PolicyInfo",
+              "responseLongType": "PolicyInfo",
+              "responseFullType": "spaceone.api.repository.v1.PolicyInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/update",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "enable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/enable",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "disable",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
-              "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/disable",
+                      "pattern": "/repository/v1/policy/update",
                       "body": "*"
                     }
                   ]
@@ -737,10 +714,10 @@
             },
             {
               "name": "delete",
-              "description": "",
-              "requestType": "ScheduleRequest",
-              "requestLongType": "ScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleRequest",
+              "description": "desc: Deletes a specific Policy. You must specify the `policy_id` of the Policy to delete, as the `policy_id` is an identifier of Policy resources.\nrequest_example: \u003e-\n{\n\"policy_id\": \"policy-123456789012\"\n}",
+              "requestType": "PolicyRequest",
+              "requestLongType": "PolicyRequest",
+              "requestFullType": "spaceone.api.repository.v1.PolicyRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -751,7 +728,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/delete",
+                      "pattern": "/repository/v1/policy/delete",
                       "body": "*"
                     }
                   ]
@@ -760,21 +737,21 @@
             },
             {
               "name": "get",
-              "description": "",
-              "requestType": "GetScheduleRequest",
-              "requestLongType": "GetScheduleRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetScheduleRequest",
+              "description": "desc: Gets a specific Policy. You must specify the `policy_id` of the Policy to get, as the `policy_id` is an identifier of Policy resources. You can use the parameter `repository_id` to limit the scope of the method to a specific Repository.\nrequest_example: \u003e-\n{\n\"policy_id\": \"policy-123456789012\",\n\"repository_id\": \"repo-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"policy_id\": \"policy-123456789012\",\n\"name\": \"Full Access\",\n\"state\": \"ENABLED\",\n\"permissions\": [\n\"*\"\n],\n\"labels\": [],\n\"tags\": {},\n\"repository_info\": {\n\"repository_id\": \"repo-123456789012\",\n\"name\": \"Local\",\n\"repository_type\": \"local\"\n},\n\"domain_id\": \"domain-123456789012\",\n\"created_at\": \"2022-01-01T15:42:50.943Z\",\n\"updated_at\": \"2022-01-01T15:42:50.943Z\"\n}",
+              "requestType": "GetRepositoryPolicyRequest",
+              "requestLongType": "GetRepositoryPolicyRequest",
+              "requestFullType": "spaceone.api.repository.v1.GetRepositoryPolicyRequest",
               "requestStreaming": false,
-              "responseType": "ScheduleInfo",
-              "responseLongType": "ScheduleInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.ScheduleInfo",
+              "responseType": "PolicyInfo",
+              "responseLongType": "PolicyInfo",
+              "responseFullType": "spaceone.api.repository.v1.PolicyInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/get",
+                      "pattern": "/repository/v1/policy/get",
                       "body": "*"
                     }
                   ]
@@ -783,21 +760,21 @@
             },
             {
               "name": "list",
-              "description": "",
-              "requestType": "ScheduleQuery",
-              "requestLongType": "ScheduleQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleQuery",
+              "description": "desc: Gets a list of all Policies in a specific Repository. The parameter `repository_id` is used as an identifier of a Repository to get its list of Policies. You can use a query to get a filtered list of Policies.\nrequest_example: \u003e-\n{\n\"query\": {},\n\"repository_id\": \"repo-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"policy_id\": \"policy-123456789012\",\n\"name\": \"Full Access\",\n\"state\": \"ENABLED\",\n\"permissions\": [\n\"*\"\n],\n\"labels\": [],\n\"tags\": {},\n\"repository_info\": {\n\"repository_id\": \"repo-123456789012\",\n\"name\": \"Local\",\n\"repository_type\": \"local\"\n},\n\"domain_id\": \"domain-123456789012\",\n\"created_at\": \"2022-01-01T15:42:50.943Z\",\n\"updated_at\": \"2022-01-01T15:42:50.943Z\"\n},\n{\n\"policy_id\": \"policy-987654321098\",\n\"name\": \"Identity Admin\",\n\"state\": \"ENABLED\",\n\"permissions\": [\n\"identity.*\"\n],\n\"labels\": [],\n\"tags\": {},\n\"repository_info\": {\n\"repository_id\": \"repo-123456789012\",\n\"name\": \"Local\",\n\"repository_type\": \"local\"\n},\n\"domain_id\": \"domain-123456789012\",\n\"created_at\": \"2022-01-01T08:08:14.756Z\",\n\"updated_at\": \"2022-01-01T08:08:14.756Z\"\n}\n],\n\"total_count\": 2\n}",
+              "requestType": "PolicyQuery",
+              "requestLongType": "PolicyQuery",
+              "requestFullType": "spaceone.api.repository.v1.PolicyQuery",
               "requestStreaming": false,
-              "responseType": "SchedulesInfo",
-              "responseLongType": "SchedulesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.SchedulesInfo",
+              "responseType": "PoliciesInfo",
+              "responseLongType": "PoliciesInfo",
+              "responseFullType": "spaceone.api.repository.v1.PoliciesInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/list",
+                      "pattern": "/repository/v1/policy/list",
                       "body": "*"
                     }
                   ]
@@ -807,9 +784,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "ScheduleStatQuery",
-              "requestLongType": "ScheduleStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.ScheduleStatQuery",
+              "requestType": "PolicyStatQuery",
+              "requestLongType": "PolicyStatQuery",
+              "requestFullType": "spaceone.api.repository.v1.PolicyStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -820,7 +797,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/schedule/stat",
+                      "pattern": "/repository/v1/policy/stat",
                       "body": "*"
                     }
                   ]
