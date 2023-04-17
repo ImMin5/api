@@ -27,26 +27,26 @@ jobs:
           ref: ${{ env.BRANCH }}
           token: ${{ secrets.PAT_TOKEN }}
 
-      - name: Set python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.8'
-
-      - name: Install dependencies
-        run: |
-            python -m pip install --upgrade pip
-            pip install setuptools wheel twine
-
-      - name: Make all and Packaging
-        run: |
-          make python
-          sudo chmod -R 777 dist
-          cd dist/python
-
-      - name: Make all and Packaging
-        run: |
-          make json
-          sudo chmod -R 777 dist
+#      - name: Set python
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: '3.8'
+#
+#      - name: Install dependencies
+#        run: |
+#            python -m pip install --upgrade pip
+#            pip install setuptools wheel twine
+#
+#      - name: Make all and Packaging
+#        run: |
+#          make python
+#          sudo chmod -R 777 dist
+#          cd dist/python
+#
+#      - name: Make all and Packaging
+#        run: |
+#          make json
+#          sudo chmod -R 777 dist
 
 #      - name: Publish a Python distribution to PyPI
 #        uses: pypa/gh-action-pypi-publish@release/v1
@@ -56,22 +56,22 @@ jobs:
 #          verbose: true
 #          packages-dir: dist/python/
 
-      - name: Push artifacts to origin master
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          branch: test/git-action-build
-          commit_message: "[CI] api has been built"
-          commit_user_name: ImmMin5
-          commit_user_email: iam.minhokim@gmail.com
-          commit_author: ImMin5 <mino@megazone.com>
-          push_options: '--force'
-          tagging_message: ${{ env.VERSION }}
+#      - name: Push artifacts to origin master
+#        uses: stefanzweifel/git-auto-commit-action@v4
+#        with:
+#          branch: test/git-action-build
+#          commit_message: "[CI] api has been built"
+#          commit_user_name: ImmMin5
+#          commit_user_email: iam.minhokim@gmail.com
+#          commit_author: ImMin5 <mino@megazone.com>
+#          push_options: '--force'
+#          tagging_message: ${{ env.VERSION }}
 
       - name: Push json to api-doc repository
         uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.PAT_TOKEN }}
-          src_path: dist
+          src_path: dist/
           src_branch: test/git-action-build
           dst_branch: test/gitaction
           dst_path: /.
