@@ -71,10 +71,10 @@ jobs:
         uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.PAT_TOKEN }}
-          src_path: dist/.
+          src_path: dist
           src_branch: test/git-action-build
           dst_branch: test/gitaction
-          dst_path: dist/.
+          dst_path: /.
           dst_owner: ImMin5
           dst_repo_name: api-doc
 
