@@ -12,27 +12,10 @@ import "google/protobuf/struct.proto";
 import "google/api/annotations.proto";
 import "spaceone/api/core/v1/query.proto";
 
-
+//Updates a specific CloudServiceType. You can make changes in CloudServiceType settings, except for `name`, `provider` and `group`. In particular, you can set the CloudServiceType's priority in a `group`.
 service CloudServiceType {
     /*
     desc: Creates a new CloudServiceType. You must specify the `name`, `provider`, and `group` parameters to create a CloudServiceType. One or several CloudServiceTypes exist in a specific `group`, and each CloudServiceType is identified by the `name` parameter.
-    request_example: >-
-      {
-        "name": "API-TEST",
-        "provider": "aws",
-        "group": "APIGateway",
-        "service_code": "AmazonApiGateway",
-        "is_primary": true,
-        "is_major": true,
-        "resource_type": "inventory.CloudService",
-        "metadata": {},
-        "labels": [
-            "Networking"
-        ],
-        "tags": {
-            "a": "b"
-        }
-      }
     response_example: >-
       {
         "cloud_service_type_id": "cloud-svc-type-27dd73ac89f8",
@@ -63,7 +46,6 @@ service CloudServiceType {
         };
     }
     /*
-    desc: Updates a specific CloudServiceType. You can make changes in CloudServiceType settings, except for `name`, `provider` and `group`. In particular, you can set the CloudServiceType's priority in a `group`.
     request_example: >-
       {
         "cloud_service_type_id": "cloud-svc-type-27dd73ac89f8",
@@ -99,6 +81,22 @@ service CloudServiceType {
         "updated_at": "2022-06-22T02:12:11.184Z"
       }
     */
+    //{
+    //        "name": "API-TEST",
+    //        "provider": "aws",
+    //        "group": "APIGateway",
+    //        "service_code": "AmazonApiGateway",
+    //        "is_primary": true,
+    //        "is_major": true,
+    //        "resource_type": "inventory.CloudService",
+    //        "metadata": {},
+    //        "labels": [
+    //            "Networking"
+    //        ],
+    //        "tags": {
+    //            "a": "b"
+    //        }
+    // }
     rpc update (UpdateCloudServiceTypeRequest) returns (CloudServiceTypeInfo) {
         option (google.api.http) = {
             post: "/inventory/v1/cloud-service-type/update",
