@@ -1,5 +1,5 @@
 /*
-desc: description of dashboard
+description of dashboard
 */
 syntax = "proto3";
 
