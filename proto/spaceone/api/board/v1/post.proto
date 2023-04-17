@@ -251,11 +251,11 @@ message UpdatePostRequest {
     string contents = 5;
     // is_required: false
     google.protobuf.Struct options = 6;
-    // is_required: false
+    // is_required: true
     string writer = 7;
     // is_required: false
     repeated string files = 8;
-    // is_required: false
+    // is_required: true
     string domain_id = 10;
 }
 
