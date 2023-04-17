@@ -74,7 +74,7 @@ jobs:
           src_path: dist/json
           src_branch: test/git-action-build
           dst_branch: test/gitaction
-          dst_path: dist
+          dst_path: dist/.
           dst_owner: ImMin5
           dst_repo_name: api-doc
 
