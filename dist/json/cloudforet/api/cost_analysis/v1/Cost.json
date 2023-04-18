@@ -6,8 +6,8 @@
       "package": "spaceone.api.cost_analysis.v1",
       "hasEnums": false,
       "hasExtensions": true,
-      "hasMessages": true,
-      "hasServices": true,
+      "hasMessages": false,
+      "hasServices": false,
       "enums": [
         {
           "name": "Granularity",
