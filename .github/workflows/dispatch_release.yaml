@@ -31,15 +31,15 @@ jobs:
         with:
           python-version: '3.8'
 
-      - name: Install dependencies
-        run: |
-            python -m pip install --upgrade pip
-            pip install setuptools wheel twine
+#      - name: Install dependencies
+#        run: |
+#            python -m pip install --upgrade pip
+#            pip install setuptools wheel twine
             
-      - name: Make all and Packaging
-        run: |
-          make json
-          sudo chmod -R 777 dist
+#      - name: Make all and Packaging
+#        run: |
+#          make json
+#          sudo chmod -R 777 dist
       
       - name: Push artifacts to origin master
         uses: stefanzweifel/git-auto-commit-action@v4
