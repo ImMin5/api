@@ -25,6 +25,22 @@ jobs:
         with:
           ref: ${{ env.BRANCH }}
           token: ${{ secrets.PAT_TOKEN }}
+     
+      - name: Set python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+            python -m pip install --upgrade pip
+            pip install setuptools wheel twine
+            
+      - name: Make all and Packaging
+        run: |
+          make json
+          sudo chmod -R 777 dist
+        
       - name: Copy
         uses: andstor/copycat-action@v3
         with:
