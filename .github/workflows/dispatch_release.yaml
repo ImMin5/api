@@ -46,9 +46,9 @@ jobs:
         with:
           branch: test/git
           commit_message: "[CI] api has been built"
-          commit_user_name: ImMin5
-          commit_user_email: mino@megazone.com
-          commit_author: ImMin5 <mino@mz.co.kr>
+          commit_user_name: ImmMin5
+          commit_user_email: iam.minhokim@gmail.com
+          commit_author: ImMin5 <mino@megazone.com>
           push_options: '--force'
           tagging_message: ${{ env.VERSION }}
         
