@@ -40,6 +40,17 @@ jobs:
         run: |
           make json
           sudo chmod -R 777 dist
+      
+      - name: Push artifacts to origin master
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: master
+          commit_message: "[CI] api has been built"
+          commit_user_name: Immin5
+          commit_user_email: mino@mz.co.kr
+          commit_author: ImMin5 <mino@mz.co.kr>
+          push_options: '--force'
+          tagging_message: ${{ env.VERSION }}
         
       - name: Copy
         uses: andstor/copycat-action@v3
