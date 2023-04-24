@@ -1,20 +1,44 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/budget_usage.proto",
-      "description": "",
+      "name": "spaceone/api/cost_analysis/v1/exchange_rate.proto",
+      "description": "desc: An ExchangeRate is a resource defining the exchange rate of currencies. This resource can set a custom exchange rate for a specific domain, separately from the exchange rate of the default domain set in `config`.",
       "package": "spaceone.api.cost_analysis.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
-      "enums": [],
+      "enums": [
+        {
+          "name": "State",
+          "longName": "ExchangeRateInfo.State",
+          "fullName": "spaceone.api.cost_analysis.v1.ExchangeRateInfo.State",
+          "description": "",
+          "values": [
+            {
+              "name": "NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "ENABLED",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "DISABLED",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        }
+      ],
       "extensions": [],
       "messages": [
         {
-          "name": "BudgetUsageAnalyzeQuery",
-          "longName": "BudgetUsageAnalyzeQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
+          "name": "ExchangeRateInfo",
+          "longName": "ExchangeRateInfo",
+          "fullName": "spaceone.api.cost_analysis.v1.ExchangeRateInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -22,43 +46,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "query",
-              "description": "is_required: true",
-              "label": "",
-              "type": "TimeSeriesAnalyzeQuery",
-              "longType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
-              "fullType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "BudgetUsageInfo",
-          "longName": "BudgetUsageInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "budget_id",
+              "name": "currency",
               "description": "",
               "label": "",
               "type": "string",
@@ -70,31 +58,7 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "date",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usd_cost",
+              "name": "rate",
               "description": "",
               "label": "",
               "type": "float",
@@ -106,24 +70,24 @@
               "defaultValue": ""
             },
             {
-              "name": "limit",
+              "name": "state",
               "description": "",
               "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
+              "type": "State",
+              "longType": "ExchangeRateInfo.State",
+              "fullType": "spaceone.api.cost_analysis.v1.ExchangeRateInfo.State",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "cost_types",
+              "name": "is_default",
               "description": "",
               "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -140,25 +104,13 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
-            {
-              "name": "updated_at",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
             }
           ]
         },
         {
-          "name": "BudgetUsageQuery",
-          "longName": "BudgetUsageQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+          "name": "ExchangeRateQuery",
+          "longName": "ExchangeRateQuery",
+          "fullName": "spaceone.api.cost_analysis.v1.ExchangeRateQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -166,54 +118,6 @@
           "extensions": [],
           "fields": [
             {
-              "name": "query",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Query",
-              "longType": "spaceone.api.core.v1.Query",
-              "fullType": "spaceone.api.core.v1.Query",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "budget_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "date",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "domain_id",
               "description": "is_required: true",
               "label": "",
@@ -228,9 +132,9 @@
           ]
         },
         {
-          "name": "BudgetUsageStatQuery",
-          "longName": "BudgetUsageStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
+          "name": "ExchangeRateRequest",
+          "longName": "ExchangeRateRequest",
+          "fullName": "spaceone.api.cost_analysis.v1.ExchangeRateRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -238,12 +142,12 @@
           "extensions": [],
           "fields": [
             {
-              "name": "query",
+              "name": "currency",
               "description": "is_required: true",
               "label": "",
-              "type": "StatisticsQuery",
-              "longType": "spaceone.api.core.v1.StatisticsQuery",
-              "fullType": "spaceone.api.core.v1.StatisticsQuery",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -264,9 +168,9 @@
           ]
         },
         {
-          "name": "BudgetUsagesInfo",
-          "longName": "BudgetUsagesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
+          "name": "ExchangeRatesInfo",
+          "longName": "ExchangeRatesInfo",
+          "fullName": "spaceone.api.cost_analysis.v1.ExchangeRatesInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -277,9 +181,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "BudgetUsageInfo",
-              "longType": "BudgetUsageInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
+              "type": "ExchangeRateInfo",
+              "longType": "ExchangeRateInfo",
+              "fullType": "spaceone.api.cost_analysis.v1.ExchangeRateInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -298,78 +202,195 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "SetExchangeRateRequest",
+          "longName": "SetExchangeRateRequest",
+          "fullName": "spaceone.api.cost_analysis.v1.SetExchangeRateRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "currency",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "rate",
+              "description": "is_required: true",
+              "label": "",
+              "type": "float",
+              "longType": "float",
+              "fullType": "float",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         }
       ],
       "services": [
         {
-          "name": "BudgetUsage",
-          "longName": "BudgetUsage",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsage",
-          "description": "Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.",
+          "name": "ExchangeRate",
+          "longName": "ExchangeRate",
+          "fullName": "spaceone.api.cost_analysis.v1.ExchangeRate",
+          "description": "",
           "methods": [
             {
+              "name": "set",
+              "description": "desc: Overrides a value of a specific ExchangeRate. This method is used to change the ExchangeRate in a specific domain. You can set the `currency` and `rate` of the resource.\nrequest_example: \u003e-\n{\n\"currency\": \"KRW\",\n\"rate\": 1300\n}\nresponse_example: \u003e-\n{\n\"currency\": \"KRW\",\n\"rate\": 1300.0,\n\"state\": \"ENABLED\",\n\"is_default\": true\n}",
+              "requestType": "SetExchangeRateRequest",
+              "requestLongType": "SetExchangeRateRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.SetExchangeRateRequest",
+              "requestStreaming": false,
+              "responseType": "ExchangeRateInfo",
+              "responseLongType": "ExchangeRateInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.ExchangeRateInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/cost-analysis/v1/exchange-rate/set",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "reset",
+              "description": "desc: Resets a value of a specific ExchangeRate and changes the ExchangeRate to the ExchangeRate of the `default` domain.\nrequest_example: \u003e-\n{\n\"currency\": \"KRW\"\n}\nresponse_example: \u003e-\n{\n\"currency\": \"KRW\",\n\"rate\": 1242.7,\n\"state\": \"ENABLED\",\n\"is_default\": true,\n\"domain_id\": \"domain-58010aa2e451\"\n}",
+              "requestType": "ExchangeRateRequest",
+              "requestLongType": "ExchangeRateRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.ExchangeRateRequest",
+              "requestStreaming": false,
+              "responseType": "ExchangeRateInfo",
+              "responseLongType": "ExchangeRateInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.ExchangeRateInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/cost-analysis/v1/exchange-rate/reset",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "enable",
+              "description": "desc: ''\nrequest_example: \u003e-\n{\n}\nresponse_example: \u003e-\n{\n\n}",
+              "requestType": "ExchangeRateRequest",
+              "requestLongType": "ExchangeRateRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.ExchangeRateRequest",
+              "requestStreaming": false,
+              "responseType": "ExchangeRateInfo",
+              "responseLongType": "ExchangeRateInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.ExchangeRateInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/cost-analysis/v1/exchange-rate/enable",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "disable",
+              "description": "desc: ''\nrequest_example: \u003e-\n{\n\n}\nresponse_example: \u003e-\n{\n\n}",
+              "requestType": "ExchangeRateRequest",
+              "requestLongType": "ExchangeRateRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.ExchangeRateRequest",
+              "requestStreaming": false,
+              "responseType": "ExchangeRateInfo",
+              "responseLongType": "ExchangeRateInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.ExchangeRateInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/cost-analysis/v1/exchange-rate/disable",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "get",
+              "description": "desc: Gets a specific ExchangeRate. Prints detailed information about the ExchangeRate, including  `currency` and `rate`.\nrequest_example: \u003e-\n{\n\"currency\": \"KRW\"\n}\nresponse_example: \u003e-\n{\n\"currency\": \"KRW\",\n\"rate\": 1242.7,\n\"state\": \"ENABLED\",\n\"is_default\": true,\n\"domain_id\": \"domain-58010aa2e451\"\n}",
+              "requestType": "ExchangeRateRequest",
+              "requestLongType": "ExchangeRateRequest",
+              "requestFullType": "spaceone.api.cost_analysis.v1.ExchangeRateRequest",
+              "requestStreaming": false,
+              "responseType": "ExchangeRateInfo",
+              "responseLongType": "ExchangeRateInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.ExchangeRateInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/cost-analysis/v1/exchange-rate/get",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
               "name": "list",
-              "description": "desc: Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-01\",\n\"usd_cost\": 7671.164,\n\"limit\": 10000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.099Z\"\n},\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-02\",\n\"usd_cost\": 5931.771,\n\"limit\": 11000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.105Z\"\n}\n],\n\"total_count\": 12\n}",
-              "requestType": "BudgetUsageQuery",
-              "requestLongType": "BudgetUsageQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+              "description": "desc: Gets a list of all ExchangeRates. You can use a query to get a filtered list of ExchangeRates.\nrequest_example: \u003e-\n{\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"currency\": \"JPY\",\n\"rate\": 129.8,\n\"state\": \"ENABLED\",\n\"is_default\": true,\n\"domain_id\": \"domain-58010aa2e451\"\n},\n{\n\"currency\": \"KRW\",\n\"rate\": 1242.7,\n\"state\": \"ENABLED\",\n\"is_default\": true,\n\"domain_id\": \"domain-58010aa2e451\"\n}\n],\n\"total_count\": 2\n}",
+              "requestType": "ExchangeRateQuery",
+              "requestLongType": "ExchangeRateQuery",
+              "requestFullType": "spaceone.api.cost_analysis.v1.ExchangeRateQuery",
               "requestStreaming": false,
-              "responseType": "BudgetUsagesInfo",
-              "responseLongType": "BudgetUsagesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
+              "responseType": "ExchangeRatesInfo",
+              "responseLongType": "ExchangeRatesInfo",
+              "responseFullType": "spaceone.api.cost_analysis.v1.ExchangeRatesInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/list",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "analyze",
-              "description": "",
-              "requestType": "BudgetUsageAnalyzeQuery",
-              "requestLongType": "BudgetUsageAnalyzeQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
-              "requestStreaming": false,
-              "responseType": "Struct",
-              "responseLongType": ".google.protobuf.Struct",
-              "responseFullType": "google.protobuf.Struct",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/analyze",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "stat",
-              "description": "",
-              "requestType": "BudgetUsageStatQuery",
-              "requestLongType": "BudgetUsageStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
-              "requestStreaming": false,
-              "responseType": "Struct",
-              "responseLongType": ".google.protobuf.Struct",
-              "responseFullType": "google.protobuf.Struct",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/stat",
+                      "pattern": "/cost-analysis/v1/exchange-rate/list",
                       "body": "*"
                     }
                   ]

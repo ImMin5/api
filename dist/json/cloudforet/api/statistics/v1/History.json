@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/budget_usage.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/statistics/v1/history.proto",
+      "description": "desc: A History is a record of data collection based on a Schedule.",
+      "package": "spaceone.api.statistics.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
@@ -12,9 +12,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "BudgetUsageAnalyzeQuery",
-          "longName": "BudgetUsageAnalyzeQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
+          "name": "CreateHistoryRequest",
+          "longName": "CreateHistoryRequest",
+          "fullName": "spaceone.api.statistics.v1.CreateHistoryRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -22,12 +22,12 @@
           "extensions": [],
           "fields": [
             {
-              "name": "query",
+              "name": "schedule_id",
               "description": "is_required: true",
               "label": "",
-              "type": "TimeSeriesAnalyzeQuery",
-              "longType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
-              "fullType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -48,9 +48,9 @@
           ]
         },
         {
-          "name": "BudgetUsageInfo",
-          "longName": "BudgetUsageInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
+          "name": "HistoryInfo",
+          "longName": "HistoryInfo",
+          "fullName": "spaceone.api.statistics.v1.HistoryInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -58,7 +58,91 @@
           "extensions": [],
           "fields": [
             {
-              "name": "budget_id",
+              "name": "results",
+              "description": "",
+              "label": "repeated",
+              "type": "HistoryValueInfo",
+              "longType": "HistoryValueInfo",
+              "fullType": "spaceone.api.statistics.v1.HistoryValueInfo",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "total_count",
+              "description": "",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "HistoryStatRequest",
+          "longName": "HistoryStatRequest",
+          "fullName": "spaceone.api.statistics.v1.HistoryStatRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "query",
+              "description": "is_required: true",
+              "label": "",
+              "type": "StatisticsQuery",
+              "longType": "spaceone.api.core.v1.StatisticsQuery",
+              "fullType": "spaceone.api.core.v1.StatisticsQuery",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "topic",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "HistoryValueInfo",
+          "longName": "HistoryValueInfo",
+          "fullName": "spaceone.api.statistics.v1.HistoryValueInfo",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "topic",
               "description": "",
               "label": "",
               "type": "string",
@@ -70,55 +154,7 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "date",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usd_cost",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "limit",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "cost_types",
+              "name": "values",
               "description": "",
               "label": "",
               "type": "Struct",
@@ -142,7 +178,7 @@
               "defaultValue": ""
             },
             {
-              "name": "updated_at",
+              "name": "created_at",
               "description": "",
               "label": "",
               "type": "string",
@@ -156,9 +192,9 @@
           ]
         },
         {
-          "name": "BudgetUsageQuery",
-          "longName": "BudgetUsageQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+          "name": "QueryHistoryRequest",
+          "longName": "QueryHistoryRequest",
+          "fullName": "spaceone.api.statistics.v1.QueryHistoryRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,31 +214,7 @@
               "defaultValue": ""
             },
             {
-              "name": "budget_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "date",
+              "name": "topic",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -220,78 +232,6 @@
               "type": "string",
               "longType": "string",
               "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "BudgetUsageStatQuery",
-          "longName": "BudgetUsageStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "query",
-              "description": "is_required: true",
-              "label": "",
-              "type": "StatisticsQuery",
-              "longType": "spaceone.api.core.v1.StatisticsQuery",
-              "fullType": "spaceone.api.core.v1.StatisticsQuery",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "BudgetUsagesInfo",
-          "longName": "BudgetUsagesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "results",
-              "description": "",
-              "label": "repeated",
-              "type": "BudgetUsageInfo",
-              "longType": "BudgetUsageInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "total_count",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -302,28 +242,28 @@
       ],
       "services": [
         {
-          "name": "BudgetUsage",
-          "longName": "BudgetUsage",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsage",
-          "description": "Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.",
+          "name": "History",
+          "longName": "History",
+          "fullName": "spaceone.api.statistics.v1.History",
+          "description": "",
           "methods": [
             {
-              "name": "list",
-              "description": "desc: Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-01\",\n\"usd_cost\": 7671.164,\n\"limit\": 10000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.099Z\"\n},\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-02\",\n\"usd_cost\": 5931.771,\n\"limit\": 11000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.105Z\"\n}\n],\n\"total_count\": 12\n}",
-              "requestType": "BudgetUsageQuery",
-              "requestLongType": "BudgetUsageQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+              "name": "create",
+              "description": "desc: Creates a new History. Gets a Schedule as an input and creates a History as an output. You can use this method to manually run a specific Schedule.\nrequest_example: \u003e-\n{\n\"schedule_id\": \"sch-b1d8be347bed\",\n\"domain_id\": \"domain-58010aa2e451\"\n}",
+              "requestType": "CreateHistoryRequest",
+              "requestLongType": "CreateHistoryRequest",
+              "requestFullType": "spaceone.api.statistics.v1.CreateHistoryRequest",
               "requestStreaming": false,
-              "responseType": "BudgetUsagesInfo",
-              "responseLongType": "BudgetUsagesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
+              "responseType": "Empty",
+              "responseLongType": ".google.protobuf.Empty",
+              "responseFullType": "google.protobuf.Empty",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/list",
+                      "pattern": "/statistics/v1/history/create",
                       "body": "*"
                     }
                   ]
@@ -331,22 +271,22 @@
               }
             },
             {
-              "name": "analyze",
-              "description": "",
-              "requestType": "BudgetUsageAnalyzeQuery",
-              "requestLongType": "BudgetUsageAnalyzeQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
+              "name": "list",
+              "description": "desc: Gets a list of all Histories. You can use a query to get a filtered list of Histories.\nrequest_example: \u003e-\n{\n\"query\": {},\n\"domain_id\": \"domain-58010aa2e451\"\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"topic\": \"daily_cloud_service_summary\",\n\"values\": {\n\"label\": \"Storage\",\n\"project_id\": \"project-f7111a9aa0c6\",\n\"provider\": \"azure\",\n\"value\": 32213303296.0,\n\"cloud_service_group\": \"Compute\",\n\"cloud_service_type\": \"Disk\"\n},\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-07-18T01:01:57.579Z\"\n},\n{\n\"topic\": \"daily_cloud_service_summary\",\n\"values\": {\n\"cloud_service_type\": \"Bucket\",\n\"cloud_service_group\": \"CloudStorage\",\n\"label\": \"Storage\",\n\"provider\": \"google_cloud\",\n\"project_id\": \"project-4cd006b4993b\",\n\"value\": 401399880.0\n},\n\"domain_id\": \"domain-58010aa2e451\",\n\"created_at\": \"2022-07-18T01:01:57.579Z\"\n}\n],\n\"total_count\": 2\n}",
+              "requestType": "QueryHistoryRequest",
+              "requestLongType": "QueryHistoryRequest",
+              "requestFullType": "spaceone.api.statistics.v1.QueryHistoryRequest",
               "requestStreaming": false,
-              "responseType": "Struct",
-              "responseLongType": ".google.protobuf.Struct",
-              "responseFullType": "google.protobuf.Struct",
+              "responseType": "HistoryInfo",
+              "responseLongType": "HistoryInfo",
+              "responseFullType": "spaceone.api.statistics.v1.HistoryInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/analyze",
+                      "pattern": "/statistics/v1/history/list",
                       "body": "*"
                     }
                   ]
@@ -356,9 +296,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "BudgetUsageStatQuery",
-              "requestLongType": "BudgetUsageStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
+              "requestType": "HistoryStatRequest",
+              "requestLongType": "HistoryStatRequest",
+              "requestFullType": "spaceone.api.statistics.v1.HistoryStatRequest",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -369,7 +309,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/stat",
+                      "pattern": "/statistics/v1/history/stat",
                       "body": "*"
                     }
                   ]

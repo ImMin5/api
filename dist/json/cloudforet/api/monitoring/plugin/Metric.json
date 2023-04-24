@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/budget_usage.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/monitoring/plugin/metric.proto",
+      "description": "desc: A Metric is a monitoring metric data delivered from an external cloud service via a DataSource.",
+      "package": "spaceone.api.monitoring.plugin",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
@@ -12,9 +12,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "BudgetUsageAnalyzeQuery",
-          "longName": "BudgetUsageAnalyzeQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
+          "name": "MetricDataInfo",
+          "longName": "MetricDataInfo",
+          "fullName": "spaceone.api.monitoring.plugin.MetricDataInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -22,20 +22,140 @@
           "extensions": [],
           "fields": [
             {
-              "name": "query",
-              "description": "is_required: true",
+              "name": "labels",
+              "description": "",
               "label": "",
-              "type": "TimeSeriesAnalyzeQuery",
-              "longType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
-              "fullType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "domain_id",
+              "name": "values",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "MetricDataRequest",
+          "longName": "MetricDataRequest",
+          "fullName": "spaceone.api.monitoring.plugin.MetricDataRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "options",
               "description": "is_required: true",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "secret_data",
+              "description": "is_required: true",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "metric_query",
+              "description": "is_required: true",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "metric",
+              "description": "is_required: true\ndesc: metric identifier in case of requested metric info is not a single.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "start",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "end",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "period",
+              "description": "is_required: false",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "stat",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "schema",
+              "description": "is_required: false",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -48,9 +168,9 @@
           ]
         },
         {
-          "name": "BudgetUsageInfo",
-          "longName": "BudgetUsageInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
+          "name": "MetricInfo",
+          "longName": "MetricInfo",
+          "fullName": "spaceone.api.monitoring.plugin.MetricInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -58,7 +178,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "budget_id",
+              "name": "key",
               "description": "",
               "label": "",
               "type": "string",
@@ -82,7 +202,7 @@
               "defaultValue": ""
             },
             {
-              "name": "date",
+              "name": "group",
               "description": "",
               "label": "",
               "type": "string",
@@ -94,31 +214,7 @@
               "defaultValue": ""
             },
             {
-              "name": "usd_cost",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "limit",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "cost_types",
+              "name": "unit",
               "description": "",
               "label": "",
               "type": "Struct",
@@ -130,24 +226,12 @@
               "defaultValue": ""
             },
             {
-              "name": "domain_id",
+              "name": "metric_query",
               "description": "",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "updated_at",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -156,9 +240,9 @@
           ]
         },
         {
-          "name": "BudgetUsageQuery",
-          "longName": "BudgetUsageQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+          "name": "MetricRequest",
+          "longName": "MetricRequest",
+          "fullName": "spaceone.api.monitoring.plugin.MetricRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -166,92 +250,44 @@
           "extensions": [],
           "fields": [
             {
-              "name": "query",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Query",
-              "longType": "spaceone.api.core.v1.Query",
-              "fullType": "spaceone.api.core.v1.Query",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "budget_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "date",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
+              "name": "options",
               "description": "is_required: true",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "BudgetUsageStatQuery",
-          "longName": "BudgetUsageStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
+            },
+            {
+              "name": "secret_data",
+              "description": "is_required: true",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
             {
               "name": "query",
               "description": "is_required: true",
               "label": "",
-              "type": "StatisticsQuery",
-              "longType": "spaceone.api.core.v1.StatisticsQuery",
-              "fullType": "spaceone.api.core.v1.StatisticsQuery",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "domain_id",
-              "description": "is_required: true",
+              "name": "schema",
+              "description": "is_required: false",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -264,9 +300,9 @@
           ]
         },
         {
-          "name": "BudgetUsagesInfo",
-          "longName": "BudgetUsagesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
+          "name": "MetricsInfo",
+          "longName": "MetricsInfo",
+          "fullName": "spaceone.api.monitoring.plugin.MetricsInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -274,24 +310,12 @@
           "extensions": [],
           "fields": [
             {
-              "name": "results",
+              "name": "metrics",
               "description": "",
               "label": "repeated",
-              "type": "BudgetUsageInfo",
-              "longType": "BudgetUsageInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "total_count",
-              "description": "",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
+              "type": "MetricInfo",
+              "longType": "MetricInfo",
+              "fullType": "spaceone.api.monitoring.plugin.MetricInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -302,79 +326,34 @@
       ],
       "services": [
         {
-          "name": "BudgetUsage",
-          "longName": "BudgetUsage",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsage",
-          "description": "Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.",
+          "name": "Metric",
+          "longName": "Metric",
+          "fullName": "spaceone.api.monitoring.plugin.Metric",
+          "description": "",
           "methods": [
             {
               "name": "list",
-              "description": "desc: Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-01\",\n\"usd_cost\": 7671.164,\n\"limit\": 10000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.099Z\"\n},\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-02\",\n\"usd_cost\": 5931.771,\n\"limit\": 11000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.105Z\"\n}\n],\n\"total_count\": 12\n}",
-              "requestType": "BudgetUsageQuery",
-              "requestLongType": "BudgetUsageQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+              "description": "desc: Gets a list of all Metrics from a specific cloud service. You can use the method to list up the Metrics to collect before using the `get_data` method to collect the Metrics.",
+              "requestType": "MetricRequest",
+              "requestLongType": "MetricRequest",
+              "requestFullType": "spaceone.api.monitoring.plugin.MetricRequest",
               "requestStreaming": false,
-              "responseType": "BudgetUsagesInfo",
-              "responseLongType": "BudgetUsagesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/list",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseType": "MetricsInfo",
+              "responseLongType": "MetricsInfo",
+              "responseFullType": "spaceone.api.monitoring.plugin.MetricsInfo",
+              "responseStreaming": false
             },
             {
-              "name": "analyze",
-              "description": "",
-              "requestType": "BudgetUsageAnalyzeQuery",
-              "requestLongType": "BudgetUsageAnalyzeQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
+              "name": "get_data",
+              "description": "desc: Gets a Metric from a specific cloud service resource `instance`. By specifying the time period to collect the Metric, the Metric data value of the `instance` during the period is returned.",
+              "requestType": "MetricDataRequest",
+              "requestLongType": "MetricDataRequest",
+              "requestFullType": "spaceone.api.monitoring.plugin.MetricDataRequest",
               "requestStreaming": false,
-              "responseType": "Struct",
-              "responseLongType": ".google.protobuf.Struct",
-              "responseFullType": "google.protobuf.Struct",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/analyze",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "stat",
-              "description": "",
-              "requestType": "BudgetUsageStatQuery",
-              "requestLongType": "BudgetUsageStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
-              "requestStreaming": false,
-              "responseType": "Struct",
-              "responseLongType": ".google.protobuf.Struct",
-              "responseFullType": "google.protobuf.Struct",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/stat",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseType": "MetricDataInfo",
+              "responseLongType": "MetricDataInfo",
+              "responseFullType": "spaceone.api.monitoring.plugin.MetricDataInfo",
+              "responseStreaming": false
             }
           ]
         }

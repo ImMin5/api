@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/budget_usage.proto",
+      "name": "spaceone/api/identity/v1/provider.proto",
       "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "package": "spaceone.api.identity.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
@@ -12,9 +12,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "BudgetUsageAnalyzeQuery",
-          "longName": "BudgetUsageAnalyzeQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
+          "name": "CreateProviderRequest",
+          "longName": "CreateProviderRequest",
+          "fullName": "spaceone.api.identity.v1.CreateProviderRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -22,12 +22,72 @@
           "extensions": [],
           "fields": [
             {
-              "name": "query",
+              "name": "provider",
               "description": "is_required: true",
               "label": "",
-              "type": "TimeSeriesAnalyzeQuery",
-              "longType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
-              "fullType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "template",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "metadata",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "capability",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -48,9 +108,9 @@
           ]
         },
         {
-          "name": "BudgetUsageInfo",
-          "longName": "BudgetUsageInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
+          "name": "GetProviderRequest",
+          "longName": "GetProviderRequest",
+          "fullName": "spaceone.api.identity.v1.GetProviderRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -58,7 +118,55 @@
           "extensions": [],
           "fields": [
             {
-              "name": "budget_id",
+              "name": "provider",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "only",
+              "description": "is_required: false",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProviderInfo",
+          "longName": "ProviderInfo",
+          "fullName": "spaceone.api.identity.v1.ProviderInfo",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "provider",
               "description": "",
               "label": "",
               "type": "string",
@@ -82,43 +190,7 @@
               "defaultValue": ""
             },
             {
-              "name": "date",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usd_cost",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "limit",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "cost_types",
+              "name": "template",
               "description": "",
               "label": "",
               "type": "Struct",
@@ -130,19 +202,43 @@
               "defaultValue": ""
             },
             {
-              "name": "domain_id",
+              "name": "metadata",
               "description": "",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "updated_at",
+              "name": "capability",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
               "description": "",
               "label": "",
               "type": "string",
@@ -156,9 +252,9 @@
           ]
         },
         {
-          "name": "BudgetUsageQuery",
-          "longName": "BudgetUsageQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+          "name": "ProviderQuery",
+          "longName": "ProviderQuery",
+          "fullName": "spaceone.api.identity.v1.ProviderQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,7 +274,7 @@
               "defaultValue": ""
             },
             {
-              "name": "budget_id",
+              "name": "provider",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -191,18 +287,6 @@
             },
             {
               "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "date",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -228,9 +312,45 @@
           ]
         },
         {
-          "name": "BudgetUsageStatQuery",
-          "longName": "BudgetUsageStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
+          "name": "ProviderRequest",
+          "longName": "ProviderRequest",
+          "fullName": "spaceone.api.identity.v1.ProviderRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "provider",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProviderStatQuery",
+          "longName": "ProviderStatQuery",
+          "fullName": "spaceone.api.identity.v1.ProviderStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -264,9 +384,9 @@
           ]
         },
         {
-          "name": "BudgetUsagesInfo",
-          "longName": "BudgetUsagesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
+          "name": "ProvidersInfo",
+          "longName": "ProvidersInfo",
+          "fullName": "spaceone.api.identity.v1.ProvidersInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -277,9 +397,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "BudgetUsageInfo",
-              "longType": "BudgetUsageInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
+              "type": "ProviderInfo",
+              "longType": "ProviderInfo",
+              "fullType": "spaceone.api.identity.v1.ProviderInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -298,32 +418,128 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "UpdateProviderRequest",
+          "longName": "UpdateProviderRequest",
+          "fullName": "spaceone.api.identity.v1.UpdateProviderRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "provider",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "template",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "metadata",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "capability",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         }
       ],
       "services": [
         {
-          "name": "BudgetUsage",
-          "longName": "BudgetUsage",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsage",
-          "description": "Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.",
+          "name": "Provider",
+          "longName": "Provider",
+          "fullName": "spaceone.api.identity.v1.Provider",
+          "description": "",
           "methods": [
             {
-              "name": "list",
-              "description": "desc: Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-01\",\n\"usd_cost\": 7671.164,\n\"limit\": 10000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.099Z\"\n},\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-02\",\n\"usd_cost\": 5931.771,\n\"limit\": 11000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.105Z\"\n}\n],\n\"total_count\": 12\n}",
-              "requestType": "BudgetUsageQuery",
-              "requestLongType": "BudgetUsageQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+              "name": "create",
+              "description": "",
+              "requestType": "CreateProviderRequest",
+              "requestLongType": "CreateProviderRequest",
+              "requestFullType": "spaceone.api.identity.v1.CreateProviderRequest",
               "requestStreaming": false,
-              "responseType": "BudgetUsagesInfo",
-              "responseLongType": "BudgetUsagesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
+              "responseType": "ProviderInfo",
+              "responseLongType": "ProviderInfo",
+              "responseFullType": "spaceone.api.identity.v1.ProviderInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/list",
+                      "pattern": "/identity/v1/provider/create",
                       "body": "*"
                     }
                   ]
@@ -331,22 +547,91 @@
               }
             },
             {
-              "name": "analyze",
+              "name": "update",
               "description": "",
-              "requestType": "BudgetUsageAnalyzeQuery",
-              "requestLongType": "BudgetUsageAnalyzeQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
+              "requestType": "UpdateProviderRequest",
+              "requestLongType": "UpdateProviderRequest",
+              "requestFullType": "spaceone.api.identity.v1.UpdateProviderRequest",
               "requestStreaming": false,
-              "responseType": "Struct",
-              "responseLongType": ".google.protobuf.Struct",
-              "responseFullType": "google.protobuf.Struct",
+              "responseType": "ProviderInfo",
+              "responseLongType": "ProviderInfo",
+              "responseFullType": "spaceone.api.identity.v1.ProviderInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/analyze",
+                      "pattern": "/identity/v1/provider/update",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "delete",
+              "description": "",
+              "requestType": "ProviderRequest",
+              "requestLongType": "ProviderRequest",
+              "requestFullType": "spaceone.api.identity.v1.ProviderRequest",
+              "requestStreaming": false,
+              "responseType": "Empty",
+              "responseLongType": ".google.protobuf.Empty",
+              "responseFullType": "google.protobuf.Empty",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/identity/v1/provider/delete",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "get",
+              "description": "",
+              "requestType": "GetProviderRequest",
+              "requestLongType": "GetProviderRequest",
+              "requestFullType": "spaceone.api.identity.v1.GetProviderRequest",
+              "requestStreaming": false,
+              "responseType": "ProviderInfo",
+              "responseLongType": "ProviderInfo",
+              "responseFullType": "spaceone.api.identity.v1.ProviderInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/identity/v1/provider/get",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "list",
+              "description": "",
+              "requestType": "ProviderQuery",
+              "requestLongType": "ProviderQuery",
+              "requestFullType": "spaceone.api.identity.v1.ProviderQuery",
+              "requestStreaming": false,
+              "responseType": "ProvidersInfo",
+              "responseLongType": "ProvidersInfo",
+              "responseFullType": "spaceone.api.identity.v1.ProvidersInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/identity/v1/provider/list",
                       "body": "*"
                     }
                   ]
@@ -356,9 +641,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "BudgetUsageStatQuery",
-              "requestLongType": "BudgetUsageStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
+              "requestType": "ProviderStatQuery",
+              "requestLongType": "ProviderStatQuery",
+              "requestFullType": "spaceone.api.identity.v1.ProviderStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -369,7 +654,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/stat",
+                      "pattern": "/identity/v1/provider/stat",
                       "body": "*"
                     }
                   ]

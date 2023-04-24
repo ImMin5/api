@@ -1,43 +1,79 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/cost.proto",
-      "description": "desc: A Cost is a resource of raw cost data collected by the cost_analysis.DataSource.",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/dashboard/v1/domain_dashboard.proto",
+      "description": "desc: description of dashboard",
+      "package": "spaceone.api.dashboard.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
       "enums": [
         {
-          "name": "Granularity",
-          "longName": "CostAnalyzeQuery.Granularity",
-          "fullName": "spaceone.api.cost_analysis.v1.CostAnalyzeQuery.Granularity",
+          "name": "Viewers",
+          "longName": "CreateDomainDashboardRequest.Viewers",
+          "fullName": "spaceone.api.dashboard.v1.CreateDomainDashboardRequest.Viewers",
           "description": "",
           "values": [
             {
-              "name": "UNIT_NONE",
+              "name": "VIEWERS_NONE",
               "number": "0",
               "description": ""
             },
             {
-              "name": "ACCUMULATED",
+              "name": "PUBLIC",
               "number": "1",
               "description": ""
             },
             {
-              "name": "DAILY",
+              "name": "PRIVATE",
               "number": "2",
               "description": ""
-            },
+            }
+          ]
+        },
+        {
+          "name": "Viewers",
+          "longName": "DomainDashboardInfo.Viewers",
+          "fullName": "spaceone.api.dashboard.v1.DomainDashboardInfo.Viewers",
+          "description": "",
+          "values": [
             {
-              "name": "MONTHLY",
-              "number": "3",
+              "name": "VIEWERS_NONE",
+              "number": "0",
               "description": ""
             },
             {
-              "name": "YEARLY",
-              "number": "4",
+              "name": "PUBLIC",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "PRIVATE",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "Viewers",
+          "longName": "DomainDashboardQuery.Viewers",
+          "fullName": "spaceone.api.dashboard.v1.DomainDashboardQuery.Viewers",
+          "description": "",
+          "values": [
+            {
+              "name": "VIEWERS_NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "PUBLIC",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "PRIVATE",
+              "number": "2",
               "description": ""
             }
           ]
@@ -46,9 +82,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "CostAnalyzeQuery",
-          "longName": "CostAnalyzeQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.CostAnalyzeQuery",
+          "name": "CreateDomainDashboardRequest",
+          "longName": "CreateDomainDashboardRequest",
+          "fullName": "spaceone.api.dashboard.v1.CreateDomainDashboardRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -56,19 +92,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "granularity",
-              "description": "is_required: true",
-              "label": "",
-              "type": "Granularity",
-              "longType": "CostAnalyzeQuery.Granularity",
-              "fullType": "spaceone.api.cost_analysis.v1.CostAnalyzeQuery.Granularity",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "start",
+              "name": "name",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -80,31 +104,19 @@
               "defaultValue": ""
             },
             {
-              "name": "end",
+              "name": "viewers",
               "description": "is_required: true",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "Viewers",
+              "longType": "CreateDomainDashboardRequest.Viewers",
+              "fullType": "spaceone.api.dashboard.v1.CreateDomainDashboardRequest.Viewers",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "group_by",
-              "description": "is_required: false",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "filter",
+              "name": "layouts",
               "description": "is_required: false",
               "label": "",
               "type": "ListValue",
@@ -116,8 +128,128 @@
               "defaultValue": ""
             },
             {
-              "name": "limit",
+              "name": "variables",
               "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "settings",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "variables_schema",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "is_required: false",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "DomainDashboardInfo",
+          "longName": "DomainDashboardInfo",
+          "fullName": "spaceone.api.dashboard.v1.DomainDashboardInfo",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "domain_dashboard_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "viewers",
+              "description": "",
+              "label": "",
+              "type": "Viewers",
+              "longType": "DomainDashboardInfo.Viewers",
+              "fullType": "spaceone.api.dashboard.v1.DomainDashboardInfo.Viewers",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "version",
+              "description": "",
               "label": "",
               "type": "int32",
               "longType": "int32",
@@ -128,276 +260,60 @@
               "defaultValue": ""
             },
             {
-              "name": "page",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Page",
-              "longType": "spaceone.api.core.v1.Page",
-              "fullType": "spaceone.api.core.v1.Page",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "sort",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Sort",
-              "longType": "spaceone.api.core.v1.Sort",
-              "fullType": "spaceone.api.core.v1.Sort",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "include_usage_quantity",
-              "description": "is_required: false",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "include_others",
-              "description": "is_required: false",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "CostAnalyzeV2Query",
-          "longName": "CostAnalyzeV2Query",
-          "fullName": "spaceone.api.cost_analysis.v1.CostAnalyzeV2Query",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "query",
-              "description": "is_required: true",
-              "label": "",
-              "type": "TimeSeriesAnalyzeQuery",
-              "longType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
-              "fullType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "CostInfo",
-          "longName": "CostInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.CostInfo",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cost_id",
+              "name": "layouts",
               "description": "",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "usd_cost",
+              "name": "variables",
               "description": "",
               "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "original_currency",
+              "name": "settings",
               "description": "",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "original_cost",
+              "name": "variables_schema",
               "description": "",
               "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "usage_quantity",
+              "name": "labels",
               "description": "",
               "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "provider",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "region_code",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "region_key",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "category",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "product",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "account",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usage_type",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "resource_group",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "resource",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -416,43 +332,7 @@
               "defaultValue": ""
             },
             {
-              "name": "additional_info",
-              "description": "",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "service_account_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "project_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
+              "name": "user_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -465,18 +345,6 @@
             },
             {
               "name": "domain_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "billed_at",
               "description": "",
               "label": "",
               "type": "string",
@@ -498,13 +366,25 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "updated_at",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
         {
-          "name": "CostQuery",
-          "longName": "CostQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.CostQuery",
+          "name": "DomainDashboardQuery",
+          "longName": "DomainDashboardQuery",
+          "fullName": "spaceone.api.dashboard.v1.DomainDashboardQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -524,7 +404,7 @@
               "defaultValue": ""
             },
             {
-              "name": "cost_id",
+              "name": "domain_dashboard_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -536,7 +416,7 @@
               "defaultValue": ""
             },
             {
-              "name": "original_currency",
+              "name": "name",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -548,139 +428,19 @@
               "defaultValue": ""
             },
             {
-              "name": "provider",
+              "name": "viewers",
               "description": "is_required: false",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "Viewers",
+              "longType": "DomainDashboardQuery.Viewers",
+              "fullType": "spaceone.api.dashboard.v1.DomainDashboardQuery.Viewers",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "region_code",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "region_key",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "category",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "product",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "account",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usage_type",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "resource_group",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "resource",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "service_account_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "project_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
+              "name": "user_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -706,9 +466,9 @@
           ]
         },
         {
-          "name": "CostRequest",
-          "longName": "CostRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CostRequest",
+          "name": "DomainDashboardRequest",
+          "longName": "DomainDashboardRequest",
+          "fullName": "spaceone.api.dashboard.v1.DomainDashboardRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -716,7 +476,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "cost_id",
+              "name": "domain_dashboard_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -742,9 +502,9 @@
           ]
         },
         {
-          "name": "CostStatQuery",
-          "longName": "CostStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.CostStatQuery",
+          "name": "DomainDashboardStatQuery",
+          "longName": "DomainDashboardStatQuery",
+          "fullName": "spaceone.api.dashboard.v1.DomainDashboardStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -778,9 +538,237 @@
           ]
         },
         {
-          "name": "CostsInfo",
-          "longName": "CostsInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.CostsInfo",
+          "name": "DomainDashboardVersionInfo",
+          "longName": "DomainDashboardVersionInfo",
+          "fullName": "spaceone.api.dashboard.v1.DomainDashboardVersionInfo",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "domain_dashboard_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "version",
+              "description": "",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "latest",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "layouts",
+              "description": "",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "variables",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "settings",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "variables_schema",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "DomainDashboardVersionQuery",
+          "longName": "DomainDashboardVersionQuery",
+          "fullName": "spaceone.api.dashboard.v1.DomainDashboardVersionQuery",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "query",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Query",
+              "longType": "spaceone.api.core.v1.Query",
+              "fullType": "spaceone.api.core.v1.Query",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_dashboard_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "version",
+              "description": "is_required: false",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "DomainDashboardVersionRequest",
+          "longName": "DomainDashboardVersionRequest",
+          "fullName": "spaceone.api.dashboard.v1.DomainDashboardVersionRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "domain_dashboard_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "version",
+              "description": "is_required: true",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "DomainDashboardVersionsInfo",
+          "longName": "DomainDashboardVersionsInfo",
+          "fullName": "spaceone.api.dashboard.v1.DomainDashboardVersionsInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -791,9 +779,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "CostInfo",
-              "longType": "CostInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.CostInfo",
+              "type": "DomainDashboardVersionInfo",
+              "longType": "DomainDashboardVersionInfo",
+              "fullType": "spaceone.api.dashboard.v1.DomainDashboardVersionInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -814,9 +802,9 @@
           ]
         },
         {
-          "name": "CreateCostRequest",
-          "longName": "CreateCostRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateCostRequest",
+          "name": "DomainDashboardsInfo",
+          "longName": "DomainDashboardsInfo",
+          "fullName": "spaceone.api.dashboard.v1.DomainDashboardsInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -824,228 +812,24 @@
           "extensions": [],
           "fields": [
             {
-              "name": "original_cost",
-              "description": "is_required: true",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
+              "name": "results",
+              "description": "",
+              "label": "repeated",
+              "type": "DomainDashboardInfo",
+              "longType": "DomainDashboardInfo",
+              "fullType": "spaceone.api.dashboard.v1.DomainDashboardInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "original_currency",
-              "description": "is_required: true",
+              "name": "total_count",
+              "description": "",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usd_cost",
-              "description": "is_required: false",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usage_quantity",
-              "description": "is_required: false",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "provider",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "region_code",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "category",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "product",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "account",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usage_type",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "resource_group",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "resource",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tags",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "additional_info",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "service_account_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "project_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "billed_at",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -1054,9 +838,9 @@
           ]
         },
         {
-          "name": "GetCostRequest",
-          "longName": "GetCostRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetCostRequest",
+          "name": "GetDomainDashboardRequest",
+          "longName": "GetDomainDashboardRequest",
+          "fullName": "spaceone.api.dashboard.v1.GetDomainDashboardRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -1064,7 +848,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "cost_id",
+              "name": "domain_dashboard_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -1100,33 +884,234 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "GetDomainDashboardVersionRequest",
+          "longName": "GetDomainDashboardVersionRequest",
+          "fullName": "spaceone.api.dashboard.v1.GetDomainDashboardVersionRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "domain_dashboard_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "version",
+              "description": "is_required: true",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "only",
+              "description": "is_required: false",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UpdateDomainDashboardRequest",
+          "longName": "UpdateDomainDashboardRequest",
+          "fullName": "spaceone.api.dashboard.v1.UpdateDomainDashboardRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "domain_dashboard_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "layouts",
+              "description": "is_required: false",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "variables",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "settings",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "variables_schema",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "is_required: false",
+              "label": "",
+              "type": "ListValue",
+              "longType": "google.protobuf.ListValue",
+              "fullType": "google.protobuf.ListValue",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         }
       ],
       "services": [
         {
-          "name": "Cost",
-          "longName": "Cost",
-          "fullName": "spaceone.api.cost_analysis.v1.Cost",
-          "description": "Creates a new Cost. When creating a Cost, if the parameter `provider` is not entered, the default value of the parameter will be the provider information of the DataSource which collected the raw data of the Cost from the provider. The parameter `billed_at` is the data of when the cost is billed. While the DataSource collects the cost data, if the `billed_at` data does not exist, the value will be replaced with the `created_at` data indicating when the Cost is created. If the cost data collected is based on USD, the Cost is created without the currency exchange.",
+          "name": "DomainDashboard",
+          "longName": "DomainDashboard",
+          "fullName": "spaceone.api.dashboard.v1.DomainDashboard",
+          "description": "",
           "methods": [
             {
               "name": "create",
-              "description": "desc: Creates a new Cost. When creating a Cost, if the parameter `provider` is not entered, the default value of the parameter will be the provider information of the DataSource which collected the raw data of the Cost from the provider. The parameter `billed_at` is the data of when the cost is billed. While the DataSource collects the cost data, if the `billed_at` data does not exist, the value will be replaced with the `created_at` data indicating when the Cost is created. If the cost data collected is based on USD, the Cost is created without the currency exchange.\nrequest_example: \u003e-\n{\n\"original_cost\": 4.50528e-08,\n\"original_currency\": \"USD\",\n\"usd_cost\": 4.50528e-08,\n\"usage_quantity\": 4.11e-07,\n\"provider\": \"aws\",\n\"region_code\": \"ap-northeast-1\",\n\"product\": \"AWSDataTransfer\",\n\"account\": \"722069360300\",\n\"usage_type\": \"data-transfer.out\",\n\"additional_info\": {\n\"raw_usage_type\": \"APN1-DataTransfer-Out-Bytes\"\n},\n\"data_source_id\": \"ds-fcba92ca73b1\"\n}\nresponse_example: \u003e-\n{\n\"cost_id\": \"cost-c5aae7712ec9\",\n\"usd_cost\": 4.50528e-08,\n\"original_currency\": \"USD\",\n\"original_cost\": 4.50528e-08,\n\"usage_quantity\": 4.11e-07,\n\"provider\": \"aws\",\n\"region_code\": \"ap-northeast-1\",\n\"product\": \"AWSDataTransfer\",\n\"account\": \"722069360300\",\n\"usage_type\": \"data-transfer.out\",\n\"tags\": {},\n\"additional_info\": {\n\"raw_usage_type\": \"APN1-DataTransfer-Out-Bytes\"\n},\n\"data_source_id\": \"ds-fcba92ca73b1\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"billed_at\": \"2022-07-19T09:44:27.326Z\",\n\"created_at\": \"2022-07-19T09:44:27.373Z\"\n}",
-              "requestType": "CreateCostRequest",
-              "requestLongType": "CreateCostRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateCostRequest",
+              "description": "",
+              "requestType": "CreateDomainDashboardRequest",
+              "requestLongType": "CreateDomainDashboardRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.CreateDomainDashboardRequest",
               "requestStreaming": false,
-              "responseType": "CostInfo",
-              "responseLongType": "CostInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.CostInfo",
+              "responseType": "DomainDashboardInfo",
+              "responseLongType": "DomainDashboardInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.DomainDashboardInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/create",
-                      "body": "*"
+                      "pattern": "/dashboard/v1/domain-dashboards"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "update",
+              "description": "",
+              "requestType": "UpdateDomainDashboardRequest",
+              "requestLongType": "UpdateDomainDashboardRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.UpdateDomainDashboardRequest",
+              "requestStreaming": false,
+              "responseType": "DomainDashboardInfo",
+              "responseLongType": "DomainDashboardInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.DomainDashboardInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "PUT",
+                      "pattern": "/dashboard/v1/domain-dashboard/{domain_dashboard_id}"
                     }
                   ]
                 }
@@ -1134,10 +1119,10 @@
             },
             {
               "name": "delete",
-              "description": "desc: Deletes a specific Cost. You must specify the `cost_id` of the Cost to delete.\nrequest_example: \u003e-\n{\n\"cost_id\": \"cost-2ad052ed03d7\"\n}",
-              "requestType": "CostRequest",
-              "requestLongType": "CostRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CostRequest",
+              "description": "",
+              "requestType": "DomainDashboardRequest",
+              "requestLongType": "DomainDashboardRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.DomainDashboardRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -1147,9 +1132,8 @@
                 "google.api.http": {
                   "rules": [
                     {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/delete",
-                      "body": "*"
+                      "method": "DELETE",
+                      "pattern": "/dashboard/v1/domain-dashboard/{domain_dashboard_id}"
                     }
                   ]
                 }
@@ -1157,22 +1141,113 @@
             },
             {
               "name": "get",
-              "description": "desc: Gets a specific Cost. Prints detailed information about the Cost, including  `region_code` and `account`.\nrequest_example: \u003e-\n{\n\"cost_id\": \"cost-2ad052ed03d7\"\n}\nresponse_example: \u003e-\n{\n\"cost_id\": \"cost-2ad052ed03d7\",\n\"usd_cost\": 4.50528e-08,\n\"original_currency\": \"USD\",\n\"original_cost\": 4.50528e-08,\n\"usage_quantity\": 4.11e-07,\n\"provider\": \"aws\",\n\"region_code\": \"ap-northeast-1\",\n\"product\": \"AWSDataTransfer\",\n\"account\": \"722069360300\",\n\"usage_type\": \"data-transfer.out\",\n\"tags\": {},\n\"additional_info\": {\n\"raw_usage_type\": \"APN1-DataTransfer-Out-Bytes\"\n},\n\"data_source_id\": \"ds-fcba92ca73b1\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"billed_at\": \"2021-01-01T00:00:00.000Z\",\n\"created_at\": \"2022-04-06T13:49:39.669Z\"\n}",
-              "requestType": "GetCostRequest",
-              "requestLongType": "GetCostRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetCostRequest",
+              "description": "",
+              "requestType": "GetDomainDashboardRequest",
+              "requestLongType": "GetDomainDashboardRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.GetDomainDashboardRequest",
               "requestStreaming": false,
-              "responseType": "CostInfo",
-              "responseLongType": "CostInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.CostInfo",
+              "responseType": "DomainDashboardInfo",
+              "responseLongType": "DomainDashboardInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.DomainDashboardInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "GET",
+                      "pattern": "/dashboard/v1/domain-dashboard/{domain_dashboard_id}"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "delete_version",
+              "description": "",
+              "requestType": "DomainDashboardVersionRequest",
+              "requestLongType": "DomainDashboardVersionRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.DomainDashboardVersionRequest",
+              "requestStreaming": false,
+              "responseType": "Empty",
+              "responseLongType": ".google.protobuf.Empty",
+              "responseFullType": "google.protobuf.Empty",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "DELETE",
+                      "pattern": "/dashboard/v1/domain-dashboard/{domain_dashboard_id}/version/{version}"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "revert_version",
+              "description": "",
+              "requestType": "DomainDashboardVersionRequest",
+              "requestLongType": "DomainDashboardVersionRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.DomainDashboardVersionRequest",
+              "requestStreaming": false,
+              "responseType": "DomainDashboardInfo",
+              "responseLongType": "DomainDashboardInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.DomainDashboardInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/get",
-                      "body": "*"
+                      "pattern": "/dashboard/v1/domain-dashboard/{domain_dashboard_id}/version/{version}/revert"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "get_version",
+              "description": "",
+              "requestType": "GetDomainDashboardVersionRequest",
+              "requestLongType": "GetDomainDashboardVersionRequest",
+              "requestFullType": "spaceone.api.dashboard.v1.GetDomainDashboardVersionRequest",
+              "requestStreaming": false,
+              "responseType": "DomainDashboardVersionInfo",
+              "responseLongType": "DomainDashboardVersionInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.DomainDashboardVersionInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "GET",
+                      "pattern": "/dashboard/v1/domain-dashboard/{domain_dashboard_id}/version/{version}"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "list_versions",
+              "description": "",
+              "requestType": "DomainDashboardVersionQuery",
+              "requestLongType": "DomainDashboardVersionQuery",
+              "requestFullType": "spaceone.api.dashboard.v1.DomainDashboardVersionQuery",
+              "requestStreaming": false,
+              "responseType": "DomainDashboardVersionsInfo",
+              "responseLongType": "DomainDashboardVersionsInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.DomainDashboardVersionsInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "GET",
+                      "pattern": "/dashboard/v1/domain-dashboard/{domain_dashboard_id}/versions"
+                    },
+                    {
+                      "method": "POST",
+                      "pattern": "/dashboard/v1/domain-dashboard/{domain_dashboard_id}/versions/search"
                     }
                   ]
                 }
@@ -1180,68 +1255,25 @@
             },
             {
               "name": "list",
-              "description": "desc: Gets a list of all Costs. You can use a query to get a filtered list of Costs.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"cost_id\": \"cost-2ad052ed03d7\",\n\"usd_cost\": 4.50528e-08,\n\"original_currency\": \"USD\",\n\"original_cost\": 4.50528e-08,\n\"usage_quantity\": 4.11e-07,\n\"provider\": \"aws\",\n\"region_code\": \"ap-northeast-1\",\n\"product\": \"AWSDataTransfer\",\n\"account\": \"722069360300\",\n\"usage_type\": \"data-transfer.out\",\n\"tags\": {},\n\"additional_info\": {\n\"raw_usage_type\": \"APN1-DataTransfer-Out-Bytes\"\n},\n\"data_source_id\": \"ds-fcba92ca73b1\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"billed_at\": \"2021-01-01T00:00:00.000Z\",\n\"created_at\": \"2022-04-06T13:49:39.669Z\"\n},\n{\n\"cost_id\": \"cost-1d5e1b0dbf82\",\n\"usd_cost\": 1.04e-05,\n\"original_currency\": \"USD\",\n\"original_cost\": 1.04e-05,\n\"usage_quantity\": 26.0,\n\"provider\": \"aws\",\n\"region_code\": \"ap-northeast-1\",\n\"product\": \"AWSQueueService\",\n\"account\": \"722069360300\",\n\"tags\": {},\n\"additional_info\": {\n\"raw_usage_type\": \"APN1-Requests-Tier1\"\n},\n\"data_source_id\": \"ds-fcba92ca73b1\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"billed_at\": \"2021-01-01T00:00:00.000Z\",\n\"created_at\": \"2022-04-06T13:49:39.675Z\"\n}\n],\n\"total_count\": 307066\n}",
-              "requestType": "CostQuery",
-              "requestLongType": "CostQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CostQuery",
-              "requestStreaming": false,
-              "responseType": "CostsInfo",
-              "responseLongType": "CostsInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.CostsInfo",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/list",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "analyze",
-              "description": "desc: Gets the Cost information of specific `product`s based on the time granularity: `DAILY`, `MONTHLY`, or `ACCUMULATED`. For `DAILY` granularity, this method can get the Cost data of at most 31 days. For `MONTHLY` or `ACCUMULATED` granularity, this method can get the Cost data of at most 12 months.\nrequest_example: \u003e-\n{\n\"granularity\": \"MONTHLY\",\n\"start\": \"2022-05\",\n\"end\": \"2022-07\",\n\"group_by\": [\"product\"],\n\"filter\": [],\n\"limit\": 15,\n\"include_others\": true,\n\"domain_id\": \"domain-58010aa2e451\"\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"product\": \"AmazonEC2\",\n\"total_usd_cost\": 20962.3114306262,\n\"usd_cost\": {\n\"2022-07\": 4644.0801750137,\n\"2022-05\": 7984.6560889987995,\n\"2022-06\": 8333.5751666137\n}\n},\n{\n\"usd_cost\": {\n\"2022-07\": 2817.0,\n\"2022-06\": 5439.0,\n\"2022-05\": 5269.0\n},\n\"total_usd_cost\": 13525.0,\n\"product\": \"AWS Marketplace\"\n},\n{\n\"product\": \"AmazonDocDB\",\n\"usd_cost\": {\n\"2022-05\": 6910.6140347763,\n\"2022-06\": 3238.7851615211,\n\"2022-07\": 812.2452815070001\n},\n\"total_usd_cost\": 10961.6444778044\n}\n]\n}",
-              "requestType": "CostAnalyzeQuery",
-              "requestLongType": "CostAnalyzeQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CostAnalyzeQuery",
-              "requestStreaming": false,
-              "responseType": "Struct",
-              "responseLongType": ".google.protobuf.Struct",
-              "responseFullType": "google.protobuf.Struct",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/analyze",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "analyze_v2",
               "description": "",
-              "requestType": "CostAnalyzeV2Query",
-              "requestLongType": "CostAnalyzeV2Query",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CostAnalyzeV2Query",
+              "requestType": "DomainDashboardQuery",
+              "requestLongType": "DomainDashboardQuery",
+              "requestFullType": "spaceone.api.dashboard.v1.DomainDashboardQuery",
               "requestStreaming": false,
-              "responseType": "Struct",
-              "responseLongType": ".google.protobuf.Struct",
-              "responseFullType": "google.protobuf.Struct",
+              "responseType": "DomainDashboardsInfo",
+              "responseLongType": "DomainDashboardsInfo",
+              "responseFullType": "spaceone.api.dashboard.v1.DomainDashboardsInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
+                      "method": "GET",
+                      "pattern": "/dashboard/v1/domain-dashboards"
+                    },
+                    {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/analyze-v2",
-                      "body": "*"
+                      "pattern": "/dashboard/v1/domain-dashboards/search"
                     }
                   ]
                 }
@@ -1250,9 +1282,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "CostStatQuery",
-              "requestLongType": "CostStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CostStatQuery",
+              "requestType": "DomainDashboardStatQuery",
+              "requestLongType": "DomainDashboardStatQuery",
+              "requestFullType": "spaceone.api.dashboard.v1.DomainDashboardStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -1263,8 +1295,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/stat",
-                      "body": "*"
+                      "pattern": "/dashboard/v1/domain-dashboards/stat"
                     }
                   ]
                 }

@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/budget_usage.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/notification/v1/notification_usage.proto",
+      "description": "desc: A NotificationUsage is a resource indicating daily Protocol usage. The limit set by the resource Quota is applied based on the NotificationUsage.",
+      "package": "spaceone.api.notification.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
@@ -12,9 +12,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "BudgetUsageAnalyzeQuery",
-          "longName": "BudgetUsageAnalyzeQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
+          "name": "NotificationUsageInfo",
+          "longName": "NotificationUsageInfo",
+          "fullName": "spaceone.api.notification.v1.NotificationUsageInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -22,12 +22,60 @@
           "extensions": [],
           "fields": [
             {
-              "name": "query",
-              "description": "is_required: true",
+              "name": "protocol_id",
+              "description": "desc: The ID of Protocol.",
               "label": "",
-              "type": "TimeSeriesAnalyzeQuery",
-              "longType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
-              "fullType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "usage_date",
+              "description": "desc: Usage Date.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "usage_month",
+              "description": "desc: Usage Month.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "count",
+              "description": "desc: Usage count using actual notifications.",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "fail_count",
+              "description": "desc: Fail count when dispatching notifications.",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -35,7 +83,7 @@
             },
             {
               "name": "domain_id",
-              "description": "is_required: true",
+              "description": "desc: The ID of domain",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -48,117 +96,9 @@
           ]
         },
         {
-          "name": "BudgetUsageInfo",
-          "longName": "BudgetUsageInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "budget_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "date",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usd_cost",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "limit",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "cost_types",
-              "description": "",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "updated_at",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "BudgetUsageQuery",
-          "longName": "BudgetUsageQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+          "name": "NotificationUsageQuery",
+          "longName": "NotificationUsageQuery",
+          "fullName": "spaceone.api.notification.v1.NotificationUsageQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -167,7 +107,7 @@
           "fields": [
             {
               "name": "query",
-              "description": "is_required: false",
+              "description": "is_required: false\ndesc: Query format provided by SpaceONE. Please check the link for more information.",
               "label": "",
               "type": "Query",
               "longType": "spaceone.api.core.v1.Query",
@@ -178,32 +118,8 @@
               "defaultValue": ""
             },
             {
-              "name": "budget_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "date",
-              "description": "is_required: false",
+              "name": "protocol_id",
+              "description": "is_required: false\ndesc: The ID of Protocol.",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -215,7 +131,7 @@
             },
             {
               "name": "domain_id",
-              "description": "is_required: true",
+              "description": "is_required: true\ndesc: The ID of domain.",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -228,9 +144,9 @@
           ]
         },
         {
-          "name": "BudgetUsageStatQuery",
-          "longName": "BudgetUsageStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
+          "name": "NotificationUsageStatQuery",
+          "longName": "NotificationUsageStatQuery",
+          "fullName": "spaceone.api.notification.v1.NotificationUsageStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -239,7 +155,7 @@
           "fields": [
             {
               "name": "query",
-              "description": "is_required: true",
+              "description": "is_required: true\ndesc: Statistics Query format provided by SpaceONE. Please check the link for more information.",
               "label": "",
               "type": "StatisticsQuery",
               "longType": "spaceone.api.core.v1.StatisticsQuery",
@@ -251,7 +167,7 @@
             },
             {
               "name": "domain_id",
-              "description": "is_required: true",
+              "description": "is_required: true\ndesc: The ID of domain.",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -264,9 +180,9 @@
           ]
         },
         {
-          "name": "BudgetUsagesInfo",
-          "longName": "BudgetUsagesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
+          "name": "NotificationUsagesInfo",
+          "longName": "NotificationUsagesInfo",
+          "fullName": "spaceone.api.notification.v1.NotificationUsagesInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -275,11 +191,11 @@
           "fields": [
             {
               "name": "results",
-              "description": "",
+              "description": "desc: List of queried Notification Usage.",
               "label": "repeated",
-              "type": "BudgetUsageInfo",
-              "longType": "BudgetUsageInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
+              "type": "NotificationUsageInfo",
+              "longType": "NotificationUsageInfo",
+              "fullType": "spaceone.api.notification.v1.NotificationUsageInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -287,7 +203,7 @@
             },
             {
               "name": "total_count",
-              "description": "",
+              "description": "desc: Total counts of queried Notification Usage.",
               "label": "",
               "type": "int32",
               "longType": "int32",
@@ -302,51 +218,28 @@
       ],
       "services": [
         {
-          "name": "BudgetUsage",
-          "longName": "BudgetUsage",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsage",
-          "description": "Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.",
+          "name": "NotificationUsage",
+          "longName": "NotificationUsage",
+          "fullName": "spaceone.api.notification.v1.NotificationUsage",
+          "description": "",
           "methods": [
             {
               "name": "list",
-              "description": "desc: Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-01\",\n\"usd_cost\": 7671.164,\n\"limit\": 10000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.099Z\"\n},\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-02\",\n\"usd_cost\": 5931.771,\n\"limit\": 11000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.105Z\"\n}\n],\n\"total_count\": 12\n}",
-              "requestType": "BudgetUsageQuery",
-              "requestLongType": "BudgetUsageQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+              "description": "desc: Gets a list of all NotificationUsages. You can use a query to get a filtered list of Notification Usages.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"protocol_id\": \"protocol-123456789012\",\n\"usage_date\": \"08\",\n\"usage_month\": \"2022-05\",\n\"count\": 2,\n\"domain_id\": \"domain-123456789012\"\n},\n{\n\"protocol_id\": \"protocol-123456789012\",\n\"usage_date\": \"18\",\n\"usage_month\": \"2022-05\",\n\"count\": 7,\n\"domain_id\": \"domain-123456789012\"\n}\n],\n\"total_count\": 2\n}",
+              "requestType": "NotificationUsageQuery",
+              "requestLongType": "NotificationUsageQuery",
+              "requestFullType": "spaceone.api.notification.v1.NotificationUsageQuery",
               "requestStreaming": false,
-              "responseType": "BudgetUsagesInfo",
-              "responseLongType": "BudgetUsagesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
+              "responseType": "NotificationUsagesInfo",
+              "responseLongType": "NotificationUsagesInfo",
+              "responseFullType": "spaceone.api.notification.v1.NotificationUsagesInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/list",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "analyze",
-              "description": "",
-              "requestType": "BudgetUsageAnalyzeQuery",
-              "requestLongType": "BudgetUsageAnalyzeQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
-              "requestStreaming": false,
-              "responseType": "Struct",
-              "responseLongType": ".google.protobuf.Struct",
-              "responseFullType": "google.protobuf.Struct",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/analyze",
+                      "pattern": "/notification/v1/notification-usage/list",
                       "body": "*"
                     }
                   ]
@@ -356,9 +249,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "BudgetUsageStatQuery",
-              "requestLongType": "BudgetUsageStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
+              "requestType": "NotificationUsageStatQuery",
+              "requestLongType": "NotificationUsageStatQuery",
+              "requestFullType": "spaceone.api.notification.v1.NotificationUsageStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -369,7 +262,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/stat",
+                      "pattern": "/notification/v1/notification-usage/stat",
                       "body": "*"
                     }
                   ]

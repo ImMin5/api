@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/budget_usage.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/notification/v1/quota.proto",
+      "description": "desc: A Quota is a limit on protocol usage for a day or a month. You can manage the use of the protocol with a Quota.",
+      "package": "spaceone.api.notification.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
@@ -12,9 +12,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "BudgetUsageAnalyzeQuery",
-          "longName": "BudgetUsageAnalyzeQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
+          "name": "CreateQuotaRequest",
+          "longName": "CreateQuotaRequest",
+          "fullName": "spaceone.api.notification.v1.CreateQuotaRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -22,84 +22,12 @@
           "extensions": [],
           "fields": [
             {
-              "name": "query",
-              "description": "is_required: true",
-              "label": "",
-              "type": "TimeSeriesAnalyzeQuery",
-              "longType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
-              "fullType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
+              "name": "protocol_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",
               "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "BudgetUsageInfo",
-          "longName": "BudgetUsageInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "budget_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "date",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usd_cost",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -107,19 +35,7 @@
             },
             {
               "name": "limit",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "cost_types",
-              "description": "",
+              "description": "is_required: true\ndesc: The information about Quota limitation.",
               "label": "",
               "type": "Struct",
               "longType": "google.protobuf.Struct",
@@ -131,19 +47,7 @@
             },
             {
               "name": "domain_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "updated_at",
-              "description": "",
+              "description": "is_required: true\ndesc: The ID of domain.",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -156,9 +60,69 @@
           ]
         },
         {
-          "name": "BudgetUsageQuery",
-          "longName": "BudgetUsageQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+          "name": "QuotaInfo",
+          "longName": "QuotaInfo",
+          "fullName": "spaceone.api.notification.v1.QuotaInfo",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "quota_id",
+              "description": "desc: The ID of Quota.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "protocol_id",
+              "description": "desc: The ID of Protocol.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "limit",
+              "description": "desc: The information about Quota limitation.",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "desc: The ID of domain",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "QuotaQuery",
+          "longName": "QuotaQuery",
+          "fullName": "spaceone.api.notification.v1.QuotaQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -167,7 +131,7 @@
           "fields": [
             {
               "name": "query",
-              "description": "is_required: false",
+              "description": "is_required: false\ndesc: Query format provided by SpaceONE. Please check the link for more information.",
               "label": "",
               "type": "Query",
               "longType": "spaceone.api.core.v1.Query",
@@ -178,8 +142,8 @@
               "defaultValue": ""
             },
             {
-              "name": "budget_id",
-              "description": "is_required: false",
+              "name": "quota_id",
+              "description": "is_required: false\ndesc: The ID of Quota.",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -190,20 +154,8 @@
               "defaultValue": ""
             },
             {
-              "name": "name",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "date",
-              "description": "is_required: false",
+              "name": "protocol_id",
+              "description": "is_required: false\ndesc: The ID of Protocol.",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -215,7 +167,7 @@
             },
             {
               "name": "domain_id",
-              "description": "is_required: true",
+              "description": "is_required: true\ndesc: The ID of domain.",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -228,9 +180,45 @@
           ]
         },
         {
-          "name": "BudgetUsageStatQuery",
-          "longName": "BudgetUsageStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
+          "name": "QuotaRequest",
+          "longName": "QuotaRequest",
+          "fullName": "spaceone.api.notification.v1.QuotaRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "quota_id",
+              "description": "is_required: true\ndesc: The ID of Quota.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true\ndesc: The ID of domain.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "QuotaStatQuery",
+          "longName": "QuotaStatQuery",
+          "fullName": "spaceone.api.notification.v1.QuotaStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -239,7 +227,7 @@
           "fields": [
             {
               "name": "query",
-              "description": "is_required: true",
+              "description": "is_required: true\ndesc: Statistics Query format provided by SpaceONE. Please check the link for more information.",
               "label": "",
               "type": "StatisticsQuery",
               "longType": "spaceone.api.core.v1.StatisticsQuery",
@@ -251,7 +239,7 @@
             },
             {
               "name": "domain_id",
-              "description": "is_required: true",
+              "description": "is_required: true\ndesc: The ID of domain.",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -264,9 +252,9 @@
           ]
         },
         {
-          "name": "BudgetUsagesInfo",
-          "longName": "BudgetUsagesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
+          "name": "QuotasInfo",
+          "longName": "QuotasInfo",
+          "fullName": "spaceone.api.notification.v1.QuotasInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -275,11 +263,11 @@
           "fields": [
             {
               "name": "results",
-              "description": "",
+              "description": "desc: List of queried Quota.",
               "label": "repeated",
-              "type": "BudgetUsageInfo",
-              "longType": "BudgetUsageInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
+              "type": "QuotaInfo",
+              "longType": "QuotaInfo",
+              "fullType": "spaceone.api.notification.v1.QuotaInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -287,7 +275,7 @@
             },
             {
               "name": "total_count",
-              "description": "",
+              "description": "desc: Total counts of queried Quota.",
               "label": "",
               "type": "int32",
               "longType": "int32",
@@ -298,32 +286,80 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "UpdateQuotaRequest",
+          "longName": "UpdateQuotaRequest",
+          "fullName": "spaceone.api.notification.v1.UpdateQuotaRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "quota_id",
+              "description": "is_required: true\ndesc: The ID of Quota.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "limit",
+              "description": "is_required: true\ndesc: The information about Quota limitation.",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         }
       ],
       "services": [
         {
-          "name": "BudgetUsage",
-          "longName": "BudgetUsage",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsage",
-          "description": "Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.",
+          "name": "Quota",
+          "longName": "Quota",
+          "fullName": "spaceone.api.notification.v1.Quota",
+          "description": "",
           "methods": [
             {
-              "name": "list",
-              "description": "desc: Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-01\",\n\"usd_cost\": 7671.164,\n\"limit\": 10000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.099Z\"\n},\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-02\",\n\"usd_cost\": 5931.771,\n\"limit\": 11000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.105Z\"\n}\n],\n\"total_count\": 12\n}",
-              "requestType": "BudgetUsageQuery",
-              "requestLongType": "BudgetUsageQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+              "name": "create",
+              "description": "desc: Creates a new Quota limiting the use of a selected Protocol for a day or a month. If the parameter `limit` has no value, it will be deemed unlimited. If a Protocol has not set a Quota, the default Quota set in the Config will be applied.\nrequest_example: \u003e-\n{\n\"protocol_id\": \"protocol-123456789012\",\n\"limit\": {\n\"day\": 5.0,\n\"month\": 7.0\n}\n}\nresponse_example: \u003e-\n{\n\"quota_id\": \"quota-123456789012\",\n\"protocol_id\": \"protocol-123456789012\",\n\"limit\": {\n\"day\": 5.0,\n\"month\": 7.0\n},\n\"domain_id\": \"domain-123456789012\"\n}",
+              "requestType": "CreateQuotaRequest",
+              "requestLongType": "CreateQuotaRequest",
+              "requestFullType": "spaceone.api.notification.v1.CreateQuotaRequest",
               "requestStreaming": false,
-              "responseType": "BudgetUsagesInfo",
-              "responseLongType": "BudgetUsagesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
+              "responseType": "QuotaInfo",
+              "responseLongType": "QuotaInfo",
+              "responseFullType": "spaceone.api.notification.v1.QuotaInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/list",
+                      "pattern": "/notification/v1/quota/create",
                       "body": "*"
                     }
                   ]
@@ -331,22 +367,91 @@
               }
             },
             {
-              "name": "analyze",
-              "description": "",
-              "requestType": "BudgetUsageAnalyzeQuery",
-              "requestLongType": "BudgetUsageAnalyzeQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
+              "name": "update",
+              "description": "desc: Updates a specific Quota. You can make changes in Quota `limit`, managing the use of the Protocol.\nrequest_example: \u003e-\n{\n\"quota_id\": \"quota-123456789012\",\n\"limit\": {\n\"day\": 10.0,\n\"month\": 15.0\n}\n}\nresponse_example: \u003e-\n{\n\"quota_id\": \"quota-123456789012\",\n\"protocol_id\": \"protocol-123456789012\",\n\"limit\": {\n\"day\": 10.0,\n\"month\": 15.0\n},\n\"domain_id\": \"domain-123456789012\"\n}",
+              "requestType": "UpdateQuotaRequest",
+              "requestLongType": "UpdateQuotaRequest",
+              "requestFullType": "spaceone.api.notification.v1.UpdateQuotaRequest",
               "requestStreaming": false,
-              "responseType": "Struct",
-              "responseLongType": ".google.protobuf.Struct",
-              "responseFullType": "google.protobuf.Struct",
+              "responseType": "QuotaInfo",
+              "responseLongType": "QuotaInfo",
+              "responseFullType": "spaceone.api.notification.v1.QuotaInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/analyze",
+                      "pattern": "/notification/v1/quota/update",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "delete",
+              "description": "desc: Deletes a specific Quota. The default Quota set in the Config will be applied to the Protocol you deleted the Quota of.\nrequest_example: \u003e-\n{\n\"quota_id\": \"quota-123456789012\"\n}",
+              "requestType": "QuotaRequest",
+              "requestLongType": "QuotaRequest",
+              "requestFullType": "spaceone.api.notification.v1.QuotaRequest",
+              "requestStreaming": false,
+              "responseType": "Empty",
+              "responseLongType": ".google.protobuf.Empty",
+              "responseFullType": "google.protobuf.Empty",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/notification/v1/quota/delete",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "get",
+              "description": "desc: Gets a specific Quota. Prints detailed information about the Quota, including the `limit` and the Protocol limited by the Quota.\nrequest_example: \u003e-\n{\n\"quota_id\": \"quota-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"quota_id\": \"quota-123456789012\",\n\"protocol_id\": \"protocol-123456789012\",\n\"limit\": {\n\"day\": 10.0,\n\"month\": 15.0\n},\n\"domain_id\": \"domain-123456789012\"\n}",
+              "requestType": "QuotaRequest",
+              "requestLongType": "QuotaRequest",
+              "requestFullType": "spaceone.api.notification.v1.QuotaRequest",
+              "requestStreaming": false,
+              "responseType": "QuotaInfo",
+              "responseLongType": "QuotaInfo",
+              "responseFullType": "spaceone.api.notification.v1.QuotaInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/notification/v1/quota/get",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "list",
+              "description": "desc: Gets a list of all Quotas. You can use a query to get a filtered list of Quotas.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"quota_id\": \"quota-123456789012\",\n\"protocol_id\": \"protocol-123456789012\",\n\"limit\": {\n\"day\": 10.0,\n\"month\": 15.0\n},\n\"domain_id\": \"domain-123456789012\"\n},\n{\n\"quota_id\": \"quota-987654321098\",\n\"protocol_id\": \"protocol-987654321098\",\n\"limit\": {\n\"day\": 5.0,\n\"month\": 7.0\n},\n\"domain_id\": \"domain-123456789012\"\n}\n],\n\"total_count\": 2\n}",
+              "requestType": "QuotaQuery",
+              "requestLongType": "QuotaQuery",
+              "requestFullType": "spaceone.api.notification.v1.QuotaQuery",
+              "requestStreaming": false,
+              "responseType": "QuotasInfo",
+              "responseLongType": "QuotasInfo",
+              "responseFullType": "spaceone.api.notification.v1.QuotasInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/notification/v1/quota/list",
                       "body": "*"
                     }
                   ]
@@ -356,9 +461,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "BudgetUsageStatQuery",
-              "requestLongType": "BudgetUsageStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
+              "requestType": "QuotaStatQuery",
+              "requestLongType": "QuotaStatQuery",
+              "requestFullType": "spaceone.api.notification.v1.QuotaStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -369,7 +474,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/stat",
+                      "pattern": "/notification/v1/quota/stat",
                       "body": "*"
                     }
                   ]

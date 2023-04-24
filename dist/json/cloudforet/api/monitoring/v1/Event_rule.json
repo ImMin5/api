@@ -1,43 +1,140 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/cost.proto",
-      "description": "desc: A Cost is a resource of raw cost data collected by the cost_analysis.DataSource.",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/monitoring/v1/event_rule.proto",
+      "description": "desc: An EventRule is a rule to transform the request data when an Event is generated.",
+      "package": "spaceone.api.monitoring.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
       "enums": [
         {
-          "name": "Granularity",
-          "longName": "CostAnalyzeQuery.Granularity",
-          "fullName": "spaceone.api.cost_analysis.v1.CostAnalyzeQuery.Granularity",
+          "name": "ConditionsPolicy",
+          "longName": "CreateEventRuleRequest.ConditionsPolicy",
+          "fullName": "spaceone.api.monitoring.v1.CreateEventRuleRequest.ConditionsPolicy",
           "description": "",
           "values": [
             {
-              "name": "UNIT_NONE",
+              "name": "NONE",
               "number": "0",
               "description": ""
             },
             {
-              "name": "ACCUMULATED",
+              "name": "ALL",
               "number": "1",
               "description": ""
             },
             {
-              "name": "DAILY",
+              "name": "ANY",
               "number": "2",
               "description": ""
             },
             {
-              "name": "MONTHLY",
+              "name": "ALWAYS",
               "number": "3",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "ConditionsPolicy",
+          "longName": "EventRuleInfo.ConditionsPolicy",
+          "fullName": "spaceone.api.monitoring.v1.EventRuleInfo.ConditionsPolicy",
+          "description": "",
+          "values": [
+            {
+              "name": "NONE",
+              "number": "0",
               "description": ""
             },
             {
-              "name": "YEARLY",
-              "number": "4",
+              "name": "ALL",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "ANY",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "ALWAYS",
+              "number": "3",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "EventRuleScope",
+          "longName": "EventRuleInfo.EventRuleScope",
+          "fullName": "spaceone.api.monitoring.v1.EventRuleInfo.EventRuleScope",
+          "description": "",
+          "values": [
+            {
+              "name": "SCOPE_NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "GLOBAL",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "PROJECT",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "EventRuleScope",
+          "longName": "EventRuleQuery.EventRuleScope",
+          "fullName": "spaceone.api.monitoring.v1.EventRuleQuery.EventRuleScope",
+          "description": "",
+          "values": [
+            {
+              "name": "SCOPE_NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "GLOBAL",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "PROJECT",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "ConditionsPolicy",
+          "longName": "UpdateEventRuleRequest.ConditionsPolicy",
+          "fullName": "spaceone.api.monitoring.v1.UpdateEventRuleRequest.ConditionsPolicy",
+          "description": "",
+          "values": [
+            {
+              "name": "NONE",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "ALL",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "ANY",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "ALWAYS",
+              "number": "3",
               "description": ""
             }
           ]
@@ -46,9 +143,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "CostAnalyzeQuery",
-          "longName": "CostAnalyzeQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.CostAnalyzeQuery",
+          "name": "ChangeEventRuleOrderRequest",
+          "longName": "ChangeEventRuleOrderRequest",
+          "fullName": "spaceone.api.monitoring.v1.ChangeEventRuleOrderRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -56,19 +153,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "granularity",
-              "description": "is_required: true",
-              "label": "",
-              "type": "Granularity",
-              "longType": "CostAnalyzeQuery.Granularity",
-              "fullType": "spaceone.api.cost_analysis.v1.CostAnalyzeQuery.Granularity",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "start",
+              "name": "event_rule_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -80,44 +165,8 @@
               "defaultValue": ""
             },
             {
-              "name": "end",
+              "name": "order",
               "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "group_by",
-              "description": "is_required: false",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "filter",
-              "description": "is_required: false",
-              "label": "",
-              "type": "ListValue",
-              "longType": "google.protobuf.ListValue",
-              "fullType": "google.protobuf.ListValue",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "limit",
-              "description": "is_required: false",
               "label": "",
               "type": "int32",
               "longType": "int32",
@@ -128,48 +177,108 @@
               "defaultValue": ""
             },
             {
-              "name": "page",
-              "description": "is_required: false",
+              "name": "domain_id",
+              "description": "is_required: true",
               "label": "",
-              "type": "Page",
-              "longType": "spaceone.api.core.v1.Page",
-              "fullType": "spaceone.api.core.v1.Page",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CreateEventRuleRequest",
+          "longName": "CreateEventRuleRequest",
+          "fullName": "spaceone.api.monitoring.v1.CreateEventRuleRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "sort",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Sort",
-              "longType": "spaceone.api.core.v1.Sort",
-              "fullType": "spaceone.api.core.v1.Sort",
+              "name": "conditions",
+              "description": "is_required: true",
+              "label": "repeated",
+              "type": "EventRuleCondition",
+              "longType": "EventRuleCondition",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleCondition",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "include_usage_quantity",
-              "description": "is_required: false",
+              "name": "conditions_policy",
+              "description": "is_required: true",
               "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
+              "type": "ConditionsPolicy",
+              "longType": "CreateEventRuleRequest.ConditionsPolicy",
+              "fullType": "spaceone.api.monitoring.v1.CreateEventRuleRequest.ConditionsPolicy",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "include_others",
+              "name": "actions",
+              "description": "is_required: true",
+              "label": "",
+              "type": "EventRuleActions",
+              "longType": "EventRuleActions",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleActions",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "options",
               "description": "is_required: false",
               "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
+              "type": "EventRuleOptions",
+              "longType": "EventRuleOptions",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleOptions",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -190,9 +299,9 @@
           ]
         },
         {
-          "name": "CostAnalyzeV2Query",
-          "longName": "CostAnalyzeV2Query",
-          "fullName": "spaceone.api.cost_analysis.v1.CostAnalyzeV2Query",
+          "name": "EventRuleActionResponder",
+          "longName": "EventRuleActionResponder",
+          "fullName": "spaceone.api.monitoring.v1.EventRuleActionResponder",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -200,20 +309,20 @@
           "extensions": [],
           "fields": [
             {
-              "name": "query",
-              "description": "is_required: true",
+              "name": "resource_type",
+              "description": "",
               "label": "",
-              "type": "TimeSeriesAnalyzeQuery",
-              "longType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
-              "fullType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "domain_id",
-              "description": "is_required: true",
+              "name": "resource_id",
+              "description": "",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -226,9 +335,9 @@
           ]
         },
         {
-          "name": "CostInfo",
-          "longName": "CostInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.CostInfo",
+          "name": "EventRuleActions",
+          "longName": "EventRuleActions",
+          "fullName": "spaceone.api.monitoring.v1.EventRuleActions",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -236,7 +345,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "cost_id",
+              "name": "change_assignee",
               "description": "",
               "label": "",
               "type": "string",
@@ -248,19 +357,7 @@
               "defaultValue": ""
             },
             {
-              "name": "usd_cost",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "original_currency",
+              "name": "change_urgency",
               "description": "",
               "label": "",
               "type": "string",
@@ -272,31 +369,7 @@
               "defaultValue": ""
             },
             {
-              "name": "original_cost",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usage_quantity",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "provider",
+              "name": "change_project",
               "description": "",
               "label": "",
               "type": "string",
@@ -308,7 +381,79 @@
               "defaultValue": ""
             },
             {
-              "name": "region_code",
+              "name": "add_project_dependency",
+              "description": "",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "add_responder",
+              "description": "",
+              "label": "repeated",
+              "type": "EventRuleActionResponder",
+              "longType": "EventRuleActionResponder",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleActionResponder",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "match_service_account",
+              "description": "",
+              "label": "",
+              "type": "MatchRule",
+              "longType": "MatchRule",
+              "fullType": "spaceone.api.monitoring.v1.MatchRule",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "add_additional_info",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "no_notification",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "EventRuleCondition",
+          "longName": "EventRuleCondition",
+          "fullName": "spaceone.api.monitoring.v1.EventRuleCondition",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
               "description": "",
               "label": "",
               "type": "string",
@@ -320,7 +465,7 @@
               "defaultValue": ""
             },
             {
-              "name": "region_key",
+              "name": "value",
               "description": "",
               "label": "",
               "type": "string",
@@ -332,7 +477,31 @@
               "defaultValue": ""
             },
             {
-              "name": "category",
+              "name": "operator",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "EventRuleInfo",
+          "longName": "EventRuleInfo",
+          "fullName": "spaceone.api.monitoring.v1.EventRuleInfo",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "event_rule_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -344,7 +513,7 @@
               "defaultValue": ""
             },
             {
-              "name": "product",
+              "name": "name",
               "description": "",
               "label": "",
               "type": "string",
@@ -356,43 +525,79 @@
               "defaultValue": ""
             },
             {
-              "name": "account",
+              "name": "order",
               "description": "",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "usage_type",
+              "name": "conditions",
               "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "label": "repeated",
+              "type": "EventRuleCondition",
+              "longType": "EventRuleCondition",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleCondition",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "resource_group",
+              "name": "conditions_policy",
               "description": "",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "ConditionsPolicy",
+              "longType": "EventRuleInfo.ConditionsPolicy",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleInfo.ConditionsPolicy",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "resource",
+              "name": "actions",
+              "description": "",
+              "label": "",
+              "type": "EventRuleActions",
+              "longType": "EventRuleActions",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleActions",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "options",
+              "description": "",
+              "label": "",
+              "type": "EventRuleOptions",
+              "longType": "EventRuleOptions",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleOptions",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "scope",
+              "description": "",
+              "label": "",
+              "type": "EventRuleScope",
+              "longType": "EventRuleInfo.EventRuleScope",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleInfo.EventRuleScope",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -416,67 +621,7 @@
               "defaultValue": ""
             },
             {
-              "name": "additional_info",
-              "description": "",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "service_account_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "project_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "domain_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "billed_at",
               "description": "",
               "label": "",
               "type": "string",
@@ -502,9 +647,33 @@
           ]
         },
         {
-          "name": "CostQuery",
-          "longName": "CostQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.CostQuery",
+          "name": "EventRuleOptions",
+          "longName": "EventRuleOptions",
+          "fullName": "spaceone.api.monitoring.v1.EventRuleOptions",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "stop_processing",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "EventRuleQuery",
+          "longName": "EventRuleQuery",
+          "fullName": "spaceone.api.monitoring.v1.EventRuleQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -524,7 +693,7 @@
               "defaultValue": ""
             },
             {
-              "name": "cost_id",
+              "name": "event_rule_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -536,7 +705,7 @@
               "defaultValue": ""
             },
             {
-              "name": "original_currency",
+              "name": "name",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -548,120 +717,12 @@
               "defaultValue": ""
             },
             {
-              "name": "provider",
+              "name": "scope",
               "description": "is_required: false",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "region_code",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "region_key",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "category",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "product",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "account",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usage_type",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "resource_group",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "resource",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "service_account_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "EventRuleScope",
+              "longType": "EventRuleQuery.EventRuleScope",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleQuery.EventRuleScope",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -680,18 +741,6 @@
               "defaultValue": ""
             },
             {
-              "name": "data_source_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "domain_id",
               "description": "is_required: true",
               "label": "",
@@ -706,9 +755,9 @@
           ]
         },
         {
-          "name": "CostRequest",
-          "longName": "CostRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CostRequest",
+          "name": "EventRuleRequest",
+          "longName": "EventRuleRequest",
+          "fullName": "spaceone.api.monitoring.v1.EventRuleRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -716,7 +765,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "cost_id",
+              "name": "event_rule_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -742,9 +791,9 @@
           ]
         },
         {
-          "name": "CostStatQuery",
-          "longName": "CostStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.CostStatQuery",
+          "name": "EventRuleStatQuery",
+          "longName": "EventRuleStatQuery",
+          "fullName": "spaceone.api.monitoring.v1.EventRuleStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -778,9 +827,9 @@
           ]
         },
         {
-          "name": "CostsInfo",
-          "longName": "CostsInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.CostsInfo",
+          "name": "EventRulesInfo",
+          "longName": "EventRulesInfo",
+          "fullName": "spaceone.api.monitoring.v1.EventRulesInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -791,9 +840,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "CostInfo",
-              "longType": "CostInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.CostInfo",
+              "type": "EventRuleInfo",
+              "longType": "EventRuleInfo",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -814,9 +863,9 @@
           ]
         },
         {
-          "name": "CreateCostRequest",
-          "longName": "CreateCostRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.CreateCostRequest",
+          "name": "GetEventRuleRequest",
+          "longName": "GetEventRuleRequest",
+          "fullName": "spaceone.api.monitoring.v1.GetEventRuleRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -824,247 +873,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "original_cost",
-              "description": "is_required: true",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "original_currency",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usd_cost",
-              "description": "is_required: false",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usage_quantity",
-              "description": "is_required: false",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "provider",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "region_code",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "category",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "product",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "account",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usage_type",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "resource_group",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "resource",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tags",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "additional_info",
-              "description": "is_required: false",
-              "label": "",
-              "type": "Struct",
-              "longType": "google.protobuf.Struct",
-              "fullType": "google.protobuf.Struct",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "service_account_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "project_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "data_source_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "domain_id",
-              "description": "is_required: true",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "billed_at",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "GetCostRequest",
-          "longName": "GetCostRequest",
-          "fullName": "spaceone.api.cost_analysis.v1.GetCostRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cost_id",
+              "name": "event_rule_id",
               "description": "is_required: true",
               "label": "",
               "type": "string",
@@ -1100,32 +909,222 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "MatchRule",
+          "longName": "MatchRule",
+          "fullName": "spaceone.api.monitoring.v1.MatchRule",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "source",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "target",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UpdateEventRuleRequest",
+          "longName": "UpdateEventRuleRequest",
+          "fullName": "spaceone.api.monitoring.v1.UpdateEventRuleRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "event_rule_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "is_required: false",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "conditions",
+              "description": "is_required: false",
+              "label": "repeated",
+              "type": "EventRuleCondition",
+              "longType": "EventRuleCondition",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleCondition",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "conditions_policy",
+              "description": "is_required: false",
+              "label": "",
+              "type": "ConditionsPolicy",
+              "longType": "UpdateEventRuleRequest.ConditionsPolicy",
+              "fullType": "spaceone.api.monitoring.v1.UpdateEventRuleRequest.ConditionsPolicy",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "actions",
+              "description": "is_required: false",
+              "label": "",
+              "type": "EventRuleActions",
+              "longType": "EventRuleActions",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleActions",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "options",
+              "description": "is_required: false",
+              "label": "",
+              "type": "EventRuleOptions",
+              "longType": "EventRuleOptions",
+              "fullType": "spaceone.api.monitoring.v1.EventRuleOptions",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         }
       ],
       "services": [
         {
-          "name": "Cost",
-          "longName": "Cost",
-          "fullName": "spaceone.api.cost_analysis.v1.Cost",
-          "description": "Creates a new Cost. When creating a Cost, if the parameter `provider` is not entered, the default value of the parameter will be the provider information of the DataSource which collected the raw data of the Cost from the provider. The parameter `billed_at` is the data of when the cost is billed. While the DataSource collects the cost data, if the `billed_at` data does not exist, the value will be replaced with the `created_at` data indicating when the Cost is created. If the cost data collected is based on USD, the Cost is created without the currency exchange.",
+          "name": "EventRule",
+          "longName": "EventRule",
+          "fullName": "spaceone.api.monitoring.v1.EventRule",
+          "description": "",
           "methods": [
             {
               "name": "create",
-              "description": "desc: Creates a new Cost. When creating a Cost, if the parameter `provider` is not entered, the default value of the parameter will be the provider information of the DataSource which collected the raw data of the Cost from the provider. The parameter `billed_at` is the data of when the cost is billed. While the DataSource collects the cost data, if the `billed_at` data does not exist, the value will be replaced with the `created_at` data indicating when the Cost is created. If the cost data collected is based on USD, the Cost is created without the currency exchange.\nrequest_example: \u003e-\n{\n\"original_cost\": 4.50528e-08,\n\"original_currency\": \"USD\",\n\"usd_cost\": 4.50528e-08,\n\"usage_quantity\": 4.11e-07,\n\"provider\": \"aws\",\n\"region_code\": \"ap-northeast-1\",\n\"product\": \"AWSDataTransfer\",\n\"account\": \"722069360300\",\n\"usage_type\": \"data-transfer.out\",\n\"additional_info\": {\n\"raw_usage_type\": \"APN1-DataTransfer-Out-Bytes\"\n},\n\"data_source_id\": \"ds-fcba92ca73b1\"\n}\nresponse_example: \u003e-\n{\n\"cost_id\": \"cost-c5aae7712ec9\",\n\"usd_cost\": 4.50528e-08,\n\"original_currency\": \"USD\",\n\"original_cost\": 4.50528e-08,\n\"usage_quantity\": 4.11e-07,\n\"provider\": \"aws\",\n\"region_code\": \"ap-northeast-1\",\n\"product\": \"AWSDataTransfer\",\n\"account\": \"722069360300\",\n\"usage_type\": \"data-transfer.out\",\n\"tags\": {},\n\"additional_info\": {\n\"raw_usage_type\": \"APN1-DataTransfer-Out-Bytes\"\n},\n\"data_source_id\": \"ds-fcba92ca73b1\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"billed_at\": \"2022-07-19T09:44:27.326Z\",\n\"created_at\": \"2022-07-19T09:44:27.373Z\"\n}",
-              "requestType": "CreateCostRequest",
-              "requestLongType": "CreateCostRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CreateCostRequest",
+              "description": "desc: Creates a new EventRule. You can filter the Events to apply the EventRule by setting the input parameter `Conditions`. The method can change the Events' assignee or Project.\nrequest_example: \u003e-\n{\n\"conditions\": [{\"key\": \"description\", \"value\": \"API\", \"operator\": \"contain\"}],\n\"conditions_policy\": \"ALL\",\n\"actions\": {\"change_assignee\": \"user1@email.com\",\n\"change_urgency\": \"LOW\",\n\"change_project\": \"project-123456789012\",\n\"add_additional_info\": {\"type\": \"personal rule\"},\n\"no_notification\": true},\n\"options\": {},\n\"project_id\": \"project-123456789012\",\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"event_rule_id\": \"er-123456789012\",\n\"order\": 1,\n\"conditions\": [\n{\n\"key\": \"description\",\n\"value\": \"API\",\n\"operator\": \"contain\"\n}\n],\n\"conditions_policy\": \"ALL\",\n\"actions\": {\n\"change_assignee\": \"user1@email.com\",\n\"change_urgency\": \"LOW\",\n\"change_project\": \"project-123456789012\",\n\"add_additional_info\": {\n\"type\": \"personal rule\"\n},\n\"no_notification\": true\n},\n\"options\": {},\n\"scope\": \"PROJECT\",\n\"project_id\": \"project-123456789012\",\n\"tags\": {},\n\"domain_id\": \"domain-123456789012\",\n\"created_at\": \"2022-01-02T06:02:31.517Z\"\n}",
+              "requestType": "CreateEventRuleRequest",
+              "requestLongType": "CreateEventRuleRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.CreateEventRuleRequest",
               "requestStreaming": false,
-              "responseType": "CostInfo",
-              "responseLongType": "CostInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.CostInfo",
+              "responseType": "EventRuleInfo",
+              "responseLongType": "EventRuleInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.EventRuleInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/create",
+                      "pattern": "/monitoring/v1/event-rule/create",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "update",
+              "description": "desc: Changes a priority order between EventRules to apply. EventRules are filtered by the order configured.\nrequest_example: \u003e-\n{\n\"event_rule_id\": \"er-123456789012\",\n\"conditions\": [{\"key\": \"description\", \"value\": \"ELB\", \"operator\": \"contain\"}],\n\"conditions_policy\": \"ALL\",\n\"actions\": {\"change_assignee\": \"user2@email.com\",\n\"change_urgency\": \"HIGH\",\n\"change_project\": \"project-123456789012\",\n\"add_additional_info\": {\"type\": \"personal rule\"},\n\"no_notification\": true},\n\"options\": {},\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"event_rule_id\": \"er-123456789012\",\n\"order\": 2,\n\"conditions\": [\n{\n\"key\": \"description\",\n\"value\": \"ELB\",\n\"operator\": \"contain\"\n}\n],\n\"conditions_policy\": \"ALL\",\n\"actions\": {\n\"change_assignee\": \"user2@email.com\",\n\"change_urgency\": \"HIGH\",\n\"change_project\": \"project-123456789012\",\n\"add_additional_info\": {\n\"type\": \"personal rule\"\n},\n\"no_notification\": true\n},\n\"options\": {},\n\"scope\": \"PROJECT\",\n\"project_id\": \"project-123456789012\",\n\"tags\": {},\n\"domain_id\": \"domain-123456789012\",\n\"created_at\": \"2022-01-01T06:02:31.517Z\"\n}",
+              "requestType": "UpdateEventRuleRequest",
+              "requestLongType": "UpdateEventRuleRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.UpdateEventRuleRequest",
+              "requestStreaming": false,
+              "responseType": "EventRuleInfo",
+              "responseLongType": "EventRuleInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.EventRuleInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/monitoring/v1/event-rule/update",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "change_order",
+              "description": "desc: Updates a specific EventRule. You can make changes in EventRule settings.\nrequest_example: \u003e-\n{\n\"event_rule_id\": \"er-123456789012\",\n\"order\": 2,\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"event_rule_id\": \"er-123456789012\",\n\"order\": 2,\n\"conditions\": [\n{\n\"key\": \"description\",\n\"value\": \"API\",\n\"operator\": \"contain\"\n}\n],\n\"conditions_policy\": \"ALL\",\n\"actions\": {\n\"change_assignee\": \"user1@email.com\",\n\"change_urgency\": \"LOW\",\n\"change_project\": \"project-123456789012\",\n\"add_additional_info\": {\n\"type\": \"personal rule\"\n},\n\"no_notification\": true\n},\n\"options\": {},\n\"scope\": \"PROJECT\",\n\"project_id\": \"project-123456789012\",\n\"tags\": {},\n\"domain_id\": \"domain-123456789012\",\n\"created_at\": \"2022-01-02T06:02:31.517Z\"\n}",
+              "requestType": "ChangeEventRuleOrderRequest",
+              "requestLongType": "ChangeEventRuleOrderRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.ChangeEventRuleOrderRequest",
+              "requestStreaming": false,
+              "responseType": "EventRuleInfo",
+              "responseLongType": "EventRuleInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.EventRuleInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/monitoring/v1/event-rule/change-order",
                       "body": "*"
                     }
                   ]
@@ -1134,10 +1133,10 @@
             },
             {
               "name": "delete",
-              "description": "desc: Deletes a specific Cost. You must specify the `cost_id` of the Cost to delete.\nrequest_example: \u003e-\n{\n\"cost_id\": \"cost-2ad052ed03d7\"\n}",
-              "requestType": "CostRequest",
-              "requestLongType": "CostRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CostRequest",
+              "description": "desc: Deletes a specific EventRule. You must assign an EventRule resource to delete by specifying `event_rule_id`.\nrequest_example: \u003e-\n{\n\"event_rule_id\": \"er-123456789012\",\n\"domain_id\": \"domain-123456789012\"\n}",
+              "requestType": "EventRuleRequest",
+              "requestLongType": "EventRuleRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.EventRuleRequest",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -1148,7 +1147,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/delete",
+                      "pattern": "/monitoring/v1/event-rule/delete",
                       "body": "*"
                     }
                   ]
@@ -1157,21 +1156,21 @@
             },
             {
               "name": "get",
-              "description": "desc: Gets a specific Cost. Prints detailed information about the Cost, including  `region_code` and `account`.\nrequest_example: \u003e-\n{\n\"cost_id\": \"cost-2ad052ed03d7\"\n}\nresponse_example: \u003e-\n{\n\"cost_id\": \"cost-2ad052ed03d7\",\n\"usd_cost\": 4.50528e-08,\n\"original_currency\": \"USD\",\n\"original_cost\": 4.50528e-08,\n\"usage_quantity\": 4.11e-07,\n\"provider\": \"aws\",\n\"region_code\": \"ap-northeast-1\",\n\"product\": \"AWSDataTransfer\",\n\"account\": \"722069360300\",\n\"usage_type\": \"data-transfer.out\",\n\"tags\": {},\n\"additional_info\": {\n\"raw_usage_type\": \"APN1-DataTransfer-Out-Bytes\"\n},\n\"data_source_id\": \"ds-fcba92ca73b1\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"billed_at\": \"2021-01-01T00:00:00.000Z\",\n\"created_at\": \"2022-04-06T13:49:39.669Z\"\n}",
-              "requestType": "GetCostRequest",
-              "requestLongType": "GetCostRequest",
-              "requestFullType": "spaceone.api.cost_analysis.v1.GetCostRequest",
+              "description": "desc: Gets a specific EventRule. Prints detailed information about the EventRule.\nrequest_example: \u003e-\n{\n\"event_rule_id\": \"er-123456789012\",\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"event_rule_id\": \"er-123456789012\",\n\"order\": 2,\n\"conditions\": [\n{\n\"key\": \"title\",\n\"value\": \"ELB\",\n\"operator\": \"contain\"\n}\n],\n\"conditions_policy\": \"ALL\",\n\"actions\": {\n\"change_assignee\": \"user1@email.com\",\n\"change_urgency\": \"LOW\",\n\"change_project\": \"project-123456789012\",\n\"add_additional_info\": {},\n\"no_notification\": true\n},\n\"options\": {},\n\"scope\": \"PROJECT\",\n\"project_id\": \"project-123456789012\",\n\"tags\": {},\n\"domain_id\": \"domain-123456789012\",\n\"created_at\": \"2022-01-01T06:12:30.226Z\"\n}",
+              "requestType": "GetEventRuleRequest",
+              "requestLongType": "GetEventRuleRequest",
+              "requestFullType": "spaceone.api.monitoring.v1.GetEventRuleRequest",
               "requestStreaming": false,
-              "responseType": "CostInfo",
-              "responseLongType": "CostInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.CostInfo",
+              "responseType": "EventRuleInfo",
+              "responseLongType": "EventRuleInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.EventRuleInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/get",
+                      "pattern": "/monitoring/v1/event-rule/get",
                       "body": "*"
                     }
                   ]
@@ -1180,67 +1179,21 @@
             },
             {
               "name": "list",
-              "description": "desc: Gets a list of all Costs. You can use a query to get a filtered list of Costs.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"cost_id\": \"cost-2ad052ed03d7\",\n\"usd_cost\": 4.50528e-08,\n\"original_currency\": \"USD\",\n\"original_cost\": 4.50528e-08,\n\"usage_quantity\": 4.11e-07,\n\"provider\": \"aws\",\n\"region_code\": \"ap-northeast-1\",\n\"product\": \"AWSDataTransfer\",\n\"account\": \"722069360300\",\n\"usage_type\": \"data-transfer.out\",\n\"tags\": {},\n\"additional_info\": {\n\"raw_usage_type\": \"APN1-DataTransfer-Out-Bytes\"\n},\n\"data_source_id\": \"ds-fcba92ca73b1\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"billed_at\": \"2021-01-01T00:00:00.000Z\",\n\"created_at\": \"2022-04-06T13:49:39.669Z\"\n},\n{\n\"cost_id\": \"cost-1d5e1b0dbf82\",\n\"usd_cost\": 1.04e-05,\n\"original_currency\": \"USD\",\n\"original_cost\": 1.04e-05,\n\"usage_quantity\": 26.0,\n\"provider\": \"aws\",\n\"region_code\": \"ap-northeast-1\",\n\"product\": \"AWSQueueService\",\n\"account\": \"722069360300\",\n\"tags\": {},\n\"additional_info\": {\n\"raw_usage_type\": \"APN1-Requests-Tier1\"\n},\n\"data_source_id\": \"ds-fcba92ca73b1\",\n\"domain_id\": \"domain-58010aa2e451\",\n\"billed_at\": \"2021-01-01T00:00:00.000Z\",\n\"created_at\": \"2022-04-06T13:49:39.675Z\"\n}\n],\n\"total_count\": 307066\n}",
-              "requestType": "CostQuery",
-              "requestLongType": "CostQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CostQuery",
+              "description": "desc: Gets a list of all EventRules. You can use a query to get a filtered list of EventRules. For example, you can adjust the scope of the list to a certain Project or Domain.\nrequest_example: \u003e-\n{\n\"project_id\": \"project-123456789012\",\n\"domain_id\": \"domain-123456789012\"\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"event_rule_id\": \"er-123456789012\",\n\"order\": 1,\n\"conditions\": [\n{\n\"key\": \"title\",\n\"value\": \"AWS\",\n\"operator\": \"contain\"\n}\n],\n\"conditions_policy\": \"ALL\",\n\"actions\": {\n\"change_assignee\": \"user2@email.com\",\n\"change_urgency\": \"HIGH\",\n\"add_additional_info\": {},\n\"no_notification\": true\n},\n\"options\": {},\n\"scope\": \"PROJECT\",\n\"project_id\": \"project-123456789012\",\n\"tags\": {},\n\"domain_id\": \"domain-123456789012\",\n\"created_at\": \"2022-01-01T06:33:58.388Z\"\n},\n{\n\"event_rule_id\": \"er-123456789012\",\n\"order\": 2,\n\"conditions\": [\n{\n\"key\": \"title\",\n\"value\": \"ELB\",\n\"operator\": \"contain\"\n}\n],\n\"conditions_policy\": \"ALL\",\n\"actions\": {\n\"change_assignee\": \"user1@email.com\",\n\"change_urgency\": \"LOW\",\n\"change_project\": \"project-123456789012\",\n\"add_additional_info\": {},\n\"no_notification\": true\n},\n\"options\": {},\n\"scope\": \"PROJECT\",\n\"project_id\": \"project-123456789012\",\n\"tags\": {},\n\"domain_id\": \"domain-123456789012\",\n\"created_at\": \"2022-01-01T06:12:30.226Z\"\n}\n],\n\"total_count\": 2\n}",
+              "requestType": "EventRuleQuery",
+              "requestLongType": "EventRuleQuery",
+              "requestFullType": "spaceone.api.monitoring.v1.EventRuleQuery",
               "requestStreaming": false,
-              "responseType": "CostsInfo",
-              "responseLongType": "CostsInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.CostsInfo",
+              "responseType": "EventRulesInfo",
+              "responseLongType": "EventRulesInfo",
+              "responseFullType": "spaceone.api.monitoring.v1.EventRulesInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/list",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "analyze",
-              "description": "desc: Gets the Cost information of specific `product`s based on the time granularity: `DAILY`, `MONTHLY`, or `ACCUMULATED`. For `DAILY` granularity, this method can get the Cost data of at most 31 days. For `MONTHLY` or `ACCUMULATED` granularity, this method can get the Cost data of at most 12 months.\nrequest_example: \u003e-\n{\n\"granularity\": \"MONTHLY\",\n\"start\": \"2022-05\",\n\"end\": \"2022-07\",\n\"group_by\": [\"product\"],\n\"filter\": [],\n\"limit\": 15,\n\"include_others\": true,\n\"domain_id\": \"domain-58010aa2e451\"\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"product\": \"AmazonEC2\",\n\"total_usd_cost\": 20962.3114306262,\n\"usd_cost\": {\n\"2022-07\": 4644.0801750137,\n\"2022-05\": 7984.6560889987995,\n\"2022-06\": 8333.5751666137\n}\n},\n{\n\"usd_cost\": {\n\"2022-07\": 2817.0,\n\"2022-06\": 5439.0,\n\"2022-05\": 5269.0\n},\n\"total_usd_cost\": 13525.0,\n\"product\": \"AWS Marketplace\"\n},\n{\n\"product\": \"AmazonDocDB\",\n\"usd_cost\": {\n\"2022-05\": 6910.6140347763,\n\"2022-06\": 3238.7851615211,\n\"2022-07\": 812.2452815070001\n},\n\"total_usd_cost\": 10961.6444778044\n}\n]\n}",
-              "requestType": "CostAnalyzeQuery",
-              "requestLongType": "CostAnalyzeQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CostAnalyzeQuery",
-              "requestStreaming": false,
-              "responseType": "Struct",
-              "responseLongType": ".google.protobuf.Struct",
-              "responseFullType": "google.protobuf.Struct",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/analyze",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "analyze_v2",
-              "description": "",
-              "requestType": "CostAnalyzeV2Query",
-              "requestLongType": "CostAnalyzeV2Query",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CostAnalyzeV2Query",
-              "requestStreaming": false,
-              "responseType": "Struct",
-              "responseLongType": ".google.protobuf.Struct",
-              "responseFullType": "google.protobuf.Struct",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/analyze-v2",
+                      "pattern": "/monitoring/v1/event-rule/list",
                       "body": "*"
                     }
                   ]
@@ -1250,9 +1203,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "CostStatQuery",
-              "requestLongType": "CostStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.CostStatQuery",
+              "requestType": "EventRuleStatQuery",
+              "requestLongType": "EventRuleStatQuery",
+              "requestFullType": "spaceone.api.monitoring.v1.EventRuleStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -1263,7 +1216,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/cost/stat",
+                      "pattern": "/monitoring/v1/event-rule/stat",
                       "body": "*"
                     }
                   ]

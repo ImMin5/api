@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "name": "spaceone/api/cost_analysis/v1/budget_usage.proto",
-      "description": "",
-      "package": "spaceone.api.cost_analysis.v1",
+      "name": "spaceone/api/config/v1/user_config.proto",
+      "description": "desc: UserConfig API which configure environments for user",
+      "package": "spaceone.api.config.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
@@ -12,9 +12,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "BudgetUsageAnalyzeQuery",
-          "longName": "BudgetUsageAnalyzeQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
+          "name": "GetUserConfigRequest",
+          "longName": "GetUserConfigRequest",
+          "fullName": "spaceone.api.config.v1.GetUserConfigRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -22,12 +22,84 @@
           "extensions": [],
           "fields": [
             {
-              "name": "query",
+              "name": "name",
               "description": "is_required: true",
               "label": "",
-              "type": "TimeSeriesAnalyzeQuery",
-              "longType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
-              "fullType": "spaceone.api.core.v1.TimeSeriesAnalyzeQuery",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "only",
+              "description": "is_required: false",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "SetUserConfigRequest",
+          "longName": "SetUserConfigRequest",
+          "fullName": "spaceone.api.config.v1.SetUserConfigRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "data",
+              "description": "is_required: true",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "is_required: false",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -48,27 +120,15 @@
           ]
         },
         {
-          "name": "BudgetUsageInfo",
-          "longName": "BudgetUsageInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
+          "name": "UserConfigInfo",
+          "longName": "UserConfigInfo",
+          "fullName": "spaceone.api.config.v1.UserConfigInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
           "extensions": [],
           "fields": [
-            {
-              "name": "budget_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
             {
               "name": "name",
               "description": "",
@@ -82,43 +142,7 @@
               "defaultValue": ""
             },
             {
-              "name": "date",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "usd_cost",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "limit",
-              "description": "",
-              "label": "",
-              "type": "float",
-              "longType": "float",
-              "fullType": "float",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "cost_types",
+              "name": "data",
               "description": "",
               "label": "",
               "type": "Struct",
@@ -130,7 +154,43 @@
               "defaultValue": ""
             },
             {
+              "name": "tags",
+              "description": "",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "user_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "domain_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
               "description": "",
               "label": "",
               "type": "string",
@@ -156,9 +216,9 @@
           ]
         },
         {
-          "name": "BudgetUsageQuery",
-          "longName": "BudgetUsageQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+          "name": "UserConfigQuery",
+          "longName": "UserConfigQuery",
+          "fullName": "spaceone.api.config.v1.UserConfigQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -178,18 +238,6 @@
               "defaultValue": ""
             },
             {
-              "name": "budget_id",
-              "description": "is_required: false",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "name",
               "description": "is_required: false",
               "label": "",
@@ -202,7 +250,7 @@
               "defaultValue": ""
             },
             {
-              "name": "date",
+              "name": "user_id",
               "description": "is_required: false",
               "label": "",
               "type": "string",
@@ -228,9 +276,45 @@
           ]
         },
         {
-          "name": "BudgetUsageStatQuery",
-          "longName": "BudgetUsageStatQuery",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
+          "name": "UserConfigRequest",
+          "longName": "UserConfigRequest",
+          "fullName": "spaceone.api.config.v1.UserConfigRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "domain_id",
+              "description": "is_required: true",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UserConfigStatQuery",
+          "longName": "UserConfigStatQuery",
+          "fullName": "spaceone.api.config.v1.UserConfigStatQuery",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -264,9 +348,9 @@
           ]
         },
         {
-          "name": "BudgetUsagesInfo",
-          "longName": "BudgetUsagesInfo",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
+          "name": "UserConfigsInfo",
+          "longName": "UserConfigsInfo",
+          "fullName": "spaceone.api.config.v1.UserConfigsInfo",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -277,9 +361,9 @@
               "name": "results",
               "description": "",
               "label": "repeated",
-              "type": "BudgetUsageInfo",
-              "longType": "BudgetUsageInfo",
-              "fullType": "spaceone.api.cost_analysis.v1.BudgetUsageInfo",
+              "type": "UserConfigInfo",
+              "longType": "UserConfigInfo",
+              "fullType": "spaceone.api.config.v1.UserConfigInfo",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -302,52 +386,142 @@
       ],
       "services": [
         {
-          "name": "BudgetUsage",
-          "longName": "BudgetUsage",
-          "fullName": "spaceone.api.cost_analysis.v1.BudgetUsage",
-          "description": "Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.",
+          "name": "UserConfig",
+          "longName": "UserConfig",
+          "fullName": "spaceone.api.config.v1.UserConfig",
+          "description": "",
           "methods": [
             {
-              "name": "list",
-              "description": "desc: Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.\nrequest_example: \u003e-\n{\n\"query\": {}\n}\nresponse_example: \u003e-\n{\n\"results\": [\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-01\",\n\"usd_cost\": 7671.164,\n\"limit\": 10000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.099Z\"\n},\n{\n\"budget_id\": \"budget-abb377eb9e8b\",\n\"name\": \"Cloudforet-Budget3\",\n\"date\": \"2022-02\",\n\"usd_cost\": 5931.771,\n\"limit\": 11000.0,\n\"domain_id\": \"domain-58010aa2e451\",\n\"updated_at\": \"2022-07-19T04:26:08.105Z\"\n}\n],\n\"total_count\": 12\n}",
-              "requestType": "BudgetUsageQuery",
-              "requestLongType": "BudgetUsageQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageQuery",
+              "name": "create",
+              "description": "",
+              "requestType": "SetUserConfigRequest",
+              "requestLongType": "SetUserConfigRequest",
+              "requestFullType": "spaceone.api.config.v1.SetUserConfigRequest",
               "requestStreaming": false,
-              "responseType": "BudgetUsagesInfo",
-              "responseLongType": "BudgetUsagesInfo",
-              "responseFullType": "spaceone.api.cost_analysis.v1.BudgetUsagesInfo",
+              "responseType": "UserConfigInfo",
+              "responseLongType": "UserConfigInfo",
+              "responseFullType": "spaceone.api.config.v1.UserConfigInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/list",
-                      "body": "*"
+                      "pattern": "/config/v1/user-configs"
                     }
                   ]
                 }
               }
             },
             {
-              "name": "analyze",
+              "name": "update",
               "description": "",
-              "requestType": "BudgetUsageAnalyzeQuery",
-              "requestLongType": "BudgetUsageAnalyzeQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageAnalyzeQuery",
+              "requestType": "SetUserConfigRequest",
+              "requestLongType": "SetUserConfigRequest",
+              "requestFullType": "spaceone.api.config.v1.SetUserConfigRequest",
               "requestStreaming": false,
-              "responseType": "Struct",
-              "responseLongType": ".google.protobuf.Struct",
-              "responseFullType": "google.protobuf.Struct",
+              "responseType": "UserConfigInfo",
+              "responseLongType": "UserConfigInfo",
+              "responseFullType": "spaceone.api.config.v1.UserConfigInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "PUT",
+                      "pattern": "/config/v1/user-config/{name}"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "set",
+              "description": "",
+              "requestType": "SetUserConfigRequest",
+              "requestLongType": "SetUserConfigRequest",
+              "requestFullType": "spaceone.api.config.v1.SetUserConfigRequest",
+              "requestStreaming": false,
+              "responseType": "UserConfigInfo",
+              "responseLongType": "UserConfigInfo",
+              "responseFullType": "spaceone.api.config.v1.UserConfigInfo",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/analyze",
-                      "body": "*"
+                      "pattern": "/config/v1/user-config/{name}"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "delete",
+              "description": "",
+              "requestType": "UserConfigRequest",
+              "requestLongType": "UserConfigRequest",
+              "requestFullType": "spaceone.api.config.v1.UserConfigRequest",
+              "requestStreaming": false,
+              "responseType": "Empty",
+              "responseLongType": ".google.protobuf.Empty",
+              "responseFullType": "google.protobuf.Empty",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "DELETE",
+                      "pattern": "/config/v1/user-config/{name}"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "get",
+              "description": "",
+              "requestType": "GetUserConfigRequest",
+              "requestLongType": "GetUserConfigRequest",
+              "requestFullType": "spaceone.api.config.v1.GetUserConfigRequest",
+              "requestStreaming": false,
+              "responseType": "UserConfigInfo",
+              "responseLongType": "UserConfigInfo",
+              "responseFullType": "spaceone.api.config.v1.UserConfigInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "GET",
+                      "pattern": "/config/v1/user-config/{name}"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "list",
+              "description": "",
+              "requestType": "UserConfigQuery",
+              "requestLongType": "UserConfigQuery",
+              "requestFullType": "spaceone.api.config.v1.UserConfigQuery",
+              "requestStreaming": false,
+              "responseType": "UserConfigsInfo",
+              "responseLongType": "UserConfigsInfo",
+              "responseFullType": "spaceone.api.config.v1.UserConfigsInfo",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "GET",
+                      "pattern": "/config/v1/user-configs"
+                    },
+                    {
+                      "method": "POST",
+                      "pattern": "/config/v1/user-configs/search"
                     }
                   ]
                 }
@@ -356,9 +530,9 @@
             {
               "name": "stat",
               "description": "",
-              "requestType": "BudgetUsageStatQuery",
-              "requestLongType": "BudgetUsageStatQuery",
-              "requestFullType": "spaceone.api.cost_analysis.v1.BudgetUsageStatQuery",
+              "requestType": "UserConfigStatQuery",
+              "requestLongType": "UserConfigStatQuery",
+              "requestFullType": "spaceone.api.config.v1.UserConfigStatQuery",
               "requestStreaming": false,
               "responseType": "Struct",
               "responseLongType": ".google.protobuf.Struct",
@@ -369,8 +543,7 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/cost-analysis/v1/budget-usage/stat",
-                      "body": "*"
+                      "pattern": "/config/v1/user-configs/stat"
                     }
                   ]
                 }
