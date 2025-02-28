@@ -1,4 +1,4 @@
-grpcio==grpcio==1.54.2
+grpcio==1.54.2
 grpcio-tools
 click==8.1.3
 PyYAML==6.0
